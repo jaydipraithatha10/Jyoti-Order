@@ -127,6 +127,46 @@ margin-bottom:10px;
 color:#FFD700;
 font-size:22px;
 }
+.action-buttons{
+width:90%;
+margin:40px auto 50px;
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.whatsapp-btn,
+.call-btn{
+
+display:block;
+text-decoration:none;
+padding:18px;
+border-radius:18px;
+font-size:22px;
+font-weight:bold;
+color:white;
+transition:.3s;
+
+}
+
+.whatsapp-btn{
+
+background:#25D366;
+
+}
+
+.call-btn{
+
+background:#D4A017;
+
+}
+
+.whatsapp-btn:hover,
+.call-btn:hover{
+
+transform:scale(1.03);
+
+}
 </style>
 
 </head>
@@ -196,7 +236,24 @@ WhatsApp અથવા Call દ્વારા ઓર્ડર કરો.
 </div>
 
 </div>
+<div class="action-buttons">
 
+<a class="whatsapp-btn"
+href="https://wa.me/919712149344?text=નમસ્તે, મને તમારી પ્રોડક્ટ વિશે માહિતી જોઈએ."
+target="_blank">
+
+🟢 WhatsApp દ્વારા ઓર્ડર કરો
+
+</a>
+
+<a class="call-btn"
+href="tel:+919712149344">
+
+📞 કૉલ કરીને ઓર્ડર કરો
+
+</a>
+
+</div>
 </body>
 
 </html>
