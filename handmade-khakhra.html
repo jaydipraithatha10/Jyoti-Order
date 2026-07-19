@@ -18,7 +18,7 @@ font-family:Arial,sans-serif;
 
 body{
 background:#f8f3ea;
-padding-bottom:110px;
+padding-bottom:100px;
 }
 
 header{
@@ -30,13 +30,13 @@ padding:15px;
 display:flex;
 align-items:center;
 gap:15px;
-box-shadow:0 2px 10px rgba(0,0,0,.2);
 z-index:999;
+box-shadow:0 2px 8px rgba(0,0,0,.2);
 }
 
 .back{
-text-decoration:none;
 color:#fff;
+text-decoration:none;
 font-size:28px;
 }
 
@@ -44,26 +44,21 @@ header h1{
 font-size:24px;
 }
 
-.hero img{
-width:100%;
-display:block;
-}
-
-.hero-text{
+.hero{
 background:#fff8ef;
 padding:20px;
 text-align:center;
+border-bottom:1px solid #eee;
 }
 
-.hero-text h2{
+.hero h2{
 color:#b8860b;
-font-size:32px;
 margin-bottom:8px;
 }
 
-.hero-text p{
+.hero p{
 color:#666;
-font-size:20px;
+font-size:16px;
 }
 
 .products{
@@ -72,46 +67,36 @@ padding:15px;
 
 .product{
 background:#fff;
-border-radius:18px;
+border-radius:16px;
 padding:18px;
 margin-bottom:15px;
-box-shadow:0 4px 12px rgba(0,0,0,.12);
-}
-
-.product img{
-width:100%;
-border-radius:12px;
-margin-bottom:15px;
+box-shadow:0 4px 10px rgba(0,0,0,.10);
 }
 
 .product h3{
+font-size:22px;
 color:#5b3716;
-font-size:24px;
 margin-bottom:10px;
 }
 
-.bottom{
-display:flex;
-justify-content:space-between;
-align-items:center;
+.weight{
+color:#666;
+font-size:15px;
+margin-bottom:8px;
 }
 
-.price span{
-display:block;
-color:#777;
-font-size:16px;
-}
-
-.price h4{
-font-size:30px;
+.price{
+font-size:28px;
+font-weight:bold;
 color:#b8860b;
-margin-top:5px;
+margin-bottom:15px;
 }
 
 .qty{
 display:flex;
+justify-content:flex-end;
 align-items:center;
-gap:12px;
+gap:10px;
 }
 
 .qty button{
@@ -121,14 +106,14 @@ border:none;
 border-radius:50%;
 background:#b8860b;
 color:#fff;
-font-size:24px;
+font-size:22px;
 cursor:pointer;
 }
 
 .qty span{
-font-size:22px;
+font-size:20px;
 font-weight:bold;
-min-width:24px;
+min-width:25px;
 text-align:center;
 }
 
@@ -151,7 +136,7 @@ color:#fff;
 border:none;
 padding:12px 18px;
 border-radius:10px;
-font-size:18px;
+font-size:16px;
 font-weight:bold;
 cursor:pointer;
 }
@@ -166,21 +151,15 @@ cursor:pointer;
 
 <a href="khakhra.html" class="back">⬅</a>
 
-<h1>🥨 Hand Made Khakhra</h1>
+<h1>Hand Made Khakhra</h1>
 
 </header>
 
 <section class="hero">
 
-<img src="plain.png" alt="Hand Made Khakhra">
-
-<div class="hero-text">
-
 <h2>પોચા • સ્વાદિષ્ટ • Hand Made</h2>
 
 <p>દરેક કોળિયામાં ઘરનો અસલી સ્વાદ ❤️</p>
-
-</div>
 
 </section>
 
@@ -206,45 +185,38 @@ Order
 const products = [
 {
 name:"Naylon Sada Khakhra",
-price:150,
 weight:"500 gm",
-image:"plain.png"
+price:150
 },
 {
 name:"Naylon Methi Khakhra",
-price:150,
 weight:"500 gm",
-image:"methi.png"
+price:150
 },
 {
 name:"Naylon Masala Khakhra",
-price:150,
 weight:"500 gm",
-image:"masala.png"
+price:150
 },
 {
 name:"Naylon Jeera Khakhra",
-price:150,
 weight:"500 gm",
-image:"jeera.png"
+price:150
 },
 {
 name:"Bajara Methi Khakhra",
-price:180,
 weight:"500 gm",
-image:"bajara.png"
+price:180
 },
 {
 name:"Juwar Khakhra",
-price:180,
 weight:"500 gm",
-image:"juwar.png"
+price:180
 },
 {
 name:"Kothmir Marcha Khakhra",
-price:180,
 weight:"500 gm",
-image:"kothmir.png"
+price:180
 }
 ];
 
@@ -253,43 +225,36 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const productsDiv = document.getElementById("products");
 
 function getQty(name){
+
 const item = cart.find(p => p.name === name);
+
 return item ? item.qty : 0;
+
 }
 
 function renderProducts(){
 
 productsDiv.innerHTML = "";
 
-products.forEach((p,index)=>{
+products.forEach((product,index)=>{
 
 productsDiv.innerHTML += `
 
 <div class="product">
 
-<img src="${p.image}" alt="${p.name}">
+<h3>${product.name}</h3>
 
-<h3>${p.name}</h3>
+<div class="weight">${product.weight}</div>
 
-<div class="bottom">
-
-<div class="price">
-
-<span>${p.weight}</span>
-
-<h4>₹${p.price}</h4>
-
-</div>
+<div class="price">₹${product.price}</div>
 
 <div class="qty">
 
 <button onclick="changeQty(${index},-1)">−</button>
 
-<span>${getQty(p.name)}</span>
+<span>${getQty(product.name)}</span>
 
 <button onclick="changeQty(${index},1)">+</button>
-
-</div>
 
 </div>
 
@@ -301,15 +266,21 @@ productsDiv.innerHTML += `
 
 }
 function saveCart(){
+
     localStorage.setItem("cart", JSON.stringify(cart));
+
 }
 
 function getTotalItems(){
+
     return cart.reduce((total,item)=>total + item.qty,0);
+
 }
 
 function getTotalAmount(){
+
     return cart.reduce((total,item)=>total + (item.price * item.qty),0);
+
 }
 
 function updateCart(){
@@ -326,9 +297,9 @@ function changeQty(index,value){
 
     const product = products[index];
 
-    const item = cart.find(p=>p.name===product.name);
+    let item = cart.find(p => p.name === product.name);
 
-    if(value===1){
+    if(value === 1){
 
         if(item){
 
@@ -338,9 +309,8 @@ function changeQty(index,value){
 
             cart.push({
                 name:product.name,
-                price:product.price,
                 weight:product.weight,
-                image:product.image,
+                price:product.price,
                 qty:1
             });
 
@@ -352,9 +322,9 @@ function changeQty(index,value){
 
             item.qty--;
 
-            if(item.qty<=0){
+            if(item.qty <= 0){
 
-                cart = cart.filter(p=>p.name!==product.name);
+                cart = cart.filter(p => p.name !== product.name);
 
             }
 
@@ -367,9 +337,9 @@ function changeQty(index,value){
     renderProducts();
 
 }
-document.getElementById("orderBtn").addEventListener("click",function(){
+document.getElementById("orderBtn").addEventListener("click", function(){
 
-    if(cart.length===0){
+    if(cart.length === 0){
 
         alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
 
@@ -379,7 +349,17 @@ document.getElementById("orderBtn").addEventListener("click",function(){
 
     saveCart();
 
-    window.location.href="cart.html";
+    window.location.href = "cart.html";
+
+});
+
+window.addEventListener("storage", function(){
+
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    renderProducts();
+
+    updateCart();
 
 });
 
