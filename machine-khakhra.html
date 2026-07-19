@@ -1,1 +1,434 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Machine Made Khakhra | Jyoti Gruh Udhyog</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#f6f0e8;
+font-family:Arial,sans-serif;
+padding-bottom:120px;
+}
+
+.topbar{
+background:#5b3716;
+color:#fff;
+padding:15px;
+display:flex;
+align-items:center;
+gap:15px;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.back-btn{
+color:#fff;
+text-decoration:none;
+font-size:26px;
+}
+
+.topbar h1{
+font-size:24px;
+}
+
+.hero img{
+width:100%;
+display:block;
+}
+
+.hero-text{
+background:#fff8ef;
+padding:20px;
+text-align:center;
+}
+
+.hero-text h2{
+color:#8b5a00;
+margin-bottom:10px;
+}
+
+.hero-text p{
+color:#555;
+}
+
+.section-title{
+background:#5b3716;
+color:#fff;
+padding:12px;
+margin:20px 15px 10px;
+border-radius:12px;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+}
+
+.products{
+padding:15px;
+}
+
+.product{
+background:#fff;
+border-radius:18px;
+padding:18px;
+margin-bottom:15px;
+box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+.product h3{
+margin-bottom:15px;
+color:#5b3716;
+}
+
+.bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.bottom span{
+color:#777;
+}
+
+.bottom h4{
+margin-top:6px;
+font-size:28px;
+color:#b8860b;
+}
+
+.qty{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.qty button{
+width:38px;
+height:38px;
+border:none;
+border-radius:50%;
+background:#b8860b;
+color:#fff;
+font-size:22px;
+cursor:pointer;
+}
+
+.qty span{
+font-size:20px;
+font-weight:bold;
+min-width:24px;
+text-align:center;
+}
+
+#cartBar{
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+background:#5b3716;
+color:#fff;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+z-index:9999;
+}
+
+#cartBar button{
+background:#25D366;
+border:none;
+padding:12px 18px;
+border-radius:10px;
+color:#fff;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+<a href="khakhra.html" class="back-btn">⬅</a>
+
+<h1>🥨 Machine Made Khakhra</h1>
+
+</header>
+
+<section class="hero">
+
+<img src="machine.png" alt="Machine Made Khakhra">
+
+<div class="hero-text">
+
+<h2>કરકરા • સ્વાદિષ્ટ • Machine Made</h2>
+
+<p>દરેક ફ્લેવરમાં ખાસ સ્વાદ ❤️</p>
+
+</div>
+
+</section>
+
+<div class="section-title">
+🥨 Plain Khakhra
+</div>
+
+<div class="products" id="plainProducts">
+
+<!-- Plain Products અહીં આવશે -->
+
+</div>
+
+<div class="section-title">
+🌶️ Flavour Khakhra
+</div>
+
+<div class="products" id="flavourProducts">
+
+<!-- Flavour Products અહીં આવશે -->
+
+</div>
+
+<div id="cartBar">
+
+<div>
+🛒 <span id="cartCount">0</span> Items
+</div>
+
+<div>
+₹ <span id="cartTotal">0</span>
+</div>
+
+<button onclick="sendWhatsApp()">
+Order
+</button>
+
+</div>
+<script>
+
+const products=[
+
+{name:"Methi Khakhra",price:60,weight:"250 gm",section:"plain"},
+{name:"Masala Khakhra",price:60,weight:"250 gm",section:"plain"},
+{name:"Jeera Khakhra",price:60,weight:"250 gm",section:"plain"},
+{name:"Sada Khakhra",price:60,weight:"250 gm",section:"plain"},
+{name:"Karela Methi Khakhra",price:70,weight:"250 gm",section:"plain"},
+{name:"Bajara Methi Khakhra",price:70,weight:"250 gm",section:"plain"},
+{name:"Bajara Methi Lasan Khakhra",price:75,weight:"250 gm",section:"plain"},
+{name:"Mag Khakhra",price:75,weight:"250 gm",section:"plain"},
+{name:"Math Khakhra",price:75,weight:"250 gm",section:"plain"},
+{name:"Jav Khakhra",price:75,weight:"250 gm",section:"plain"},
+{name:"Juwar Khakhra",price:75,weight:"250 gm",section:"plain"},
+{name:"Ragi Khakhra",price:75,weight:"250 gm",section:"plain"},
+{name:"Kashmiri Marcha Khakhra",price:70,weight:"250 gm",section:"plain"},
+{name:"Chorafali Khakhra",price:75,weight:"250 gm",section:"plain"},
+{name:"Aachar Masala Khakhra",price:75,weight:"250 gm",section:"plain"},
+{name:"Sing Daniya Khakhra",price:70,weight:"250 gm",section:"plain"},
+{name:"Jeera Mari Khakhra",price:70,weight:"250 gm",section:"plain"},
+{name:"Hing Jeera Khakhra",price:75,weight:"250 gm",section:"plain"}
+
+];
+
+let qty=new Array(products.length).fill(0);
+
+const plainContainer=document.getElementById("plainProducts");
+
+products.forEach((p,index)=>{
+
+plainContainer.innerHTML+=`
+
+<div class="product">
+
+<h3>${p.name}</h3>
+
+<div class="bottom">
+
+<div>
+
+<span>${p.weight}</span>
+
+<h4>₹${p.price}</h4>
+
+</div>
+
+<div class="qty">
+
+<button onclick="changeQty(${index},-1)">−</button>
+
+<span id="qty${index}">0</span>
+
+<button onclick="changeQty(${index},1)">+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+const flavourProducts=[
+
+{name:"Pani Puri Khakhra",price:75,weight:"250 gm"},
+{name:"Chat Masala Khakhra",price:75,weight:"250 gm"},
+{name:"Maggi Masala Khakhra",price:75,weight:"250 gm"},
+{name:"Katkate Khakhra",price:75,weight:"250 gm"},
+{name:"Pav Bhaji Khakhra",price:75,weight:"250 gm"},
+{name:"Jeeralu Khakhra",price:75,weight:"250 gm"},
+{name:"Pizza Khakhra",price:85,weight:"250 gm"},
+{name:"Cheese Khakhra",price:85,weight:"250 gm"},
+{name:"Peri Peri Khakhra",price:85,weight:"250 gm"},
+{name:"Tomato Khakhra",price:85,weight:"250 gm"},
+{name:"Cream & Onion Khakhra",price:90,weight:"250 gm"},
+{name:"Manchurian Khakhra",price:85,weight:"250 gm"},
+{name:"Cheese Chilli Khakhra",price:90,weight:"250 gm"},
+{name:"Multi Grain Khakhra",price:90,weight:"250 gm"},
+{name:"Ghee Khakhra",price:120,weight:"250 gm"}
+
+];
+
+const flavourContainer=document.getElementById("flavourProducts");
+
+let startIndex=products.length;
+
+flavourProducts.forEach((p,index)=>{
+
+products.push({
+name:p.name,
+price:p.price,
+weight:p.weight,
+section:"flavour"
+});
+
+qty.push(0);
+
+flavourContainer.innerHTML+=`
+
+<div class="product">
+
+<h3>${p.name}</h3>
+
+<div class="bottom">
+
+<div>
+
+<span>${p.weight}</span>
+
+<h4>₹${p.price}</h4>
+
+</div>
+
+<div class="qty">
+
+<button onclick="changeQty(${startIndex+index},-1)">−</button>
+
+<span id="qty${startIndex+index}">0</span>
+
+<button onclick="changeQty(${startIndex+index},1)">+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+function changeQty(index,value){
+
+qty[index]+=value;
+
+if(qty[index]<0){
+qty[index]=0;
+}
+
+updateCart();
+
+}
+
+function updateCart(){
+
+let items=0;
+let total=0;
+
+for(let i=0;i<qty.length;i++){
+
+const el=document.getElementById("qty"+i);
+
+if(el){
+el.innerHTML=qty[i];
+}
+
+items+=qty[i];
+total+=qty[i]*products[i].price;
+
+}
+
+document.getElementById("cartCount").innerHTML=items;
+document.getElementById("cartTotal").innerHTML=total;
+
+}
+
+function sendWhatsApp(){
+
+let total=0;
+
+let msg="નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
+
+for(let i=0;i<products.length;i++){
+
+if(qty[i]>0){
+
+msg+=products[i].name+" x "+qty[i]+" = ₹"+(qty[i]*products[i].price)+"\n";
+
+total+=qty[i]*products[i].price;
+
+}
+
+}
+
+if(total===0){
+
+alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
+
+return;
+
+}
+
+msg+="\nકુલ રકમ : ₹"+total;
+
+window.open(
+"https://wa.me/919712149344?text="+encodeURIComponent(msg),
+"_blank"
+);
+
+// Cart Reset
+qty=new Array(products.length).fill(0);
+
+updateCart();
+
+}
+
+updateCart();
+
+</script>
+
+</body>
+</html>
