@@ -459,11 +459,11 @@ cursor:pointer;
 
 </div>
 
-<button onclick="sendWhatsApp()">
-
+<button onclick="openPopup()">
 Order
-
 </button>
+
+
 
 </div>
 
@@ -510,9 +510,23 @@ updateCart();
 
 }
 
+
 function sendWhatsApp(){
 
-let msg="નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.%0A%0A";
+let name=document.getElementById("custName").value;
+let mobile=document.getElementById("custMobile").value;
+let address=document.getElementById("custAddress").value;
+
+if(name=="" || mobile=="" || address==""){
+alert("Please fill all details.");
+return;
+}
+
+let msg="🪔 Jyoti Gruh Udhyog%0A%0A";
+
+msg+="👤 Name : "+name+"%0A";
+msg+="📱 Mobile : "+mobile+"%0A";
+msg+="🏠 Address : "+address+"%0A%0A";
 
 let total=0;
 
@@ -528,11 +542,16 @@ total+=qty[i]*products[i].price;
 
 }
 
-msg+="%0Aકુલ રકમ : ₹"+total;
+msg+="%0A💰 Total : ₹"+total;
 
-window.open("https://wa.me/919712149344?text="+msg);
+window.open("https://wa.me/919712149344?text="+encodeURIComponent(msg));
+
+closePopup();
 
 }
+
+
+
 
 updateCart();
 
@@ -559,8 +578,10 @@ document.getElementById("orderPopup").style.display="none";
 
     <textarea id="custAddress" placeholder="🏠 Full Address"></textarea>
 
-    
-<button onclick="openPopup()">Order</button>
+    <button class="popup-btn" onclick="sendWhatsApp()">
+Continue to WhatsApp
+</button>
+
   </div>
 
 </div>
