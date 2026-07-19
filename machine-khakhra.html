@@ -244,7 +244,7 @@ const products=[
 
 ];
 
-let qty=new Array(products.length).fill(0);
+let qty = JSON.parse(localStorage.getItem("machineQty")) || new Array(products.length).fill(0);
 
 const plainContainer=document.getElementById("plainProducts");
 
@@ -383,6 +383,7 @@ total+=qty[i]*products[i].price;
 
 document.getElementById("cartCount").innerHTML=items;
 document.getElementById("cartTotal").innerHTML=total;
+localStorage.setItem("machineQty", JSON.stringify(qty));
 
 }
 
@@ -421,6 +422,7 @@ window.open(
 
 // Cart Reset
 qty=new Array(products.length).fill(0);
+localStorage.removeItem("machineQty");
 
 updateCart();
 
