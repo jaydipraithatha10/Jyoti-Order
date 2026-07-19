@@ -1,3 +1,5 @@
+
+localStorage.removeItem("jyotiCart");
 let cart = JSON.parse(localStorage.getItem("jyotiCart")) || [];
 
 function saveCart() {
