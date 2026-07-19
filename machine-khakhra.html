@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,11 +12,11 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
 background:#f6f0e8;
-font-family:Arial,sans-serif;
 padding-bottom:120px;
 }
 
@@ -36,7 +35,7 @@ z-index:999;
 .back-btn{
 color:#fff;
 text-decoration:none;
-font-size:26px;
+font-size:28px;
 }
 
 .topbar h1{
@@ -87,8 +86,8 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
 }
 
 .product h3{
-margin-bottom:15px;
 color:#5b3716;
+margin-bottom:15px;
 }
 
 .bottom{
@@ -102,7 +101,7 @@ color:#777;
 }
 
 .bottom h4{
-margin-top:6px;
+margin-top:5px;
 font-size:28px;
 color:#b8860b;
 }
@@ -121,13 +120,12 @@ border-radius:50%;
 background:#b8860b;
 color:#fff;
 font-size:22px;
-cursor:pointer;
 }
 
 .qty span{
 font-size:20px;
 font-weight:bold;
-min-width:24px;
+min-width:22px;
 text-align:center;
 }
 
@@ -142,67 +140,41 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px;
-z-index:9999;
 }
 
 #cartBar button{
 background:#25D366;
+color:#fff;
 border:none;
 padding:12px 18px;
 border-radius:10px;
-color:#fff;
 font-size:16px;
 font-weight:bold;
-cursor:pointer;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header class="topbar">
-
 <a href="khakhra.html" class="back-btn">⬅</a>
-
 <h1>🥨 Machine Made Khakhra</h1>
-
 </header>
 
 <section class="hero">
-
-<img src="khakhra1.png" alt="Machine Made Khakhra">
-
+<img src="khakhra1.png">
 <div class="hero-text">
-
 <h2>કરકરા • સ્વાદિષ્ટ • Machine Made</h2>
-
 <p>દરેક ફ્લેવરમાં ખાસ સ્વાદ ❤️</p>
-
 </div>
-
 </section>
 
-<div class="section-title">
-🥨 Plain Khakhra
-</div>
+<div class="section-title">🥨 Plain Khakhra</div>
+<div id="plainProducts" class="products"></div>
 
-<div class="products" id="plainProducts">
-
-<!-- Plain Products અહીં આવશે -->
-
-</div>
-
-<div class="section-title">
-🌶️ Flavour Khakhra
-</div>
-
-<div class="products" id="flavourProducts">
-
-<!-- Flavour Products અહીં આવશે -->
-
-</div>
+<div class="section-title">🌶️ Flavour Khakhra</div>
+<div id="flavourProducts" class="products"></div>
 
 <div id="cartBar">
 
@@ -219,9 +191,11 @@ Order
 </button>
 
 </div>
-<script>
 
-const products=[
+<script>
+const products = [
+
+/* Plain Khakhra */
 
 {name:"Methi Khakhra",price:60,weight:"250 gm",section:"plain"},
 {name:"Masala Khakhra",price:60,weight:"250 gm",section:"plain"},
@@ -240,197 +214,136 @@ const products=[
 {name:"Aachar Masala Khakhra",price:75,weight:"250 gm",section:"plain"},
 {name:"Sing Daniya Khakhra",price:70,weight:"250 gm",section:"plain"},
 {name:"Jeera Mari Khakhra",price:70,weight:"250 gm",section:"plain"},
-{name:"Hing Jeera Khakhra",price:75,weight:"250 gm",section:"plain"}
+{name:"Hing Jeera Khakhra",price:75,weight:"250 gm",section:"plain"},
+
+/* Flavour Khakhra */
+
+{name:"Pani Puri Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{name:"Chat Masala Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{name:"Maggi Masala Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{name:"Katkate Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{name:"Pav Bhaji Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{name:"Jeeralu Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{name:"Pizza Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{name:"Cheese Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{name:"Peri Peri Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{name:"Tomato Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{name:"Cream & Onion Khakhra",price:90,weight:"250 gm",section:"flavour"},
+{name:"Manchurian Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{name:"Cheese Chilli Khakhra",price:90,weight:"250 gm",section:"flavour"},
+{name:"Multi Grain Khakhra",price:90,weight:"250 gm",section:"flavour"},
+{name:"Ghee Khakhra",price:120,weight:"250 gm",section:"flavour"}
 
 ];
-
-
-
-const plainContainer=document.getElementById("plainProducts");
-
-products.forEach((p,index)=>{
-
-plainContainer.innerHTML+=`
-
-<div class="product">
-
-<h3>${p.name}</h3>
-
-<div class="bottom">
-
-<div>
-
-<span>${p.weight}</span>
-
-<h4>₹${p.price}</h4>
-
-</div>
-
-<div class="qty">
-
-<button onclick="changeQty(${index},-1)">−</button>
-
-<span id="qty${index}">0</span>
-
-<button onclick="changeQty(${index},1)">+</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-const flavourProducts=[
-
-{name:"Pani Puri Khakhra",price:75,weight:"250 gm"},
-{name:"Chat Masala Khakhra",price:75,weight:"250 gm"},
-{name:"Maggi Masala Khakhra",price:75,weight:"250 gm"},
-{name:"Katkate Khakhra",price:75,weight:"250 gm"},
-{name:"Pav Bhaji Khakhra",price:75,weight:"250 gm"},
-{name:"Jeeralu Khakhra",price:75,weight:"250 gm"},
-{name:"Pizza Khakhra",price:85,weight:"250 gm"},
-{name:"Cheese Khakhra",price:85,weight:"250 gm"},
-{name:"Peri Peri Khakhra",price:85,weight:"250 gm"},
-{name:"Tomato Khakhra",price:85,weight:"250 gm"},
-{name:"Cream & Onion Khakhra",price:90,weight:"250 gm"},
-{name:"Manchurian Khakhra",price:85,weight:"250 gm"},
-{name:"Cheese Chilli Khakhra",price:90,weight:"250 gm"},
-{name:"Multi Grain Khakhra",price:90,weight:"250 gm"},
-{name:"Ghee Khakhra",price:120,weight:"250 gm"}
-
-];
-
-const flavourContainer=document.getElementById("flavourProducts");
-
-let startIndex=products.length;
-
-flavourProducts.forEach((p,index)=>{
-
-products.push({
-name:p.name,
-price:p.price,
-weight:p.weight,
-section:"flavour"
-});
 
 let qty = JSON.parse(localStorage.getItem("machineQty"));
 
-if (!qty || qty.length !== products.length) {
+if(!qty || qty.length !== products.length){
     qty = new Array(products.length).fill(0);
 }
-flavourContainer.innerHTML+=`
 
-<div class="product">
+const plainContainer = document.getElementById("plainProducts");
+const flavourContainer = document.getElementById("flavourProducts");
+function renderProducts(){
 
-<h3>${p.name}</h3>
+    plainContainer.innerHTML = "";
+    flavourContainer.innerHTML = "";
 
-<div class="bottom">
+    products.forEach((p,index)=>{
 
-<div>
+        const html = `
+        <div class="product">
 
-<span>${p.weight}</span>
+            <h3>${p.name}</h3>
 
-<h4>₹${p.price}</h4>
+            <div class="bottom">
 
-</div>
+                <div>
+                    <span>${p.weight}</span>
+                    <h4>₹${p.price}</h4>
+                </div>
 
-<div class="qty">
+                <div class="qty">
+                    <button onclick="changeQty(${index},-1)">−</button>
+                    <span id="qty${index}">${qty[index]}</span>
+                    <button onclick="changeQty(${index},1)">+</button>
+                </div>
 
-<button onclick="changeQty(${startIndex+index},-1)">−</button>
+            </div>
 
-<span id="qty${startIndex+index}">0</span>
+        </div>`;
 
-<button onclick="changeQty(${startIndex+index},1)">+</button>
+        if(p.section === "plain"){
+            plainContainer.innerHTML += html;
+        }else{
+            flavourContainer.innerHTML += html;
+        }
 
-</div>
+    });
 
-</div>
+}
 
-</div>
-
-`;
-
-});
 function changeQty(index,value){
 
-qty[index]+=value;
+    qty[index] += value;
 
-if(qty[index]<0){
-qty[index]=0;
+    if(qty[index] < 0){
+        qty[index] = 0;
+    }
+
+    localStorage.setItem("machineQty", JSON.stringify(qty));
+
+    updateCart();
+    renderProducts();
+
 }
-
-updateCart();
-
-}
-
 function updateCart(){
 
-let items=0;
-let total=0;
+    let items = 0;
+    let total = 0;
 
-for(let i=0;i<qty.length;i++){
+    qty.forEach((q,index)=>{
+        items += q;
+        total += q * products[index].price;
+    });
 
-const el=document.getElementById("qty"+i);
-
-if(el){
-el.innerHTML=qty[i];
-}
-
-items+=qty[i];
-total+=qty[i]*products[i].price;
-
-}
-
-document.getElementById("cartCount").innerHTML=items;
-document.getElementById("cartTotal").innerHTML=total;
-localStorage.setItem("machineQty", JSON.stringify(qty));
-
+    document.getElementById("cartCount").textContent = items;
+    document.getElementById("cartTotal").textContent = total;
 }
 
 function sendWhatsApp(){
 
-let total=0;
+    let total = 0;
+    let msg = "નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
 
-let msg="નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
+    products.forEach((p,index)=>{
+        if(qty[index] > 0){
+            msg += `${p.name} x ${qty[index]} = ₹${qty[index] * p.price}\n`;
+            total += qty[index] * p.price;
+        }
+    });
 
-for(let i=0;i<products.length;i++){
+    if(total === 0){
+        alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
+        return;
+    }
 
-if(qty[i]>0){
+    msg += "\nકુલ રકમ : ₹" + total;
 
-msg+=products[i].name+" x "+qty[i]+" = ₹"+(qty[i]*products[i].price)+"\n";
+    window.open(
+        "https://wa.me/919712149344?text=" + encodeURIComponent(msg),
+        "_blank"
+    );
 
-total+=qty[i]*products[i].price;
+    // Order પછી Cart Reset
+    qty = new Array(products.length).fill(0);
+    localStorage.removeItem("machineQty");
 
+    updateCart();
+    renderProducts();
 }
 
-}
-
-if(total===0){
-
-alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
-
-return;
-
-}
-
-msg+="\nકુલ રકમ : ₹"+total;
-
-window.open(
-"https://wa.me/919712149344?text="+encodeURIComponent(msg),
-"_blank"
-);
-
-// Cart Reset
-qty=new Array(products.length).fill(0);
-localStorage.removeItem("machineQty");
-
-updateCart();
-
-}
-
+renderProducts();
 updateCart();
 
 </script>
