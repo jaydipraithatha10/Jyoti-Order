@@ -406,7 +406,7 @@ const products=[
 {name:"Kothmir Marcha Khakhra",price:180}
 ];
 
-let qty=JSON.parse(localStorage.getItem("qty"))||[0,0,0,0,0,0,0];
+let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
 function updateCart(){
 
@@ -422,7 +422,7 @@ total+=qty[i]*products[i].price;
 document.getElementById("cartCount").innerHTML=items;
 document.getElementById("cartTotal").innerHTML=total;
 
-localStorage.setItem("qty",JSON.stringify(qty));
+localStorage.setItem("cart", JSON.stringify(cart));
 }
 function sendWhatsApp(){
 
@@ -450,9 +450,7 @@ window.open("https://wa.me/919712149344?text=" + encodeURIComponent(msg));
 
 }qty = [0,0,0,0,0,0,0];
 
-localStorage.setItem("qty", JSON.stringify(qty));
 
-updateCart();
 function changeQty(index,value){
 
 qty[index]+=value;
