@@ -194,3 +194,61 @@ style="width:100%;padding:12px;height:90px;border-radius:8px;border:1px solid #c
 </div>
 `
 );
+
+const cartItemsDiv = document.getElementById("cartItems");
+
+function renderCart(){
+
+    cartItemsDiv.innerHTML = "";
+
+    if(cart.length === 0){
+
+        cartItemsDiv.innerHTML = `
+        <div class="cart-item">
+            <h3>Your Cart is Empty</h3>
+            <p>કૃપા કરીને પહેલા Products ઉમેરો.</p>
+        </div>`;
+
+        updateSummary();
+        return;
+    }
+
+    cart.forEach((item,index)=>{
+
+        cartItemsDiv.innerHTML += `
+
+        <div class="cart-item">
+
+            <h3>${item.name}</h3>
+
+            <p>${item.weight}</p>
+
+            <p>₹${item.price}</p>
+
+            <div class="cart-bottom">
+
+                <div class="qty">
+
+                    <button onclick="changeQty(${index},-1)">−</button>
+
+                    <span>${item.qty}</span>
+
+                    <button onclick="changeQty(${index},1)">+</button>
+
+                </div>
+
+                <button class="removeBtn" onclick="removeItem(${index})">
+                    Remove
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    updateSummary();
+
+}
