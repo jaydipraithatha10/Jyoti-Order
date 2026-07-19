@@ -140,84 +140,12 @@ font-size:16px;
 font-weight:bold;
 cursor:pointer;
 }
-.popup{
-position:fixed;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.65);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:99999;
-backdrop-filter:blur(4px);
-animation:fade .3s;
-}
 
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
 
-.popup-box{
-background:#fff;
-width:90%;
-max-width:400px;
-padding:25px;
-border-radius:20px;
-animation:zoom .3s;
-}
 
-@keyframes zoom{
-from{
-transform:scale(.8);
-opacity:0;
-}
-to{
-transform:scale(1);
-opacity:1;
-}
-}
 
-.popup-box h2{
-text-align:center;
-color:#5b3716;
-margin-bottom:20px;
-}
 
-.popup-box input,
-.popup-box textarea{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-border:1px solid #ccc;
-border-radius:10px;
-font-size:16px;
-}
 
-.popup-box textarea{
-height:90px;
-resize:none;
-}
-
-.popup-btn{
-width:100%;
-background:#25D366;
-color:#fff;
-border:none;
-padding:15px;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.close{
-float:right;
-font-size:22px;
-cursor:pointer;
-}
 </style>
 </head>
 
@@ -459,7 +387,7 @@ cursor:pointer;
 
 </div>
 
-<button onclick="openPopup()">
+<button onclick="sendWhatsApp()">
 Order
 </button>
 
@@ -510,17 +438,31 @@ updateCart();
 
 }
 
-
 function sendWhatsApp(){
 
-let name=document.getElementById("custName").value;
-let mobile=document.getElementById("custMobile").value;
-let address=document.getElementById("custAddress").value;
+let msg="નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.%0A%0A";
 
-if(name=="" || mobile=="" || address==""){
-alert("Please fill all details.");
-return;
+let total=0;
+
+for(let i=0;i<qty.length;i++){
+
+if(qty[i]>0){
+
+msg+=products[i].name+" x "+qty[i]+" = ₹"+(qty[i]*products[i].price)+"%0A";
+
+total+=qty[i]*products[i].price;
+
 }
+
+}
+
+msg+="%0Aકુલ રકમ : ₹"+total;
+
+window.open("https://wa.me/919712149344?text="+msg);
+
+}
+
+
 
 let msg="🪔 Jyoti Gruh Udhyog%0A%0A";
 
@@ -555,35 +497,11 @@ closePopup();
 
 updateCart();
 
-function openPopup(){
-document.getElementById("orderPopup").style.display="flex";
-}
 
-function closePopup(){
-document.getElementById("orderPopup").style.display="none";
-}
+
+
 </script>
 
-<div id="orderPopup" class="popup">
 
-  <div class="popup-box">
-
-    <span class="close" onclick="closePopup()">✕</span>
-
-    <h2>🪔 Order Details</h2>
-
-    <input type="text" id="custName" placeholder="👤 Full Name">
-
-    <input type="tel" id="custMobile" placeholder="📱 Mobile Number">
-
-    <textarea id="custAddress" placeholder="🏠 Full Address"></textarea>
-
-    <button class="popup-btn" onclick="sendWhatsApp()">
-Continue to WhatsApp
-</button>
-
-  </div>
-
-</div>
 </body>
 </html>
