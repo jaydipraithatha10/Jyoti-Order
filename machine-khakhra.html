@@ -192,7 +192,7 @@ Order
 
 </div>
 
-<script>
+
 
 <script src="cart.js"></script>
 
@@ -239,8 +239,7 @@ Order
 
 ];
 
-const plainContainer = document.getElementById("plainProducts");
-const flavourContainer = document.getElementById("flavourProducts");
+
 
 function getQty(name){
     const item = cart.find(p => p.name === name);
@@ -315,9 +314,7 @@ function updateCart(){
     document.getElementById("cartTotal").textContent = getTotalAmount();
 
 }
-    document.getElementById("cartCount").textContent = items;
-    document.getElementById("cartTotal").textContent = total;
-}
+    
 
 function sendWhatsApp(){
 
