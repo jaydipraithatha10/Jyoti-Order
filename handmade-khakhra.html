@@ -225,5 +225,39 @@ Fresh • Traditional • Premium Quality
 
 <!-- Part 2 માં JavaScript આવશે -->
 
+<script>
+
+let cartCount = 0;
+
+const buttons = document.querySelectorAll(".cart-btn");
+
+buttons.forEach(button => {
+
+button.addEventListener("click", function(){
+
+cartCount++;
+
+document.getElementById("count").innerText = cartCount;
+
+button.innerHTML = "✅ Added";
+
+button.style.background = "#198754";
+
+setTimeout(function(){
+
+button.innerHTML = "🛒 Add to Cart";
+
+button.style.background = "linear-gradient(90deg,#25D366,#128C7E)";
+
+},1000);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
 </body>
 </html>
