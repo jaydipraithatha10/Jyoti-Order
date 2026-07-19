@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Hand Made Khakhra | Jyoti Gruh Udhyog</title>
 
-
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-    margin:0;
-    background:#f6f0e8;
-    font-family:Arial,sans-serif;
-    padding-bottom:120px;
+background:#f6f0e8;
+padding-bottom:120px;
 }
 
 .topbar{
@@ -25,16 +29,16 @@ align-items:center;
 gap:15px;
 position:sticky;
 top:0;
+z-index:999;
 }
 
 .back-btn{
 color:#fff;
 text-decoration:none;
-font-size:26px;
+font-size:28px;
 }
 
 .topbar h1{
-margin:0;
 font-size:24px;
 }
 
@@ -44,18 +48,17 @@ display:block;
 }
 
 .hero-text{
+background:#fff8ef;
 padding:20px;
 text-align:center;
-background:#fff8ef;
 }
 
 .hero-text h2{
 color:#8b5a00;
-margin:0;
+margin-bottom:10px;
 }
 
 .hero-text p{
-margin-top:10px;
 color:#555;
 }
 
@@ -72,8 +75,8 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
 }
 
 .product h3{
-margin:0 0 15px;
 color:#5b3716;
+margin-bottom:15px;
 }
 
 .bottom{
@@ -87,7 +90,7 @@ color:#777;
 }
 
 .bottom h4{
-margin:6px 0 0;
+margin-top:5px;
 font-size:28px;
 color:#b8860b;
 }
@@ -112,7 +115,7 @@ cursor:pointer;
 .qty span{
 font-size:20px;
 font-weight:bold;
-min-width:20px;
+min-width:22px;
 text-align:center;
 }
 
@@ -127,28 +130,22 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px;
-z-index:9999;
 }
 
 #cartBar button{
 background:#25D366;
+color:#fff;
 border:none;
 padding:12px 18px;
 border-radius:10px;
-color:#fff;
 font-size:16px;
 font-weight:bold;
 cursor:pointer;
 }
 
-
-
-
-
-
 </style>
-</head>
 
+</head>
 
 <body>
 
@@ -162,7 +159,7 @@ cursor:pointer;
 
 <section class="hero">
 
-<img src="plain.png" alt="Hand Made Khakhra">
+<img src="plain.png">
 
 <div class="hero-text">
 
@@ -174,299 +171,134 @@ cursor:pointer;
 
 </section>
 
-<div class="products">
-
-<div class="product">
-
-<h3>Naylon Sada Khakhra</h3>
-
-<div class="bottom">
-
-<div>
-
-<span>500 gm</span>
-
-<h4>₹150</h4>
-
-</div>
-
-<div class="qty">
-
-<button onclick="changeQty(0,-1)">−</button>
-
-<span id="qty0">0</span>
-
-<button onclick="changeQty(0,1)">+</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="product">
-
-<h3>Naylon Methi Khakhra</h3>
-
-<div class="bottom">
-
-<div>
-
-<span>500 gm</span>
-
-<h4>₹150</h4>
-
-</div>
-
-<div class="qty">
-
-<button onclick="changeQty(1,-1)">−</button>
-
-<span id="qty1">0</span>
-
-<button onclick="changeQty(1,1)">+</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="product">
-
-<h3>Naylon Masala Khakhra</h3>
-
-<div class="bottom">
-
-<div>
-
-<span>500 gm</span>
-
-<h4>₹150</h4>
-
-</div>
-
-<div class="qty">
-
-<button onclick="changeQty(2,-1)">−</button>
-
-<span id="qty2">0</span>
-
-<button onclick="changeQty(2,1)">+</button>
-
-</div>
-
-</div>
-
-</div>
-<div class="product">
-
-<h3>Naylon Jeera Khakhra</h3>
-
-<div class="bottom">
-
-<div>
-
-<span>500 gm</span>
-
-<h4>₹150</h4>
-
-</div>
-
-<div class="qty">
-
-<button onclick="changeQty(3,-1)">−</button>
-
-<span id="qty3">0</span>
-
-<button onclick="changeQty(3,1)">+</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="product">
-
-<h3>Bajara Methi Khakhra</h3>
-
-<div class="bottom">
-
-<div>
-
-<span>500 gm</span>
-
-<h4>₹180</h4>
-
-</div>
-
-<div class="qty">
-
-<button onclick="changeQty(4,-1)">−</button>
-
-<span id="qty4">0</span>
-
-<button onclick="changeQty(4,1)">+</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="product">
-
-<h3>Juwar Khakhra</h3>
-
-<div class="bottom">
-
-<div>
-
-<span>500 gm</span>
-
-<h4>₹180</h4>
-
-</div>
-
-<div class="qty">
-
-<button onclick="changeQty(5,-1)">−</button>
-
-<span id="qty5">0</span>
-
-<button onclick="changeQty(5,1)">+</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="product">
-
-<h3>Kothmir Marcha Khakhra</h3>
-
-<div class="bottom">
-
-<div>
-
-<span>500 gm</span>
-
-<h4>₹180</h4>
-
-</div>
-
-<div class="qty">
-
-<button onclick="changeQty(6,-1)">−</button>
-
-<span id="qty6">0</span>
-
-<button onclick="changeQty(6,1)">+</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+<div id="products" class="products"></div>
 
 <div id="cartBar">
 
 <div>
-
 🛒 <span id="cartCount">0</span> Items
-
 </div>
 
 <div>
-
 ₹ <span id="cartTotal">0</span>
-
 </div>
 
 <button onclick="sendWhatsApp()">
 Order
 </button>
 
-
-
 </div>
 
-<script>
-const products=[
-{name:"Naylon Sada Khakhra",price:150},
-{name:"Naylon Methi Khakhra",price:150},
-{name:"Naylon Masala Khakhra",price:150},
-{name:"Naylon Jeera Khakhra",price:150},
-{name:"Bajara Methi Khakhra",price:180},
-{name:"Juwar Khakhra",price:180},
-{name:"Kothmir Marcha Khakhra",price:180}
-];
-let qty = JSON.parse(localStorage.getItem("qty")) || [0,0,0,0,0,0,0];
+<script src="cart.js"></script>
 
+<script>
+const products = [
+{name:"Naylon Sada Khakhra",price:150,weight:"500 gm"},
+{name:"Naylon Methi Khakhra",price:150,weight:"500 gm"},
+{name:"Naylon Masala Khakhra",price:150,weight:"500 gm"},
+{name:"Naylon Jeera Khakhra",price:150,weight:"500 gm"},
+{name:"Bajara Methi Khakhra",price:180,weight:"500 gm"},
+{name:"Juwar Khakhra",price:180,weight:"500 gm"},
+{name:"Kothmir Marcha Khakhra",price:180,weight:"500 gm"}
+];
+
+const productsDiv = document.getElementById("products");
+
+function getQty(name){
+    const item = cart.find(p=>p.name===name);
+    return item ? item.qty : 0;
+}
+
+function renderProducts(){
+
+    productsDiv.innerHTML = "";
+
+    products.forEach((p,index)=>{
+
+        productsDiv.innerHTML += `
+        <div class="product">
+
+            <h3>${p.name}</h3>
+
+            <div class="bottom">
+
+                <div>
+                    <span>${p.weight}</span>
+                    <h4>₹${p.price}</h4>
+                </div>
+
+                <div class="qty">
+
+                    <button onclick="changeQty(${index},-1)">−</button>
+
+                    <span>${getQty(p.name)}</span>
+
+                    <button onclick="changeQty(${index},1)">+</button>
+
+                </div>
+
+            </div>
+
+        </div>`;
+    });
+
+}
+function changeQty(index,value){
+
+    if(value > 0){
+
+        addToCart(
+            products[index].name,
+            products[index].price,
+            products[index].weight
+        );
+
+    }else{
+
+        removeFromCart(products[index].name);
+
+    }
+
+    updateCart();
+    renderProducts();
+
+}
 
 function updateCart(){
 
-let items=0;
-let total=0;
+    document.getElementById("cartCount").textContent = getTotalItems();
 
-for(let i=0;i<qty.length;i++){
-document.getElementById("qty"+i).innerHTML=qty[i];
-items+=qty[i];
-total+=qty[i]*products[i].price;
+    document.getElementById("cartTotal").textContent = getTotalAmount();
+
 }
 
-document.getElementById("cartCount").innerHTML=items;
-document.getElementById("cartTotal").innerHTML=total;
-
-localStorage.setItem("qty", JSON.stringify(qty));
-}
 function sendWhatsApp(){
 
-let msg = "નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
-
-let total = 0;
-
-for(let i=0;i<qty.length;i++){
-
-    if(qty[i] > 0){
-
-        msg += products[i].name + " x " + qty[i] + " = ₹" + (qty[i] * products[i].price) + "\n";
-
-        total += qty[i] * products[i].price;
-    }
-}
-
-msg += "\nકુલ રકમ : ₹" + total;
-if(total === 0){
-    alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
-    return;
-}
-
-window.open("https://wa.me/919712149344?text=" + encodeURIComponent(msg));
-
-qty = [0,0,0,0,0,0,0];
-localStorage.removeItem("qty");
-updateCart();
-}
-
-function changeQty(index, value) {
-
-    qty[index] += value;
-
-    if (qty[index] < 0) {
-        qty[index] = 0;
+    if(cart.length === 0){
+        alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
+        return;
     }
 
-    localStorage.setItem("qty", JSON.stringify(qty));
+    let msg = "નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
+
+    cart.forEach(item=>{
+        msg += `${item.name} (${item.weight}) x ${item.qty} = ₹${item.qty * item.price}\n`;
+    });
+
+    msg += "\nકુલ રકમ : ₹" + getTotalAmount();
+
+    window.open(
+        "https://wa.me/919712149344?text=" + encodeURIComponent(msg),
+        "_blank"
+    );
+
+    clearCart();
 
     updateCart();
+    renderProducts();
 }
 
-
+renderProducts();
 updateCart();
 </script>
 
