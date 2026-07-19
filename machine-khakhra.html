@@ -270,7 +270,7 @@ function renderProducts(){
 
                 <div class="qty">
                     <button onclick="changeQty(${index},-1)">−</button>
-                    <span id="qty${index}">${qty[index]}</span>
+                    <span>${getQty('${p.name}')}</span>
                     <button onclick="changeQty(${index},1)">+</button>
                 </div>
 
@@ -287,7 +287,6 @@ function renderProducts(){
     });
 
 }
-
 function changeQty(index,value){
 
     qty[index] += value;
