@@ -244,7 +244,7 @@ const products=[
 
 ];
 
-let qty = JSON.parse(localStorage.getItem("machineQty")) || new Array(products.length).fill(0);
+
 
 const plainContainer=document.getElementById("plainProducts");
 
@@ -315,7 +315,11 @@ price:p.price,
 weight:p.weight,
 section:"flavour"
 });
+let qty = JSON.parse(localStorage.getItem("machineQty"));
 
+if (!qty || qty.length !== products.length) {
+    qty = new Array(products.length).fill(0);
+}
 qty.push(0);
 
 flavourContainer.innerHTML+=`
