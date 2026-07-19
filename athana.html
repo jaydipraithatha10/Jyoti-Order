@@ -172,7 +172,8 @@ font-size:20px;
 <img src="athana.png" alt="Athana Banner">
 </div>
 
-<div class="container" id="productContainer">
+<div class="container" id="productContainer"></div>
+
 <script>
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -519,7 +520,7 @@ return;
 window.location.href="cart.html";
 
 });
-</div>
+
 
 renderProducts();
 
