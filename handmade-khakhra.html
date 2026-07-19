@@ -3,356 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Hand Made Khakhra | Jyoti Gruh Udhyog</title>
-
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:#f8f1e7;
-}
-
-/* Header */
-
-header{
-    position:sticky;
-    top:0;
-    background:#5a3418;
-    color:#fff;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 20px;
-    box-shadow:0 3px 10px rgba(0,0,0,.3);
-    z-index:999;
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    color:#FFD700;
-    font-size:22px;
-    font-weight:bold;
-}
-
-.cart{
-    position:relative;
-    font-size:28px;
-    cursor:pointer;
-}
-
-#cartCount{
-    position:absolute;
-    top:-8px;
-    right:-10px;
-    background:red;
-    color:#fff;
-    width:22px;
-    height:22px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:13px;
-    font-weight:bold;
-}
-
-/* Page Title */
-
-.title{
-    text-align:center;
-    margin:25px 0;
-}
-
-.title h1{
-    color:#5a3418;
-    font-size:30px;
-}
-
-.title p{
-    color:#666;
-    margin-top:8px;
-}
-
-/* Products */
-
-.container{
-    width:95%;
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
-    padding-bottom:40px;
-}
-
-.card{
-    background:#fff;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-6px);
-}
-
-.card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-}
-
-.info{
-    padding:18px;
-}
-
-.badge{
-    display:inline-block;
-    background:#8B4513;
-    color:#fff;
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:13px;
-    margin-bottom:12px;
-}
-
-.name{
-    font-size:22px;
-    color:#5a3418;
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-.weight{
-    color:#666;
-    margin-bottom:10px;
-}
-
-.price{
-    color:#b22222;
-    font-size:26px;
-    font-weight:bold;
-    margin-bottom:18px;
-}
-/* Buttons */
-
-.add-btn{
-    width:100%;
-    background:#8B4513;
-    color:#fff;
-    border:none;
-    padding:12px;
-    font-size:17px;
-    border-radius:10px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.add-btn:hover{
-    background:#6f320d;
-}
-
-.qty-box{
-    display:none;
-    justify-content:center;
-    align-items:center;
-    gap:12px;
-}
-
-.qty-btn{
-    width:38px;
-    height:38px;
-    border:none;
-    border-radius:50%;
-    background:#8B4513;
-    color:#fff;
-    font-size:22px;
-    cursor:pointer;
-}
-
-.qty{
-    font-size:22px;
-    font-weight:bold;
-    min-width:30px;
-    text-align:center;
-}
-
-@media(max-width:600px){
-
-.logo{
-    font-size:18px;
-}
-
-.title h1{
-    font-size:24px;
-}
-
-.card img{
-    height:180px;
-}
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f8f1e7}
+header{position:sticky;top:0;background:#5a3418;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:15px 20px}
+.logo{color:#FFD700;font-size:22px;font-weight:bold}
+.cart{position:relative;font-size:28px}
+#cartCount{position:absolute;top:-8px;right:-10px;background:red;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}
+.title{text-align:center;padding:20px}
+.container{width:95%;max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;padding-bottom:30px}
+.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,.15)}
+.placeholder{height:200px;background:#f3e5d0;display:flex;align-items:center;justify-content:center;font-size:70px}
+.info{padding:16px}
+.badge{display:inline-block;background:#8B4513;color:#fff;padding:5px 10px;border-radius:20px;font-size:12px}
+.name{font-size:20px;color:#5a3418;font-weight:bold;margin:10px 0}
+.weight{color:#666}
+.price{color:#b22222;font-size:24px;font-weight:bold;margin:12px 0}
+.add-btn,.qty-btn{background:#8B4513;color:#fff;border:none;cursor:pointer}
+.add-btn{width:100%;padding:12px;border-radius:8px}
+.qty-box{display:none;justify-content:center;align-items:center;gap:12px}
+.qty-btn{width:38px;height:38px;border-radius:50%;font-size:22px}
+.qty{font-size:22px;font-weight:bold;min-width:30px;text-align:center}
 </style>
 </head>
-
 <body>
-
-<header>
-
-<div class="logo">
-🥨 Hand Made Khakhra
-</div>
-
-<div class="cart">
-🛒
-<span id="cartCount">0</span>
-</div>
-
-</header>
-
-<div class="title">
-
-<h1>Hand Made Khakhra</h1>
-
-<p>Pocha • Swadisht • Premium Quality</p>
-
-</div>
-
+<header><div class="logo">🥨 Hand Made Khakhra</div><div class="cart">🛒<span id="cartCount">0</span></div></header>
+<div class="title"><h1>Hand Made Khakhra</h1><p>Pocha • Swadisht • Premium Quality</p></div>
 <div class="container">
 
-<!-- Product 1 -->
-
 <div class="card">
-
-<img src="images/naylon-sada.jpg">
-<!-- Product 3 -->
-
-<div class="card">
-
-<div style="height:220px;display:flex;align-items:center;justify-content:center;background:#f3e5d0;font-size:70px;">
-🥨
+<div class="placeholder">🥨</div>
+<div class="info">
+<div class="badge">Hand Made</div>
+<div class="name">Naylon Sada Khakhra</div>
+<div class="weight">500 gm</div>
+<div class="price">₹150</div>
+<button class="add-btn" onclick="addProduct(this)">Add</button>
+<div class="qty-box">
+<button class="qty-btn" onclick="minus(this)">−</button>
+<div class="qty">1</div>
+<button class="qty-btn" onclick="plus(this)">+</button>
+</div>
+</div>
 </div>
 
+<div class="card">
+<div class="placeholder">🥨</div>
 <div class="info">
-
 <div class="badge">Hand Made</div>
+<div class="name">Naylon Masala Khakhra</div>
+<div class="weight">500 gm</div>
+<div class="price">₹150</div>
+<button class="add-btn" onclick="addProduct(this)">Add</button>
+<div class="qty-box">
+<button class="qty-btn" onclick="minus(this)">−</button>
+<div class="qty">1</div>
+<button class="qty-btn" onclick="plus(this)">+</button>
+</div>
+</div>
+</div>
 
+<div class="card">
+<div class="placeholder">🥨</div>
+<div class="info">
+<div class="badge">Hand Made</div>
 <div class="name">Naylon Methi Khakhra</div>
-
 <div class="weight">500 gm</div>
-
 <div class="price">₹150</div>
-
 <button class="add-btn" onclick="addProduct(this)">Add</button>
-
 <div class="qty-box">
-
 <button class="qty-btn" onclick="minus(this)">−</button>
-
 <div class="qty">1</div>
-
 <button class="qty-btn" onclick="plus(this)">+</button>
-
 </div>
-
 </div>
-
 </div>
-
-<!-- Product 4 -->
 
 <div class="card">
-
-<div style="height:220px;display:flex;align-items:center;justify-content:center;background:#f3e5d0;font-size:70px;">
-🥨
-</div>
-
+<div class="placeholder">🥨</div>
 <div class="info">
-
 <div class="badge">Hand Made</div>
-
 <div class="name">Naylon Jeera Khakhra</div>
-
 <div class="weight">500 gm</div>
-
 <div class="price">₹150</div>
-
 <button class="add-btn" onclick="addProduct(this)">Add</button>
-
 <div class="qty-box">
-
 <button class="qty-btn" onclick="minus(this)">−</button>
-
 <div class="qty">1</div>
-
 <button class="qty-btn" onclick="plus(this)">+</button>
-
+</div>
+</div>
 </div>
 
 </div>
-
-</div>
-
-</div>
-
 <script>
-
-let cart = 0;
-
-function updateCart() {
-    document.getElementById("cartCount").innerText = cart;
-}
-
-function addProduct(btn) {
-    btn.style.display = "none";
-    const qtyBox = btn.nextElementSibling;
-    qtyBox.style.display = "flex";
-    qtyBox.querySelector(".qty").innerText = "1";
-    cart++;
-    updateCart();
-}
-
-function plus(btn) {
-    const qty = btn.parentElement.querySelector(".qty");
-    qty.innerText = parseInt(qty.innerText) + 1;
-    cart++;
-    updateCart();
-}
-
-function minus(btn) {
-    const qtyBox = btn.parentElement;
-    const qty = qtyBox.querySelector(".qty");
-    let value = parseInt(qty.innerText);
-
-    value--;
-    cart--;
-
-    if (cart < 0) cart = 0;
-
-    updateCart();
-
-    if (value <= 0) {
-        qtyBox.style.display = "none";
-        qtyBox.previousElementSibling.style.display = "block";
-    } else {
-        qty.innerText = value;
-    }
-}
-
-updateCart();
-
+let cart=0;
+function update(){document.getElementById('cartCount').innerText=cart;}
+function addProduct(btn){btn.style.display='none';let q=btn.nextElementSibling;q.style.display='flex';q.querySelector('.qty').innerText='1';cart++;update();}
+function plus(btn){let q=btn.parentElement.querySelector('.qty');q.innerText=parseInt(q.innerText)+1;cart++;update();}
+function minus(btn){let box=btn.parentElement;let q=box.querySelector('.qty');let v=parseInt(q.innerText)-1;cart=Math.max(0,cart-1);update();if(v<=0){box.style.display='none';box.previousElementSibling.style.display='block';}else{q.innerText=v;}}
+update();
 </script>
-
 </body>
 </html>
