@@ -303,3 +303,117 @@ productsDiv.innerHTML+=`
 productsDiv.innerHTML+="</div>";
 
 }
+function saveCart(){
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+}
+
+function getTotalItems(){
+
+return cart.reduce((total,item)=>total+item.qty,0);
+
+}
+
+function getTotalAmount(){
+
+return cart.reduce((total,item)=>total+(item.qty*item.price),0);
+
+}
+
+function updateCart(){
+
+document.getElementById("cartCount").innerText=getTotalItems();
+
+document.getElementById("cartTotal").innerText=getTotalAmount();
+
+renderProducts();
+
+saveCart();
+
+}
+
+function changeQty(index,value){
+
+const product=products[index];
+
+const item=cart.find(p=>p.id===product.id);
+
+if(item){
+
+item.qty+=value;
+
+if(item.qty<=0){
+
+cart=cart.filter(p=>p.id!==product.id);
+
+}
+
+}else if(value>0){
+
+cart.push({
+
+id:product.id,
+category:product.category,
+name:product.name,
+weight:product.weight,
+price:product.price,
+qty:1
+
+});
+
+}
+
+updateCart();
+
+}
+
+window.addEventListener("storage",function(){
+
+cart=JSON.parse(localStorage.getItem("cart"))||[];
+
+updateCart();
+
+});
+document.getElementById("orderBtn").addEventListener("click",function(){
+
+if(cart.length===0){
+
+alert("Please add at least one product.");
+
+return;
+
+}
+
+let message="🛒 *Jyoti Gruh Udhyog Order*\n\n";
+
+cart.forEach(function(item){
+
+message+="• "+item.name+"\n";
+message+="Weight : "+item.weight+"\n";
+message+="Qty : "+item.qty+"\n";
+message+="Price : ₹"+item.price+"\n";
+message+="Subtotal : ₹"+(item.qty*item.price)+"\n\n";
+
+});
+
+message+="-------------------------\n";
+message+="Total Items : "+getTotalItems()+"\n";
+message+="Grand Total : ₹"+getTotalAmount();
+
+window.open(
+"https://wa.me/919712149344?text="+encodeURIComponent(message),
+"_blank"
+);
+
+});
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+
+</html>
