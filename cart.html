@@ -156,3 +156,41 @@ margin:5px 0;
 <script src="cart.js"></script>
 
 <script>
+document.querySelector(".summary").insertAdjacentHTML(
+"beforebegin",
+`
+<div style="padding:15px;">
+
+<div style="
+background:#fff;
+padding:18px;
+border-radius:18px;
+box-shadow:0 4px 12px rgba(0,0,0,.12);
+">
+
+<h2 style="color:#5b3716;margin-bottom:15px;">
+Customer Details
+</h2>
+
+<input
+id="customerName"
+type="text"
+placeholder="Customer Name"
+style="width:100%;padding:12px;margin-bottom:12px;border-radius:8px;border:1px solid #ccc;">
+
+<input
+id="customerMobile"
+type="tel"
+placeholder="Mobile Number"
+style="width:100%;padding:12px;margin-bottom:12px;border-radius:8px;border:1px solid #ccc;">
+
+<textarea
+id="customerAddress"
+placeholder="Full Address"
+style="width:100%;padding:12px;height:90px;border-radius:8px;border:1px solid #ccc;"></textarea>
+
+</div>
+
+</div>
+`
+);
