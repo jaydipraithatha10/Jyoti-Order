@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="gu">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -170,7 +172,7 @@ cursor:pointer;
 
 <section class="hero">
 
-<img src="khakhra1.png">
+<img src="khakhra1.png" alt="Machine Made Khakhra">
 
 <div class="hero-text">
 
@@ -183,11 +185,9 @@ cursor:pointer;
 </section>
 
 <div class="section-title">🥨 Plain Khakhra</div>
-
 <div id="plainProducts" class="products"></div>
 
 <div class="section-title">🌶️ Flavour Khakhra</div>
-
 <div id="flavourProducts" class="products"></div>
 
 <div id="cartBar">
@@ -209,9 +209,11 @@ Order
 <script src="cart.js"></script>
 
 <script>
-const products = [
 
-/* Plain Khakhra */
+const products = [
+/* =========================
+   Plain Khakhra
+========================= */
 
 {id:"MM001",name:"Methi Khakhra",price:60,weight:"250 gm",section:"plain"},
 {id:"MM002",name:"Masala Khakhra",price:60,weight:"250 gm",section:"plain"},
@@ -231,8 +233,9 @@ const products = [
 {id:"MM016",name:"Sing Daniya Khakhra",price:70,weight:"250 gm",section:"plain"},
 {id:"MM017",name:"Jeera Mari Khakhra",price:70,weight:"250 gm",section:"plain"},
 {id:"MM018",name:"Hing Jeera Khakhra",price:75,weight:"250 gm",section:"plain"},
-
-/* Flavour Khakhra */
+/* =========================
+   Flavour Khakhra
+========================= */
 
 {id:"MM019",name:"Pani Puri Khakhra",price:75,weight:"250 gm",section:"flavour"},
 {id:"MM020",name:"Chat Masala Khakhra",price:75,weight:"250 gm",section:"flavour"},
@@ -245,7 +248,8 @@ const products = [
 {id:"MM027",name:"Peri Peri Khakhra",price:85,weight:"250 gm",section:"flavour"},
 {id:"MM028",name:"Tomato Khakhra",price:85,weight:"250 gm",section:"flavour"},
 {id:"MM029",name:"Cream & Onion Khakhra",price:90,weight:"250 gm",section:"flavour"},
-{id:"MM030",name:"Manchurian Khakhra",price:85,weight:"250 gm",{id:"MM031",name:"Cheese Chilli Khakhra",price:90,weight:"250 gm",section:"flavour"},
+{id:"MM030",name:"Manchurian Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{id:"MM031",name:"Cheese Chilli Khakhra",price:90,weight:"250 gm",section:"flavour"},
 {id:"MM032",name:"Multi Grain Khakhra",price:90,weight:"250 gm",section:"flavour"},
 {id:"MM033",name:"Ghee Khakhra",price:120,weight:"250 gm",section:"flavour"}
 
@@ -254,17 +258,14 @@ const products = [
 const plainContainer = document.getElementById("plainProducts");
 const flavourContainer = document.getElementById("flavourProducts");
 
-function renderProducts(){:"flavour"},
-
 function renderProducts(){
 
-    plainContainer.innerHTML="";
-    flavourContainer.innerHTML="";
+    plainContainer.innerHTML = "";
+    flavourContainer.innerHTML = "";
 
     products.forEach((p,index)=>{
 
-        const html=`
-
+        const html = `
         <div class="product">
 
             <h3>${p.name}</h3>
@@ -292,15 +293,14 @@ function renderProducts(){
         `;
 
         if(p.section==="plain"){
-            plainContainer.innerHTML+=html;
+            plainContainer.innerHTML += html;
         }else{
-            flavourContainer.innerHTML+=html;
+            flavourContainer.innerHTML += html;
         }
 
     });
 
 }
-
 function changeQty(index,value){
 
     if(value>0){
@@ -325,11 +325,12 @@ function changeQty(index,value){
 
 function updateCart(){
 
-    document.getElementById("cartCount").textContent=getTotalItems();
+    document.getElementById("cartCount").textContent = getTotalItems();
 
-    document.getElementById("cartTotal").textContent=getTotalAmount();
+    document.getElementById("cartTotal").textContent = getTotalAmount();
 
 }
+
 function sendWhatsApp(){
 
     if(cart.length===0){
@@ -337,26 +338,21 @@ function sendWhatsApp(){
         return;
     }
 
-    let msg="નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
+    let msg = "નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
 
     cart.forEach(item=>{
-        msg+=`${item.name} (${item.weight}) x ${item.qty} = ₹${item.qty*item.price}\n`;
+        msg += `${item.name} (${item.weight}) x ${item.qty} = ₹${item.qty * item.price}\n`;
     });
 
-    msg+="\nકુલ રકમ : ₹"+getTotalAmount();
+    msg += "\nકુલ વસ્તુઓ : " + getTotalItems();
+    msg += "\nકુલ રકમ : ₹" + getTotalAmount();
 
     window.open(
-        "https://wa.me/919712149344?text="+encodeURIComponent(msg),
+        "https://wa.me/919712149344?text=" + encodeURIComponent(msg),
         "_blank"
     );
 
-    clearCart();
-
-    updateCart();
-    renderProducts();
-
 }
-
 renderProducts();
 updateCart();
 
