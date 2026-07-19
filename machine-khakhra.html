@@ -194,3 +194,208 @@ Order
 </button>
 
 </div>
+<script>
+
+const products = [
+
+{id:101,category:"machine",name:"મેથી ખાખરા",weight:"250 gm",price:60},
+{id:102,category:"machine",name:"મસાલા ખાખરા",weight:"250 gm",price:60},
+{id:103,category:"machine",name:"જીરા ખાખરા",weight:"250 gm",price:60},
+{id:104,category:"machine",name:"સાદા ખાખરા",weight:"250 gm",price:60},
+
+{id:105,category:"machine",name:"કોથેલા મેથી ખાખરા",weight:"250 gm",price:70},
+{id:106,category:"machine",name:"બાજરી મેથી ખાખરા",weight:"250 gm",price:70},
+{id:107,category:"machine",name:"બાજરી મેથી લસણ ખાખરા",weight:"250 gm",price:75},
+{id:108,category:"machine",name:"મગ ખાખરા",weight:"250 gm",price:75},
+{id:109,category:"machine",name:"મઠ ખાખરા",weight:"250 gm",price:75},
+{id:110,category:"machine",name:"જવ ખાખરા",weight:"250 gm",price:75},
+{id:111,category:"machine",name:"જુવાર ખાખરા",weight:"250 gm",price:75},
+{id:112,category:"machine",name:"રાગી ખાખરા",weight:"250 gm",price:75},
+
+{id:113,category:"machine",name:"કાશ્મીરી મરચા ખાખરા",weight:"250 gm",price:70},
+{id:114,category:"machine",name:"ચોરાફળી ખાખરા",weight:"250 gm",price:75},
+{id:115,category:"machine",name:"આચાર મસાલા ખાખરા",weight:"250 gm",price:75},
+{id:116,category:"machine",name:"સિંગ દાણિયા ખાખરા",weight:"250 gm",price:70},
+{id:117,category:"machine",name:"જુવા મરી ખાખરા",weight:"250 gm",price:70},
+{id:118,category:"machine",name:"હીંગ જીરા ખાખરા",weight:"250 gm",price:75},
+
+{id:119,category:"machine",name:"પાણીપુરી ખાખરા",weight:"250 gm",price:75},
+{id:120,category:"machine",name:"ચાટ મસાલા ખાખરા",weight:"250 gm",price:75},
+{id:121,category:"machine",name:"મેગી મસાલા ખાખરા",weight:"250 gm",price:75},
+{id:122,category:"machine",name:"કુટકુટે ખાખરા",weight:"250 gm",price:75},
+{id:123,category:"machine",name:"પાકીઝા ખાખરા",weight:"250 gm",price:75},
+{id:124,category:"machine",name:"જીરાળું ખાખરા",weight:"250 gm",price:75},
+
+{id:125,category:"machine",name:"પીઝા ખાખરા",weight:"250 gm",price:85},
+{id:126,category:"machine",name:"ચીઝ ખાખરા",weight:"250 gm",price:85},
+{id:127,category:"machine",name:"પેરી પેરી ખાખરા",weight:"250 gm",price:85},
+{id:128,category:"machine",name:"ટોમેટો ખાખરા",weight:"250 gm",price:85},
+{id:129,category:"machine",name:"ક્રીમ એન્ડ ઓનિયન ખાખરા",weight:"250 gm",price:90},
+{id:130,category:"machine",name:"મંચુરિયન ખાખરા",weight:"250 gm",price:85},
+{id:131,category:"machine",name:"ચીઝ ચિલી ખાખરા",weight:"250 gm",price:90},
+{id:132,category:"machine",name:"મલ્ટીગ્રેઇન ખાખરા",weight:"250 gm",price:90},
+{id:133,category:"machine",name:"ઘી ખાખરા",weight:"250 gm",price:120}
+
+];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const productsDiv = document.getElementById("products");
+
+function getQty(id){
+
+const item = cart.find(p => p.id === id);
+
+return item ? item.qty : 0;
+
+}
+
+function renderProducts(){
+
+productsDiv.innerHTML = "";
+
+products.forEach((product,index)=>{
+
+productsDiv.innerHTML += `
+
+<div class="product">
+
+<h3>${product.name}</h3>
+
+<div class="weight">${product.weight}</div>
+
+<div class="price">₹${product.price}</div>
+
+<div class="qty">
+
+<button onclick="changeQty(${index},-1)">−</button>
+
+<span>${getQty(product.id)}</span>
+
+<button onclick="changeQty(${index},1)">+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+function saveCart(){
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+}
+
+function getTotalItems(){
+
+return cart.reduce((total,item)=>total+item.qty,0);
+
+}
+
+function getTotalAmount(){
+
+return cart.reduce((total,item)=>total+(item.qty*item.price),0);
+
+}
+
+function updateCart(){
+
+document.getElementById("cartCount").innerText=getTotalItems();
+
+document.getElementById("cartTotal").innerText=getTotalAmount();
+
+renderProducts();
+
+saveCart();
+
+}
+
+function changeQty(index,value){
+
+const product=products[index];
+
+const item=cart.find(p=>p.id===product.id);
+
+if(item){
+
+item.qty+=value;
+
+if(item.qty<=0){
+
+cart=cart.filter(p=>p.id!==product.id);
+
+}
+
+}else if(value>0){
+
+cart.push({
+
+id:product.id,
+category:product.category,
+name:product.name,
+weight:product.weight,
+price:product.price,
+qty:1
+
+});
+
+}
+
+updateCart();
+
+}
+document.getElementById("orderBtn").addEventListener("click",function(){
+
+if(cart.length===0){
+
+alert("કૃપા કરીને પહેલા Product ઉમેરો.");
+
+return;
+
+}
+
+let customerName=prompt("તમારું નામ લખો:");
+
+if(!customerName) return;
+
+let customerMobile=prompt("તમારો મોબાઇલ નંબર લખો:");
+
+if(!customerMobile) return;
+
+let message="🙏 નમસ્તે, મારે નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
+
+message+="👤 નામ : "+customerName+"\n";
+message+="📞 મોબાઇલ : "+customerMobile+"\n\n";
+
+cart.forEach(function(item){
+
+message+="🛒 "+item.name+"\n";
+message+="Weight : "+item.weight+"\n";
+message+="Qty : "+item.qty+"\n";
+message+="Price : ₹"+item.price+"\n";
+message+="Subtotal : ₹"+(item.qty*item.price)+"\n\n";
+
+});
+
+message+="-----------------------------\n";
+message+="કુલ રકમ : ₹"+getTotalAmount();
+message+="\n\nJyoti Gruh Udhyog";
+
+window.open(
+"https://wa.me/919712149344?text="+encodeURIComponent(message),
+"_blank"
+);
+
+});
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
