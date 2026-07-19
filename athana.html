@@ -1,1 +1,530 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jyoti Gruh Udhyog | Athana</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f8f4ec;
+color:#333;
+padding-bottom:90px;
+}
+
+header{
+position:sticky;
+top:0;
+z-index:999;
+background:#5b3716;
+color:#fff;
+padding:16px;
+text-align:center;
+font-size:24px;
+font-weight:700;
+box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.hero{
+margin:15px;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+.hero img{
+width:100%;
+display:block;
+}
+
+.container{
+padding:15px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:18px;
+}
+
+.card{
+background:#fff;
+border-radius:18px;
+padding:18px;
+box-shadow:0 5px 15px rgba(0,0,0,.12);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-4px);
+}
+
+.card h3{
+color:#5b3716;
+font-size:18px;
+margin-bottom:10px;
+}
+
+.weight{
+font-size:14px;
+color:#777;
+margin-bottom:8px;
+}
+
+.price{
+font-size:22px;
+font-weight:bold;
+color:#b8860b;
+margin-bottom:15px;
+}
+
+.qty-box{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+}
+
+.qty-box button{
+width:38px;
+height:38px;
+border:none;
+border-radius:50%;
+background:#5b3716;
+color:#fff;
+font-size:22px;
+cursor:pointer;
+}
+
+.qty{
+font-size:20px;
+font-weight:bold;
+min-width:28px;
+text-align:center;
+}
+
+.cart-bar{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#5b3716;
+color:#fff;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 18px;
+box-shadow:0 -5px 12px rgba(0,0,0,.2);
+}
+
+.cart-info{
+font-size:16px;
+font-weight:600;
+line-height:1.5;
+}
+
+#orderBtn{
+background:#d4af37;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+color:#000;
+}
+
+@media(max-width:600px){
+
+header{
+font-size:21px;
+}
+
+.card h3{
+font-size:17px;
+}
+
+.price{
+font-size:20px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+🥒 Jyoti Gruh Udhyog - Premium Athana
+</header>
+
+<div class="hero">
+<img src="images/athana-banner.jpg" alt="Athana Banner">
+</div>
+
+<div class="container" id="productContainer">
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const products = [
+
+{
+id:401,
+category:"athana",
+name:"Golkeri Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:402,
+category:"athana",
+name:"Golkeri Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:403,
+category:"athana",
+name:"Chundo",
+weight:"250 gm",
+price:100
+},
+{
+id:404,
+category:"athana",
+name:"Chundo",
+weight:"500 gm",
+price:190
+},
+
+{
+id:405,
+category:"athana",
+name:"Keri Gunda Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:406,
+category:"athana",
+name:"Keri Gunda Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:407,
+category:"athana",
+name:"SP Gunda Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:408,
+category:"athana",
+name:"SP Gunda Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:409,
+category:"athana",
+name:"Chana Methi Keri Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:410,
+category:"athana",
+name:"Chana Methi Keri Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:411,
+category:"athana",
+name:"Khati Keri Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:412,
+category:"athana",
+name:"Khati Keri Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:413,
+category:"athana",
+name:"Mix Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:414,
+category:"athana",
+name:"Mix Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:415,
+category:"athana",
+name:"Sweet Lime Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:416,
+category:"athana",
+name:"Sweet Lime Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:417,
+category:"athana",
+name:"Khata Limbu Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:418,
+category:"athana",
+name:"Khata Limbu Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:419,
+category:"athana",
+name:"Lal Marcha Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:420,
+category:"athana",
+name:"Lal Marcha Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:421,
+category:"athana",
+name:"Sweet Lal Marcha Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:422,
+category:"athana",
+name:"Sweet Lal Marcha Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:423,
+category:"athana",
+name:"Lasen Keri Pickle",
+weight:"250 gm",
+price:100
+},
+{
+id:424,
+category:"athana",
+name:"Lasen Keri Pickle",
+weight:"500 gm",
+price:190
+},
+
+{
+id:425,
+category:"athana",
+name:"Rayta Kerda",
+weight:"200 gm",
+price:120
+},
+{
+id:426,
+category:"athana",
+name:"Rayta Kerda",
+weight:"400 gm",
+price:220
+},
+
+{
+id:427,
+category:"athana",
+name:"Masala Kerda",
+weight:"200 gm",
+price:120
+},
+{
+id:428,
+category:"athana",
+name:"Masala Kerda",
+weight:"400 gm",
+price:220
+}
+
+];
+function saveCart(){
+localStorage.setItem("cart",JSON.stringify(cart));
+}
+
+function getQty(id){
+const item=cart.find(p=>p.id===id);
+return item ? item.qty : 0;
+}
+
+function getTotalItems(){
+return cart.reduce((sum,item)=>sum+item.qty,0);
+}
+
+function getTotalAmount(){
+return cart.reduce((sum,item)=>sum+(item.qty*item.price),0);
+}
+
+function updateCart(){
+
+document.getElementById("cartCount").innerHTML=
+getTotalItems()+" Items";
+
+document.getElementById("cartTotal").innerHTML=
+"₹"+getTotalAmount();
+
+saveCart();
+
+}
+
+function changeQty(id,change){
+
+const product=products.find(p=>p.id===id);
+
+let item=cart.find(p=>p.id===id);
+
+if(item){
+
+item.qty+=change;
+
+if(item.qty<=0){
+
+cart=cart.filter(p=>p.id!==id);
+
+}
+
+}else if(change>0){
+
+cart.push({
+...product,
+qty:1
+});
+
+}
+
+renderProducts();
+
+updateCart();
+
+}
+
+function renderProducts(){
+
+let html="";
+
+products.forEach(product=>{
+
+const qty=getQty(product.id);
+
+html+=`
+
+<div class="card">
+
+<h3>${product.name}</h3>
+
+<div class="weight">${product.weight}</div>
+
+<div class="price">₹${product.price}</div>
+
+<div class="qty-box">
+
+<button onclick="changeQty(${product.id},-1)">−</button>
+
+<div class="qty">${qty}</div>
+
+<button onclick="changeQty(${product.id},1)">+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("productContainer").innerHTML=html;
+
+}
+
+window.addEventListener("storage",updateCart);
+</script>
+
+<div class="cart-bar">
+
+<div class="cart-info">
+<div id="cartCount">0 Items</div>
+<div id="cartTotal">₹0</div>
+</div>
+
+<button id="orderBtn">
+Order Now
+</button>
+
+</div>
+
+<script>
+
+document.getElementById("orderBtn").addEventListener("click",function(){
+
+if(cart.length===0){
+
+alert("Please add at least one product.");
+
+return;
+
+}
+
+window.location.href="cart.html";
+
+});
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
