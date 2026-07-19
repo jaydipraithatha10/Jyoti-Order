@@ -433,14 +433,12 @@ let total = 0;
 
 for(let i=0;i<qty.length;i++){
 
-    if(qty[i]>0){
+    if(qty[i] > 0){
 
-        msg += products[i].name + " x " + qty[i] + " = ₹" + (qty[i]*products[i].price) + "\n";
+        msg += products[i].name + " x " + qty[i] + " = ₹" + (qty[i] * products[i].price) + "\n";
 
-        total += qty[i]*products[i].price;
-
+        total += qty[i] * products[i].price;
     }
-
 }
 
 msg += "\nકુલ રકમ : ₹" + total;
@@ -459,8 +457,6 @@ qty[index]=0;
 updateCart();
 
 }
-
-
 
 updateCart();
 </script>
