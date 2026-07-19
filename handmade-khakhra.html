@@ -204,8 +204,8 @@ const products = [
 ];
 const productsDiv = document.getElementById("products");
 
-function getQty(name){
-    const item = cart.find(p=>p.name===name);
+function getQty(id){
+    const item = cart.find(p => p.id === id);
     return item ? item.qty : 0;
 }
 
@@ -243,11 +243,13 @@ function renderProducts(){
     });
 
 }
+
 function changeQty(index,value){
 
     if(value > 0){
 
         addToCart(
+            products[index].id,
             products[index].name,
             products[index].price,
             products[index].weight
@@ -255,7 +257,7 @@ function changeQty(index,value){
 
     }else{
 
-        removeFromCart(products[index].name);
+        removeFromCart(products[index].id);
 
     }
 
@@ -263,7 +265,6 @@ function changeQty(index,value){
     renderProducts();
 
 }
-
 function updateCart(){
 
     document.getElementById("cartCount").textContent = getTotalItems();
