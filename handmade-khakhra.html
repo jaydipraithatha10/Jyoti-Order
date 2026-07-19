@@ -448,20 +448,24 @@ if(total === 0){
 
 window.open("https://wa.me/919712149344?text=" + encodeURIComponent(msg));
 
+qty = [0,0,0,0,0,0,0];
+localStorage.removeItem("qty");
+updateCart();
 }qty = [0,0,0,0,0,0,0];
 
+function changeQty(index, value) {
 
-function changeQty(index,value){
+    qty[index] += value;
 
-qty[index]+=value;
+    if (qty[index] < 0) {
+        qty[index] = 0;
+    }
 
-if(qty[index]<0){
-qty[index]=0;
+    localStorage.setItem("qty", JSON.stringify(qty));
+
+    updateCart();
 }
 
-updateCart();
-
-}
 
 updateCart();
 </script>
