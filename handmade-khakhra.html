@@ -438,59 +438,11 @@ updateCart();
 
 }
 
-function sendWhatsApp(){
-
-let msg="નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.%0A%0A";
-
-let total=0;
-
-for(let i=0;i<qty.length;i++){
-
-if(qty[i]>0){
-
-msg+=products[i].name+" x "+qty[i]+" = ₹"+(qty[i]*products[i].price)+"%0A";
-
-total+=qty[i]*products[i].price;
-
-}
-
-}
-
-msg+="%0Aકુલ રકમ : ₹"+total;
-
-window.open("https://wa.me/919712149344?text="+msg);
-
-}
 
 
 
-let msg="🪔 Jyoti Gruh Udhyog%0A%0A";
 
-msg+="👤 Name : "+name+"%0A";
-msg+="📱 Mobile : "+mobile+"%0A";
-msg+="🏠 Address : "+address+"%0A%0A";
 
-let total=0;
-
-for(let i=0;i<qty.length;i++){
-
-if(qty[i]>0){
-
-msg+=products[i].name+" x "+qty[i]+" = ₹"+(qty[i]*products[i].price)+"%0A";
-
-total+=qty[i]*products[i].price;
-
-}
-
-}
-
-msg+="%0A💰 Total : ₹"+total;
-
-window.open("https://wa.me/919712149344?text="+encodeURIComponent(msg));
-
-closePopup();
-
-}
 
 
 
