@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="en">
 <head>
 
 <meta charset="UTF-8">
@@ -17,27 +17,28 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#f8f3ea;
-padding-bottom:100px;
+background:#f7f3eb;
+padding-bottom:90px;
 }
 
 header{
 position:sticky;
 top:0;
-background:#5b3716;
+background:#5c3b1e;
 color:#fff;
 padding:15px;
 display:flex;
 align-items:center;
 gap:15px;
-z-index:999;
-box-shadow:0 2px 8px rgba(0,0,0,.2);
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 
 .back{
 color:#fff;
 text-decoration:none;
 font-size:28px;
+font-weight:bold;
 }
 
 header h1{
@@ -52,15 +53,15 @@ display:block;
 }
 
 .hero-text{
-background:#fff8ef;
-padding:20px;
+background:#fff;
+padding:18px;
 text-align:center;
 margin-bottom:15px;
 }
 
 .hero-text h2{
+color:#5c3b1e;
 font-size:30px;
-color:#5b3716;
 margin-bottom:8px;
 }
 
@@ -69,32 +70,42 @@ color:#666;
 font-size:16px;
 }
 
+.section-title{
+background:#5c3b1e;
+color:#fff;
+padding:12px;
+margin:20px 15px 10px;
+border-radius:10px;
+font-size:20px;
+font-weight:bold;
+text-align:center;
+}
+
 .products{
-padding:15px;
+padding:0 15px;
 }
 
 .product{
 background:#fff;
-border-radius:16px;
+border-radius:15px;
 padding:18px;
 margin-bottom:15px;
-box-shadow:0 4px 10px rgba(0,0,0,.10);
+box-shadow:0 4px 12px rgba(0,0,0,.10);
 }
 
 .product h3{
-font-size:22px;
-color:#5b3716;
+font-size:21px;
+color:#5c3b1e;
 margin-bottom:10px;
 }
 
 .weight{
 color:#666;
-font-size:15px;
 margin-bottom:8px;
 }
 
 .price{
-font-size:28px;
+font-size:26px;
 font-weight:bold;
 color:#b8860b;
 margin-bottom:15px;
@@ -104,7 +115,7 @@ margin-bottom:15px;
 display:flex;
 justify-content:flex-end;
 align-items:center;
-gap:10px;
+gap:12px;
 }
 
 .qty button{
@@ -114,14 +125,14 @@ border:none;
 border-radius:50%;
 background:#b8860b;
 color:#fff;
-font-size:22px;
+font-size:24px;
 cursor:pointer;
 }
 
 .qty span{
 font-size:20px;
 font-weight:bold;
-min-width:25px;
+width:30px;
 text-align:center;
 }
 
@@ -130,12 +141,12 @@ position:fixed;
 left:0;
 right:0;
 bottom:0;
-background:#5b3716;
+background:#5c3b1e;
 color:#fff;
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px;
 }
 
 #cartBar button{
@@ -157,7 +168,7 @@ cursor:pointer;
 
 <header>
 
-<a href="khakhra.html" class="back">⬅</a>
+<a href="khakhra.html" class="back">←</a>
 
 <h1>Machine Made Khakhra</h1>
 
@@ -165,19 +176,19 @@ cursor:pointer;
 
 <section class="hero">
 
-<img src="khakhra1.png" alt="Machine Made Khakhra">
+<img src="machine-banner.jpg" alt="Machine Made Khakhra">
 
 <div class="hero-text">
 
 <h2>Machine Made Khakhra</h2>
 
-<p>કરકરા • સ્વાદિષ્ટ • દરેક દિવસ માટે ❤️</p>
+<p>Crispy • Delicious • Everyday Favourite</p>
 
 </div>
 
 </section>
 
-<div id="products" class="products"></div>
+<div id="products"></div>
 
 <div id="cartBar">
 
@@ -190,73 +201,80 @@ cursor:pointer;
 </div>
 
 <button id="orderBtn">
-Order
+Order Now
 </button>
 
 </div>
 <script>
 
-const products = [
+const products=[
 
-{id:101,category:"machine",name:"મેથી ખાખરા",weight:"250 gm",price:60},
-{id:102,category:"machine",name:"મસાલા ખાખરા",weight:"250 gm",price:60},
-{id:103,category:"machine",name:"જીરા ખાખરા",weight:"250 gm",price:60},
-{id:104,category:"machine",name:"સાદા ખાખરા",weight:"250 gm",price:60},
+{id:101,category:"plain",title:"Plain Khakhra",name:"Sada Khakhra",weight:"250 gm",price:60},
+{id:102,category:"plain",title:"Plain Khakhra",name:"Methi Khakhra",weight:"250 gm",price:60},
+{id:103,category:"plain",title:"Plain Khakhra",name:"Masala Khakhra",weight:"250 gm",price:60},
+{id:104,category:"plain",title:"Plain Khakhra",name:"Jeera Khakhra",weight:"250 gm",price:60},
 
-{id:105,category:"machine",name:"કોથેલા મેથી ખાખરા",weight:"250 gm",price:70},
-{id:106,category:"machine",name:"બાજરી મેથી ખાખરા",weight:"250 gm",price:70},
-{id:107,category:"machine",name:"બાજરી મેથી લસણ ખાખરા",weight:"250 gm",price:75},
-{id:108,category:"machine",name:"મગ ખાખરા",weight:"250 gm",price:75},
-{id:109,category:"machine",name:"મઠ ખાખરા",weight:"250 gm",price:75},
-{id:110,category:"machine",name:"જવ ખાખરા",weight:"250 gm",price:75},
-{id:111,category:"machine",name:"જુવાર ખાખરા",weight:"250 gm",price:75},
-{id:112,category:"machine",name:"રાગી ખાખરા",weight:"250 gm",price:75},
-
-{id:113,category:"machine",name:"કાશ્મીરી મરચા ખાખરા",weight:"250 gm",price:70},
-{id:114,category:"machine",name:"ચોરાફળી ખાખરા",weight:"250 gm",price:75},
-{id:115,category:"machine",name:"આચાર મસાલા ખાખરા",weight:"250 gm",price:75},
-{id:116,category:"machine",name:"સિંગ દાણિયા ખાખરા",weight:"250 gm",price:70},
-{id:117,category:"machine",name:"જુવા મરી ખાખરા",weight:"250 gm",price:70},
-{id:118,category:"machine",name:"હીંગ જીરા ખાખરા",weight:"250 gm",price:75},
-
-{id:119,category:"machine",name:"પાણીપુરી ખાખરા",weight:"250 gm",price:75},
-{id:120,category:"machine",name:"ચાટ મસાલા ખાખરા",weight:"250 gm",price:75},
-{id:121,category:"machine",name:"મેગી મસાલા ખાખરા",weight:"250 gm",price:75},
-{id:122,category:"machine",name:"કુટકુટે ખાખરા",weight:"250 gm",price:75},
-{id:123,category:"machine",name:"પાકીઝા ખાખરા",weight:"250 gm",price:75},
-{id:124,category:"machine",name:"જીરાળું ખાખરા",weight:"250 gm",price:75},
-
-{id:125,category:"machine",name:"પીઝા ખાખરા",weight:"250 gm",price:85},
-{id:126,category:"machine",name:"ચીઝ ખાખરા",weight:"250 gm",price:85},
-{id:127,category:"machine",name:"પેરી પેરી ખાખરા",weight:"250 gm",price:85},
-{id:128,category:"machine",name:"ટોમેટો ખાખરા",weight:"250 gm",price:85},
-{id:129,category:"machine",name:"ક્રીમ એન્ડ ઓનિયન ખાખરા",weight:"250 gm",price:90},
-{id:130,category:"machine",name:"મંચુરિયન ખાખરા",weight:"250 gm",price:85},
-{id:131,category:"machine",name:"ચીઝ ચિલી ખાખરા",weight:"250 gm",price:90},
-{id:132,category:"machine",name:"મલ્ટીગ્રેઇન ખાખરા",weight:"250 gm",price:90},
-{id:133,category:"machine",name:"ઘી ખાખરા",weight:"250 gm",price:120}
+{id:105,category:"flavour",title:"Flavour Khakhra",name:"Kothmir Methi Khakhra",weight:"250 gm",price:70},
+{id:106,category:"flavour",title:"Flavour Khakhra",name:"Bajri Methi Khakhra",weight:"250 gm",price:70},
+{id:107,category:"flavour",title:"Flavour Khakhra",name:"Bajri Methi Lasan Khakhra",weight:"250 gm",price:75},
+{id:108,category:"flavour",title:"Flavour Khakhra",name:"Moong Khakhra",weight:"250 gm",price:75},
+{id:109,category:"flavour",title:"Flavour Khakhra",name:"Math Khakhra",weight:"250 gm",price:75},
+{id:110,category:"flavour",title:"Flavour Khakhra",name:"Jow Khakhra",weight:"250 gm",price:75},
+{id:111,category:"flavour",title:"Flavour Khakhra",name:"Jowar Khakhra",weight:"250 gm",price:75},
+{id:112,category:"flavour",title:"Flavour Khakhra",name:"Ragi Khakhra",weight:"250 gm",price:75},
+{id:113,category:"flavour",title:"Flavour Khakhra",name:"Kashmiri Marcha Khakhra",weight:"250 gm",price:70},
+{id:114,category:"flavour",title:"Flavour Khakhra",name:"Chorafali Khakhra",weight:"250 gm",price:75},
+{id:115,category:"flavour",title:"Flavour Khakhra",name:"Aachar Masala Khakhra",weight:"250 gm",price:75},
+{id:116,category:"flavour",title:"Flavour Khakhra",name:"Sing Dhana Khakhra",weight:"250 gm",price:70},
+{id:117,category:"flavour",title:"Flavour Khakhra",name:"Juva Mari Khakhra",weight:"250 gm",price:70},
+{id:118,category:"flavour",title:"Flavour Khakhra",name:"Hing Jeera Khakhra",weight:"250 gm",price:75},
+{id:119,category:"flavour",title:"Flavour Khakhra",name:"Panipuri Khakhra",weight:"250 gm",price:75},
+{id:120,category:"flavour",title:"Flavour Khakhra",name:"Chat Masala Khakhra",weight:"250 gm",price:75},
+{id:121,category:"flavour",title:"Flavour Khakhra",name:"Maggi Masala Khakhra",weight:"250 gm",price:75},
+{id:122,category:"flavour",title:"Flavour Khakhra",name:"Kutkute Khakhra",weight:"250 gm",price:75},
+{id:123,category:"flavour",title:"Flavour Khakhra",name:"Pakiza Khakhra",weight:"250 gm",price:75},
+{id:124,category:"flavour",title:"Flavour Khakhra",name:"Jeeralu Khakhra",weight:"250 gm",price:75},
+{id:125,category:"flavour",title:"Flavour Khakhra",name:"Pizza Khakhra",weight:"250 gm",price:85},
+{id:126,category:"flavour",title:"Flavour Khakhra",name:"Cheese Khakhra",weight:"250 gm",price:85},
+{id:127,category:"flavour",title:"Flavour Khakhra",name:"Peri Peri Khakhra",weight:"250 gm",price:85},
+{id:128,category:"flavour",title:"Flavour Khakhra",name:"Tomato Khakhra",weight:"250 gm",price:85},
+{id:129,category:"flavour",title:"Flavour Khakhra",name:"Cream & Onion Khakhra",weight:"250 gm",price:90},
+{id:130,category:"flavour",title:"Flavour Khakhra",name:"Manchurian Khakhra",weight:"250 gm",price:85},
+{id:131,category:"flavour",title:"Flavour Khakhra",name:"Cheese Chilli Khakhra",weight:"250 gm",price:90},
+{id:132,category:"flavour",title:"Flavour Khakhra",name:"Multigrain Khakhra",weight:"250 gm",price:90},
+{id:133,category:"flavour",title:"Flavour Khakhra",name:"Ghee Khakhra",weight:"250 gm",price:120}
 
 ];
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
 
-const productsDiv = document.getElementById("products");
+const productsDiv=document.getElementById("products");
 
 function getQty(id){
-
-const item = cart.find(p => p.id === id);
-
-return item ? item.qty : 0;
-
+const item=cart.find(p=>p.id===id);
+return item?item.qty:0;
 }
 
 function renderProducts(){
 
-productsDiv.innerHTML = "";
+productsDiv.innerHTML="";
+
+let currentTitle="";
 
 products.forEach((product,index)=>{
 
-productsDiv.innerHTML += `
+if(currentTitle!==product.title){
+
+currentTitle=product.title;
+
+productsDiv.innerHTML+=`
+<div class="section-title">${currentTitle}</div>
+<div class="products">
+`;
+
+}
+
+productsDiv.innerHTML+=`
 
 <div class="product">
 
@@ -282,120 +300,6 @@ productsDiv.innerHTML += `
 
 });
 
-}
-function saveCart(){
-
-localStorage.setItem("cart",JSON.stringify(cart));
+productsDiv.innerHTML+="</div>";
 
 }
-
-function getTotalItems(){
-
-return cart.reduce((total,item)=>total+item.qty,0);
-
-}
-
-function getTotalAmount(){
-
-return cart.reduce((total,item)=>total+(item.qty*item.price),0);
-
-}
-
-function updateCart(){
-
-document.getElementById("cartCount").innerText=getTotalItems();
-
-document.getElementById("cartTotal").innerText=getTotalAmount();
-
-renderProducts();
-
-saveCart();
-
-}
-
-function changeQty(index,value){
-
-const product=products[index];
-
-const item=cart.find(p=>p.id===product.id);
-
-if(item){
-
-item.qty+=value;
-
-if(item.qty<=0){
-
-cart=cart.filter(p=>p.id!==product.id);
-
-}
-
-}else if(value>0){
-
-cart.push({
-
-id:product.id,
-category:product.category,
-name:product.name,
-weight:product.weight,
-price:product.price,
-qty:1
-
-});
-
-}
-
-updateCart();
-
-}
-document.getElementById("orderBtn").addEventListener("click",function(){
-
-if(cart.length===0){
-
-alert("કૃપા કરીને પહેલા Product ઉમેરો.");
-
-return;
-
-}
-
-let customerName=prompt("તમારું નામ લખો:");
-
-if(!customerName) return;
-
-let customerMobile=prompt("તમારો મોબાઇલ નંબર લખો:");
-
-if(!customerMobile) return;
-
-let message="🙏 નમસ્તે, મારે નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
-
-message+="👤 નામ : "+customerName+"\n";
-message+="📞 મોબાઇલ : "+customerMobile+"\n\n";
-
-cart.forEach(function(item){
-
-message+="🛒 "+item.name+"\n";
-message+="Weight : "+item.weight+"\n";
-message+="Qty : "+item.qty+"\n";
-message+="Price : ₹"+item.price+"\n";
-message+="Subtotal : ₹"+(item.qty*item.price)+"\n\n";
-
-});
-
-message+="-----------------------------\n";
-message+="કુલ રકમ : ₹"+getTotalAmount();
-message+="\n\nJyoti Gruh Udhyog";
-
-window.open(
-"https://wa.me/919712149344?text="+encodeURIComponent(message),
-"_blank"
-);
-
-});
-
-renderProducts();
-
-updateCart();
-
-</script>
-
-</body>
-</html>
