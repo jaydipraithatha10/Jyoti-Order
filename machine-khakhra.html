@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Machine Made Khakhra | Jyoti Gruh Udhyog</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f8f3ea;
+padding-bottom:100px;
+}
+
+header{
+position:sticky;
+top:0;
+background:#5b3716;
+color:#fff;
+padding:15px;
+display:flex;
+align-items:center;
+gap:15px;
+z-index:999;
+box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+
+.back{
+color:#fff;
+text-decoration:none;
+font-size:28px;
+}
+
+header h1{
+font-size:24px;
+}
+
+.hero img{
+width:100%;
+height:220px;
+object-fit:cover;
+display:block;
+}
+
+.hero-text{
+background:#fff8ef;
+padding:20px;
+text-align:center;
+margin-bottom:15px;
+}
+
+.hero-text h2{
+font-size:30px;
+color:#5b3716;
+margin-bottom:8px;
+}
+
+.hero-text p{
+color:#666;
+font-size:16px;
+}
+
+.products{
+padding:15px;
+}
+
+.product{
+background:#fff;
+border-radius:16px;
+padding:18px;
+margin-bottom:15px;
+box-shadow:0 4px 10px rgba(0,0,0,.10);
+}
+
+.product h3{
+font-size:22px;
+color:#5b3716;
+margin-bottom:10px;
+}
+
+.weight{
+color:#666;
+font-size:15px;
+margin-bottom:8px;
+}
+
+.price{
+font-size:28px;
+font-weight:bold;
+color:#b8860b;
+margin-bottom:15px;
+}
+
+.qty{
+display:flex;
+justify-content:flex-end;
+align-items:center;
+gap:10px;
+}
+
+.qty button{
+width:40px;
+height:40px;
+border:none;
+border-radius:50%;
+background:#b8860b;
+color:#fff;
+font-size:22px;
+cursor:pointer;
+}
+
+.qty span{
+font-size:20px;
+font-weight:bold;
+min-width:25px;
+text-align:center;
+}
+
+#cartBar{
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+background:#5b3716;
+color:#fff;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+}
+
+#cartBar button{
+background:#25D366;
+color:#fff;
+border:none;
+padding:12px 18px;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<a href="khakhra.html" class="back">⬅</a>
+
+<h1>Machine Made Khakhra</h1>
+
+</header>
+
+<section class="hero">
+
+<img src="machine-banner.jpg" alt="Machine Made Khakhra">
+
+<div class="hero-text">
+
+<h2>Machine Made Khakhra</h2>
+
+<p>કરકરા • સ્વાદિષ્ટ • દરેક દિવસ માટે ❤️</p>
+
+</div>
+
+</section>
+
+<div id="products" class="products"></div>
+
+<div id="cartBar">
+
+<div>
+🛒 <span id="cartCount">0</span> Items
+</div>
+
+<div>
+₹ <span id="cartTotal">0</span>
+</div>
+
+<button id="orderBtn">
+Order
+</button>
+
+</div>
