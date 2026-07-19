@@ -252,3 +252,43 @@ function renderCart(){
     updateSummary();
 
 }
+function changeQty(index,value){
+
+    if(value > 0){
+
+        cart[index].qty++;
+
+    }else{
+
+        cart[index].qty--;
+
+        if(cart[index].qty <= 0){
+            cart.splice(index,1);
+        }
+
+    }
+
+    saveCart();
+    renderCart();
+
+}
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    saveCart();
+
+    renderCart();
+
+}
+
+function updateSummary(){
+
+    document.getElementById("totalItems").textContent =
+    getTotalItems();
+
+    document.getElementById("totalAmount").textContent =
+    getTotalAmount();
+
+}
