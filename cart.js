@@ -1,23 +1,21 @@
-
-// Global Cart
-
 let cart = JSON.parse(localStorage.getItem("jyotiCart")) || [];
 
 function saveCart() {
     localStorage.setItem("jyotiCart", JSON.stringify(cart));
 }
 
-function addToCart(name, price, weight) {
+function addToCart(id, name, price, weight) {
 
-    let item = cart.find(p => p.name === name);
+    let item = cart.find(p => p.id === id);
 
     if (item) {
         item.qty++;
     } else {
         cart.push({
-            name: name,
-            price: price,
-            weight: weight,
+            id,
+            name,
+            price,
+            weight,
             qty: 1
         });
     }
@@ -25,19 +23,26 @@ function addToCart(name, price, weight) {
     saveCart();
 }
 
-function removeFromCart(name) {
+function removeFromCart(id) {
 
-    let item = cart.find(p => p.name === name);
+    let item = cart.find(p => p.id === id);
 
     if (!item) return;
 
     item.qty--;
 
     if (item.qty <= 0) {
-        cart = cart.filter(p => p.name !== name);
+        cart = cart.filter(p => p.id !== id);
     }
 
     saveCart();
+}
+
+function getQty(id) {
+
+    let item = cart.find(p => p.id === id);
+
+    return item ? item.qty : 0;
 }
 
 function getTotalItems() {
