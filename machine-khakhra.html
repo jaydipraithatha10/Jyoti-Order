@@ -321,20 +321,18 @@ function updateCart(){
 
 function sendWhatsApp(){
 
-    let total = 0;
-    let msg = "નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
-
-    products.forEach((p,index)=>{
-        if(qty[index] > 0){
-            msg += `${p.name} x ${qty[index]} = ₹${qty[index] * p.price}\n`;
-            total += qty[index] * p.price;
-        }
-    });
-
-    if(total === 0){
+    if(cart.length === 0){
         alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
         return;
     }
+
+    let total = getTotalAmount();
+
+    let msg = "નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
+
+    cart.forEach(item=>{
+        msg += `${item.name} (${item.weight}) x ${item.qty} = ₹${item.qty * item.price}\n`;
+    });
 
     msg += "\nકુલ રકમ : ₹" + total;
 
@@ -343,14 +341,11 @@ function sendWhatsApp(){
         "_blank"
     );
 
-    // Order પછી Cart Reset
-    qty = new Array(products.length).fill(0);
-    localStorage.removeItem("machineQty");
+    clearCart();
 
     updateCart();
     renderProducts();
 }
-
 renderProducts();
 updateCart();
 
