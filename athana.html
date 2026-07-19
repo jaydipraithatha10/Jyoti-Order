@@ -36,7 +36,41 @@ font-size:24px;
 font-weight:700;
 box-shadow:0 4px 12px rgba(0,0,0,.2);
 }
+header{
+position:sticky;
+top:0;
+z-index:999;
+background:#6b4217;
+color:#fff;
+height:80px;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
 
+header h1{
+font-size:24px;
+font-weight:700;
+margin:0;
+}
+
+.back-btn{
+position:absolute;
+left:18px;
+top:50%;
+transform:translateY(-50%);
+color:#fff;
+text-decoration:none;
+font-size:38px;
+font-weight:700;
+line-height:1;
+transition:.3s;
+}
+
+.back-btn:hover{
+opacity:.8;
+}
 .hero{
 margin:15px;
 border-radius:18px;
@@ -165,7 +199,11 @@ font-size:20px;
 <body>
 
 <header>
-🥒 Jyoti Gruh Udhyog - Premium Athana
+
+<a href="categories.html" class="back-btn">←</a>
+
+<h1>Hand Made Khakhra</h1>
+
 </header>
 
 <div class="hero">
