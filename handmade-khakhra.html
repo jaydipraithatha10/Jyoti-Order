@@ -1,111 +1,249 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Hand Made Khakhra | Jyoti Gruh Udhyog</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#f8f1e7}
-header{position:sticky;top:0;background:#5a3418;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:15px 20px}
-.logo{color:#FFD700;font-size:22px;font-weight:bold}
-.cart{position:relative;font-size:28px}
-#cartCount{position:absolute;top:-8px;right:-10px;background:red;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}
-.title{text-align:center;padding:20px}
-.container{width:95%;max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;padding-bottom:30px}
-.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,.15)}
-.placeholder{height:200px;background:#f3e5d0;display:flex;align-items:center;justify-content:center;font-size:70px}
-.info{padding:16px}
-.badge{display:inline-block;background:#8B4513;color:#fff;padding:5px 10px;border-radius:20px;font-size:12px}
-.name{font-size:20px;color:#5a3418;font-weight:bold;margin:10px 0}
-.weight{color:#666}
-.price{color:#b22222;font-size:24px;font-weight:bold;margin:12px 0}
-.add-btn,.qty-btn{background:#8B4513;color:#fff;border:none;cursor:pointer}
-.add-btn{width:100%;padding:12px;border-radius:8px}
-.qty-box{display:none;justify-content:center;align-items:center;gap:12px}
-.qty-btn{width:38px;height:38px;border-radius:50%;font-size:22px}
-.qty{font-size:22px;font-weight:bold;min-width:30px;text-align:center}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#faf6ef;
+}
+
+.header{
+background:#5b3716;
+color:white;
+padding:18px;
+text-align:center;
+}
+
+.header h1{
+font-size:30px;
+}
+
+.banner img{
+width:100%;
+display:block;
+}
+
+.slogan{
+background:#fff7e6;
+padding:15px;
+text-align:center;
+font-size:18px;
+color:#7a4d00;
+font-weight:bold;
+}
+
+.list{
+padding:10px;
+}
+
+.item{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+background:white;
+
+margin-bottom:10px;
+
+padding:15px;
+
+border-radius:12px;
+
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.name{
+flex:2;
+font-weight:bold;
+}
+
+.weight{
+width:70px;
+text-align:center;
+}
+
+.price{
+width:60px;
+font-weight:bold;
+color:#b22222;
+text-align:center;
+}
+
+.add button{
+
+background:#c28b00;
+color:white;
+
+border:none;
+
+padding:8px 18px;
+
+border-radius:20px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
 </style>
+
 </head>
+
 <body>
-<header><div class="logo">🥨 Hand Made Khakhra</div><div class="cart">🛒<span id="cartCount">0</span></div></header>
-<div class="title"><h1>Hand Made Khakhra</h1><p>Pocha • Swadisht • Premium Quality</p></div>
-<div class="container">
 
-<div class="card">
-<img src="plain.png"
-     alt="Naylon Sada Khakhra"
-     style="width:100%;height:220px;object-fit:cover;display:block;">
-<div class="info">
-<div class="badge">Hand Made</div>
+<div class="header">
+
+<h1>Hand Made Khakhra</h1>
+
+</div>
+
+<div class="banner">
+
+<img src="plain.png">
+
+</div>
+
+<div class="slogan">
+
+🥨 હાથે બનાવેલા • પોચા • સ્વાદિષ્ટ • દરેક કોળિયામાં ઘરનો અસલી સ્વાદ
+
+</div>
+
+<div class="list">
+
+<div class="item">
+
 <div class="name">Naylon Sada Khakhra</div>
+
 <div class="weight">500 gm</div>
+
 <div class="price">₹150</div>
-<button class="add-btn" onclick="addProduct(this)">Add</button>
-<div class="qty-box">
-<button class="qty-btn" onclick="minus(this)">−</button>
-<div class="qty">1</div>
-<button class="qty-btn" onclick="plus(this)">+</button>
-</div>
-</div>
+
+<div class="add">
+
+<button>Add</button>
+
 </div>
 
-<div class="card">
-<div class="placeholder">🥨</div>
-<div class="info">
-<div class="badge">Hand Made</div>
+</div>
+
+<div class="item">
+
 <div class="name">Naylon Masala Khakhra</div>
+
 <div class="weight">500 gm</div>
+
 <div class="price">₹150</div>
-<button class="add-btn" onclick="addProduct(this)">Add</button>
-<div class="qty-box">
-<button class="qty-btn" onclick="minus(this)">−</button>
-<div class="qty">1</div>
-<button class="qty-btn" onclick="plus(this)">+</button>
-</div>
-</div>
+
+<div class="add">
+
+<button>Add</button>
+
 </div>
 
-<div class="card">
-<div class="placeholder">🥨</div>
-<div class="info">
-<div class="badge">Hand Made</div>
+</div>
+
+<div class="item">
+
 <div class="name">Naylon Methi Khakhra</div>
-<div class="weight">500 gm</div>
-<div class="price">₹150</div>
-<button class="add-btn" onclick="addProduct(this)">Add</button>
-<div class="qty-box">
-<button class="qty-btn" onclick="minus(this)">−</button>
-<div class="qty">1</div>
-<button class="qty-btn" onclick="plus(this)">+</button>
-</div>
-</div>
-</div>
 
-<div class="card">
-<div class="placeholder">🥨</div>
-<div class="info">
-<div class="badge">Hand Made</div>
-<div class="name">Naylon Jeera Khakhra</div>
 <div class="weight">500 gm</div>
+
 <div class="price">₹150</div>
-<button class="add-btn" onclick="addProduct(this)">Add</button>
-<div class="qty-box">
-<button class="qty-btn" onclick="minus(this)">−</button>
-<div class="qty">1</div>
-<button class="qty-btn" onclick="plus(this)">+</button>
-</div>
-</div>
+
+<div class="add">
+
+<button>Add</button>
+
 </div>
 
 </div>
-<script>
-let cart=0;
-function update(){document.getElementById('cartCount').innerText=cart;}
-function addProduct(btn){btn.style.display='none';let q=btn.nextElementSibling;q.style.display='flex';q.querySelector('.qty').innerText='1';cart++;update();}
-function plus(btn){let q=btn.parentElement.querySelector('.qty');q.innerText=parseInt(q.innerText)+1;cart++;update();}
-function minus(btn){let box=btn.parentElement;let q=box.querySelector('.qty');let v=parseInt(q.innerText)-1;cart=Math.max(0,cart-1);update();if(v<=0){box.style.display='none';box.previousElementSibling.style.display='block';}else{q.innerText=v;}}
-update();
-</script>
+
+<div class="item">
+
+<div class="name">Jeera Khakhra</div>
+
+<div class="weight">500 gm</div>
+
+<div class="price">₹150</div>
+
+<div class="add">
+
+<button>Add</button>
+
+</div>
+
+</div>
+
+<div class="item">
+
+<div class="name">Pizza Khakhra</div>
+
+<div class="weight">500 gm</div>
+
+<div class="price">₹150</div>
+
+<div class="add">
+
+<button>Add</button>
+
+</div>
+
+</div>
+
+</div>
+.qty-box{
+
+display:flex;
+align-items:center;
+gap:10px;
+
+}
+
+.qty-box button{
+
+width:30px;
+height:30px;
+
+border:none;
+
+border-radius:50%;
+
+background:#c28b00;
+
+color:#fff;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+.qty-box span{
+
+font-size:18px;
+
+font-weight:bold;
+
+min-width:20px;
+
+text-align:center;
+
+}
 </body>
 </html>
