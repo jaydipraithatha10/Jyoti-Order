@@ -287,30 +287,34 @@ function renderProducts(){
     });
 
 }
-function changeQty(index,value){
+function changeQty(index, value){
 
-    qty[index] += value;
+    if(value > 0){
 
-    if(qty[index] < 0){
-        qty[index] = 0;
+        addToCart(
+            products[index].name,
+            products[index].price,
+            products[index].weight
+        );
+
+    }else{
+
+        removeFromCart(products[index].name);
+
     }
-
-    localStorage.setItem("machineQty", JSON.stringify(qty));
 
     updateCart();
     renderProducts();
 
 }
+
 function updateCart(){
 
-    let items = 0;
-    let total = 0;
+    document.getElementById("cartCount").textContent = getTotalItems();
 
-    qty.forEach((q,index)=>{
-        items += q;
-        total += q * products[index].price;
-    });
+    document.getElementById("cartTotal").textContent = getTotalAmount();
 
+}
     document.getElementById("cartCount").textContent = items;
     document.getElementById("cartTotal").textContent = total;
 }
