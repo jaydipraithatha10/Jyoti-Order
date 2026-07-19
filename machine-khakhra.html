@@ -193,7 +193,10 @@ Order
 </div>
 
 <script>
-const products = [
+
+<script src="cart.js"></script>
+
+<script> products = [
 
 /* Plain Khakhra */
 
@@ -236,10 +239,12 @@ const products = [
 
 ];
 
-let qty = JSON.parse(localStorage.getItem("machineQty"));
+const plainContainer = document.getElementById("plainProducts");
+const flavourContainer = document.getElementById("flavourProducts");
 
-if(!qty || qty.length !== products.length){
-    qty = new Array(products.length).fill(0);
+function getQty(name){
+    const item = cart.find(p => p.name === name);
+    return item ? item.qty : 0;
 }
 
 const plainContainer = document.getElementById("plainProducts");
