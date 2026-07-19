@@ -449,7 +449,11 @@ if(total === 0){
 
 window.open("https://wa.me/919712149344?text=" + encodeURIComponent(msg));
 
-}
+}qty = [0,0,0,0,0,0,0];
+
+localStorage.setItem("qty", JSON.stringify(qty));
+
+updateCart();
 function changeQty(index,value){
 
 qty[index]+=value;
