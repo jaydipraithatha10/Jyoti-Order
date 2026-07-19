@@ -1,94 +1,138 @@
-
 <!DOCTYPE html>
 <html lang="gu">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khakhra</title>
+<title>ખાખરા | જ્યોતિ ગૃહ ઉદ્યોગ</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#4a2d17;
-    color:white;
-    text-align:center;
+background:linear-gradient(180deg,#3B2415,#2B1708);
+color:#fff;
+}
+
+header{
+text-align:center;
+padding:35px 20px;
+}
+
+header h1{
+color:#FFD700;
+font-size:38px;
+}
+
+header p{
+margin-top:10px;
+color:#FFE7A3;
+font-size:18px;
 }
 
 .container{
-    padding:30px 20px;
+max-width:900px;
+margin:30px auto;
+padding:15px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
 }
 
-h1{
-    color:#FFD700;
-    margin-bottom:10px;
+.card{
+background:#5b3a22;
+border:2px solid #c79a2b;
+border-radius:20px;
+padding:20px;
+text-align:center;
+transition:.3s;
+text-decoration:none;
+color:#fff;
 }
 
-.subtitle{
-    color:#f5e6c8;
-    margin-bottom:30px;
+.card:hover{
+transform:translateY(-6px);
+border-color:#FFD700;
 }
 
-.option{
-    background:#654321;
-    border:2px solid #d4af37;
-    border-radius:18px;
-    padding:20px;
-    margin:20px 0;
-    cursor:pointer;
-    transition:.3s;
+.card img{
+width:100%;
+border-radius:15px;
+margin-bottom:15px;
 }
 
-.option:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 15px rgba(255,215,0,.4);
+.card h2{
+color:#FFD700;
+margin-bottom:10px;
 }
 
-.option h2{
-    color:#FFD700;
-    margin-bottom:10px;
+.card p{
+color:#FFE7A3;
+line-height:1.6;
 }
 
-.option p{
-    color:#fff;
-    margin:0;
+.back{
+display:block;
+width:220px;
+margin:35px auto;
+background:#D4A017;
+color:#fff;
+padding:15px;
+text-align:center;
+border-radius:15px;
+text-decoration:none;
+font-weight:bold;
 }
 
-.back-btn{
-    display:inline-block;
-    margin-top:30px;
-    color:#FFD700;
-    text-decoration:none;
-    border:1px solid #FFD700;
-    padding:10px 20px;
-    border-radius:30px;
-}
 </style>
-
 </head>
+
 <body>
+
+<header>
+
+<h1>🥨 ખાખરા</h1>
+
+<p>તમારી પસંદગીનો પ્રકાર પસંદ કરો</p>
+
+</header>
 
 <div class="container">
 
-<h1>🥨 ખાખરાનો પ્રકાર પસંદ કરો</h1>
+<a href="handmade-khakhra.html" class="card">
 
-<p class="subtitle">
-તમારી પસંદગી મુજબ Hand Made અથવા Machine Made પસંદ કરો.
+<img src="plain.png">
+
+<h2>Hand Made Khakhra</h2>
+
+<p>
+પોચા • સ્વાદિષ્ટ • Premium Quality
 </p>
 
-<div class="option" onclick="location.href='handmade-khakhra.html'">
-<h2>🖐️ Hand Made Khakhra</h2>
-<p>પોચા, સ્વાદિષ્ટ અને પરંપરાગત રીતે બનાવેલા</p>
+</a>
+
+<a href="machine-khakhra.html" class="card">
+
+<img src="machine.png">
+
+<h2>Machine Made Khakhra</h2>
+
+<p>
+દૈનિક ઉપયોગ માટે શ્રેષ્ઠ ગુણવત્તા
+</p>
+
+</a>
+
 </div>
 
-<div class="option" onclick="location.href='machine-khakhra.html'">
-<h2>⚙️ Machine Made Khakhra</h2>
-<p>એકસરખી ગુણવત્તા અને રોજિંદા ઉપયોગ માટે</p>
-</div>
-
-<a href="index.html" class="back-btn">⬅ Back</a>
-
-</div>
+<a href="index.html" class="back">
+⬅ Home Page
+</a>
 
 </body>
 </html>
