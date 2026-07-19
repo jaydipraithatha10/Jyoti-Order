@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,14 +30,14 @@ padding:15px;
 display:flex;
 align-items:center;
 gap:15px;
-z-index:999;
 box-shadow:0 2px 10px rgba(0,0,0,.2);
+z-index:999;
 }
 
 .back{
-font-size:28px;
 text-decoration:none;
 color:#fff;
+font-size:28px;
 }
 
 header h1{
@@ -50,17 +51,19 @@ display:block;
 
 .hero-text{
 background:#fff8ef;
-padding:18px;
+padding:20px;
 text-align:center;
 }
 
 .hero-text h2{
 color:#b8860b;
+font-size:32px;
 margin-bottom:8px;
 }
 
 .hero-text p{
 color:#666;
+font-size:20px;
 }
 
 .products{
@@ -78,12 +81,13 @@ box-shadow:0 4px 12px rgba(0,0,0,.12);
 .product img{
 width:100%;
 border-radius:12px;
-margin-bottom:12px;
+margin-bottom:15px;
 }
 
 .product h3{
 color:#5b3716;
-margin-bottom:12px;
+font-size:24px;
+margin-bottom:10px;
 }
 
 .bottom{
@@ -95,11 +99,11 @@ align-items:center;
 .price span{
 display:block;
 color:#777;
-font-size:15px;
+font-size:16px;
 }
 
 .price h4{
-font-size:28px;
+font-size:30px;
 color:#b8860b;
 margin-top:5px;
 }
@@ -107,24 +111,24 @@ margin-top:5px;
 .qty{
 display:flex;
 align-items:center;
-gap:10px;
+gap:12px;
 }
 
 .qty button{
-width:38px;
-height:38px;
+width:40px;
+height:40px;
 border:none;
 border-radius:50%;
 background:#b8860b;
 color:#fff;
-font-size:22px;
+font-size:24px;
 cursor:pointer;
 }
 
 .qty span{
-font-size:20px;
+font-size:22px;
 font-weight:bold;
-min-width:22px;
+min-width:24px;
 text-align:center;
 }
 
@@ -135,19 +139,19 @@ right:0;
 bottom:0;
 background:#5b3716;
 color:#fff;
-padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+padding:15px;
 }
 
 #cartBar button{
 background:#25D366;
-border:none;
 color:#fff;
+border:none;
 padding:12px 18px;
 border-radius:10px;
-font-size:16px;
+font-size:18px;
 font-weight:bold;
 cursor:pointer;
 }
@@ -168,7 +172,7 @@ cursor:pointer;
 
 <section class="hero">
 
-<img src="plain.png">
+<img src="plain.png" alt="Hand Made Khakhra">
 
 <div class="hero-text">
 
@@ -180,14 +184,23 @@ cursor:pointer;
 
 </section>
 
-<div id="products" class="products">
-
-</div>
+<div id="products" class="products"></div>
 
 <div id="cartBar">
 
 <div>
+🛒 <span id="cartCount">0</span> Items
+</div>
 
+<div>
+₹ <span id="cartTotal">0</span>
+</div>
+
+<button id="orderBtn">
+Order
+</button>
+
+</div>
 <script>
 
 const products = [
@@ -240,17 +253,17 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const productsDiv = document.getElementById("products");
 
 function getQty(name){
-const item = cart.find(p=>p.name===name);
+const item = cart.find(p => p.name === name);
 return item ? item.qty : 0;
 }
 
 function renderProducts(){
 
-productsDiv.innerHTML="";
+productsDiv.innerHTML = "";
 
 products.forEach((p,index)=>{
 
-productsDiv.innerHTML+=`
+productsDiv.innerHTML += `
 
 <div class="product">
 
@@ -286,93 +299,95 @@ productsDiv.innerHTML+=`
 
 });
 
-}function saveCart() {
+}
+function saveCart(){
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function getTotalItems() {
-    return cart.reduce((total, item) => total + item.qty, 0);
+function getTotalItems(){
+    return cart.reduce((total,item)=>total + item.qty,0);
 }
 
-function getTotalAmount() {
-    return cart.reduce((total, item) => total + (item.qty * item.price), 0);
+function getTotalAmount(){
+    return cart.reduce((total,item)=>total + (item.price * item.qty),0);
 }
 
-function updateCart() {
+function updateCart(){
+
     document.getElementById("cartCount").textContent = getTotalItems();
+
     document.getElementById("cartTotal").textContent = getTotalAmount();
+
     saveCart();
+
 }
 
-function changeQty(index, value) {
+function changeQty(index,value){
 
     const product = products[index];
-    const existing = cart.find(item => item.name === product.name);
 
-    if (value === 1) {
+    const item = cart.find(p=>p.name===product.name);
 
-        if (existing) {
-            existing.qty++;
-        } else {
+    if(value===1){
+
+        if(item){
+
+            item.qty++;
+
+        }else{
+
             cart.push({
-                name: product.name,
-                price: product.price,
-                weight: product.weight,
-                image: product.image,
-                qty: 1
+                name:product.name,
+                price:product.price,
+                weight:product.weight,
+                image:product.image,
+                qty:1
             });
+
         }
 
-    } else {
+    }else{
 
-        if (existing) {
-            existing.qty--;
+        if(item){
 
-            if (existing.qty <= 0) {
-                cart = cart.filter(item => item.name !== product.name);
+            item.qty--;
+
+            if(item.qty<=0){
+
+                cart = cart.filter(p=>p.name!==product.name);
+
             }
+
         }
 
     }
 
     updateCart();
+
     renderProducts();
+
 }
+document.getElementById("orderBtn").addEventListener("click",function(){
 
-document.getElementById("orderBtn").addEventListener("click", function () {
+    if(cart.length===0){
 
-    if (cart.length === 0) {
         alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
+
         return;
+
     }
 
-    window.location.href = "cart.html";
+    saveCart();
+
+    window.location.href="cart.html";
 
 });
 
 renderProducts();
+
 updateCart();
 
 </script>
 
 </body>
 </html>
-
-</script>
-🛒 <span id="cartCount">0</span> Items
-
-</div>
-
-<div>
-
-₹ <span id="cartTotal">0</span>
-
-</div>
-
-<button id="orderBtn">
-
-Order
-
-</button>
-
-</div>
