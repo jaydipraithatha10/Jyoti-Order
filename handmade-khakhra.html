@@ -192,20 +192,20 @@ Order
 <script src="cart.js"></script>
 
 <script>
-
 const products = [
-{id:"HM001",name:"Naylon Sada Khakhra",price:150,weight:"500 gm"},
-{id:"HM002",name:"Naylon Methi Khakhra",price:150,weight:"500 gm"},
-{id:"HM003",name:"Naylon Masala Khakhra",price:150,weight:"500 gm"},
-{id:"HM004",name:"Naylon Jeera Khakhra",price:150,weight:"500 gm"},
-{id:"HM005",name:"Bajara Methi Khakhra",price:180,weight:"500 gm"},
-{id:"HM006",name:"Juwar Khakhra",price:180,weight:"500 gm"},
-{id:"HM007",name:"Kothmir Marcha Khakhra",price:180,weight:"500 gm"}
+{name:"Naylon Sada Khakhra",price:150,weight:"500 gm"},
+{name:"Naylon Methi Khakhra",price:150,weight:"500 gm"},
+{name:"Naylon Masala Khakhra",price:150,weight:"500 gm"},
+{name:"Naylon Jeera Khakhra",price:150,weight:"500 gm"},
+{name:"Bajara Methi Khakhra",price:180,weight:"500 gm"},
+{name:"Juwar Khakhra",price:180,weight:"500 gm"},
+{name:"Kothmir Marcha Khakhra",price:180,weight:"500 gm"}
 ];
+
 const productsDiv = document.getElementById("products");
 
-function getQty(id){
-    const item = cart.find(p => p.id === id);
+function getQty(name){
+    const item = cart.find(p=>p.name===name);
     return item ? item.qty : 0;
 }
 
@@ -231,9 +231,9 @@ function renderProducts(){
 
                     <button onclick="changeQty(${index},-1)">−</button>
 
-<span>${getQty(p.id)}</span>
+                    <span>${getQty(p.name)}</span>
 
-<button onclick="changeQty(${index},1)">+</button>
+                    <button onclick="changeQty(${index},1)">+</button>
 
                 </div>
 
@@ -243,13 +243,11 @@ function renderProducts(){
     });
 
 }
-
 function changeQty(index,value){
 
     if(value > 0){
 
         addToCart(
-            products[index].id,
             products[index].name,
             products[index].price,
             products[index].weight
@@ -257,7 +255,7 @@ function changeQty(index,value){
 
     }else{
 
-        removeFromCart(products[index].id);
+        removeFromCart(products[index].name);
 
     }
 
@@ -265,6 +263,7 @@ function changeQty(index,value){
     renderProducts();
 
 }
+
 function updateCart(){
 
     document.getElementById("cartCount").textContent = getTotalItems();
