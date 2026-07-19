@@ -389,7 +389,77 @@ Order
 
 </div>
 
-<script src="script.js"></script>
+
+<script>
+const products=[
+{name:"Naylon Sada Khakhra",price:150},
+{name:"Naylon Methi Khakhra",price:150},
+{name:"Naylon Masala Khakhra",price:150},
+{name:"Naylon Jeera Khakhra",price:150},
+{name:"Bajara Methi Khakhra",price:180},
+{name:"Juwar Khakhra",price:180},
+{name:"Kothmir Marcha Khakhra",price:180}
+];
+
+let qty=JSON.parse(localStorage.getItem("qty"))||[0,0,0,0,0,0,0];
+
+function updateCart(){
+
+let items=0;
+let total=0;
+
+for(let i=0;i<qty.length;i++){
+document.getElementById("qty"+i).innerHTML=qty[i];
+items+=qty[i];
+total+=qty[i]*products[i].price;
+}
+
+document.getElementById("cartCount").innerHTML=items;
+document.getElementById("cartTotal").innerHTML=total;
+
+localStorage.setItem("qty",JSON.stringify(qty));
+}
+
+function changeQty(index,value){
+
+qty[index]+=value;
+
+if(qty[index]<0){
+qty[index]=0;
+}
+
+updateCart();
+
+}
+
+function sendWhatsApp(){
+
+let msg="નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.%0A%0A";
+
+let total=0;
+
+for(let i=0;i<qty.length;i++){
+
+if(qty[i]>0){
+
+msg+=products[i].name+" x "+qty[i]+" = ₹"+(qty[i]*products[i].price)+"%0A";
+
+total+=qty[i]*products[i].price;
+
+}
+
+}
+
+msg+="%0Aકુલ રકમ : ₹"+total;
+
+window.open("https://wa.me/919712149344?text="+msg);
+
+}
+
+updateCart();
+
+
+</script>
 
 </body>
 </html>
