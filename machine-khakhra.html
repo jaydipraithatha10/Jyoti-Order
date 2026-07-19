@@ -120,6 +120,7 @@ border-radius:50%;
 background:#b8860b;
 color:#fff;
 font-size:22px;
+cursor:pointer;
 }
 
 .qty span{
@@ -150,30 +151,43 @@ padding:12px 18px;
 border-radius:10px;
 font-size:16px;
 font-weight:bold;
+cursor:pointer;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header class="topbar">
+
 <a href="khakhra.html" class="back-btn">⬅</a>
+
 <h1>🥨 Machine Made Khakhra</h1>
+
 </header>
 
 <section class="hero">
+
 <img src="khakhra1.png">
+
 <div class="hero-text">
+
 <h2>કરકરા • સ્વાદિષ્ટ • Machine Made</h2>
+
 <p>દરેક ફ્લેવરમાં ખાસ સ્વાદ ❤️</p>
+
 </div>
+
 </section>
 
 <div class="section-title">🥨 Plain Khakhra</div>
+
 <div id="plainProducts" class="products"></div>
 
 <div class="section-title">🌶️ Flavour Khakhra</div>
+
 <div id="flavourProducts" class="products"></div>
 
 <div id="cartBar">
@@ -192,70 +206,56 @@ Order
 
 </div>
 
-
-
 <script src="cart.js"></script>
 
-<script> products = [
+<script>
+const products = [
 
 /* Plain Khakhra */
 
-{name:"Methi Khakhra",price:60,weight:"250 gm",section:"plain"},
-{name:"Masala Khakhra",price:60,weight:"250 gm",section:"plain"},
-{name:"Jeera Khakhra",price:60,weight:"250 gm",section:"plain"},
-{name:"Sada Khakhra",price:60,weight:"250 gm",section:"plain"},
-{name:"Karela Methi Khakhra",price:70,weight:"250 gm",section:"plain"},
-{name:"Bajara Methi Khakhra",price:70,weight:"250 gm",section:"plain"},
-{name:"Bajara Methi Lasan Khakhra",price:75,weight:"250 gm",section:"plain"},
-{name:"Mag Khakhra",price:75,weight:"250 gm",section:"plain"},
-{name:"Math Khakhra",price:75,weight:"250 gm",section:"plain"},
-{name:"Jav Khakhra",price:75,weight:"250 gm",section:"plain"},
-{name:"Juwar Khakhra",price:75,weight:"250 gm",section:"plain"},
-{name:"Ragi Khakhra",price:75,weight:"250 gm",section:"plain"},
-{name:"Kashmiri Marcha Khakhra",price:70,weight:"250 gm",section:"plain"},
-{name:"Chorafali Khakhra",price:75,weight:"250 gm",section:"plain"},
-{name:"Aachar Masala Khakhra",price:75,weight:"250 gm",section:"plain"},
-{name:"Sing Daniya Khakhra",price:70,weight:"250 gm",section:"plain"},
-{name:"Jeera Mari Khakhra",price:70,weight:"250 gm",section:"plain"},
-{name:"Hing Jeera Khakhra",price:75,weight:"250 gm",section:"plain"},
+{id:"MM001",name:"Methi Khakhra",price:60,weight:"250 gm",section:"plain"},
+{id:"MM002",name:"Masala Khakhra",price:60,weight:"250 gm",section:"plain"},
+{id:"MM003",name:"Jeera Khakhra",price:60,weight:"250 gm",section:"plain"},
+{id:"MM004",name:"Sada Khakhra",price:60,weight:"250 gm",section:"plain"},
+{id:"MM005",name:"Karela Methi Khakhra",price:70,weight:"250 gm",section:"plain"},
+{id:"MM006",name:"Bajara Methi Khakhra",price:70,weight:"250 gm",section:"plain"},
+{id:"MM007",name:"Bajara Methi Lasan Khakhra",price:75,weight:"250 gm",section:"plain"},
+{id:"MM008",name:"Mag Khakhra",price:75,weight:"250 gm",section:"plain"},
+{id:"MM009",name:"Math Khakhra",price:75,weight:"250 gm",section:"plain"},
+{id:"MM010",name:"Jav Khakhra",price:75,weight:"250 gm",section:"plain"},
+{id:"MM011",name:"Juwar Khakhra",price:75,weight:"250 gm",section:"plain"},
+{id:"MM012",name:"Ragi Khakhra",price:75,weight:"250 gm",section:"plain"},
+{id:"MM013",name:"Kashmiri Marcha Khakhra",price:70,weight:"250 gm",section:"plain"},
+{id:"MM014",name:"Chorafali Khakhra",price:75,weight:"250 gm",section:"plain"},
+{id:"MM015",name:"Aachar Masala Khakhra",price:75,weight:"250 gm",section:"plain"},
+{id:"MM016",name:"Sing Daniya Khakhra",price:70,weight:"250 gm",section:"plain"},
+{id:"MM017",name:"Jeera Mari Khakhra",price:70,weight:"250 gm",section:"plain"},
+{id:"MM018",name:"Hing Jeera Khakhra",price:75,weight:"250 gm",section:"plain"},
 
 /* Flavour Khakhra */
 
-{name:"Pani Puri Khakhra",price:75,weight:"250 gm",section:"flavour"},
-{name:"Chat Masala Khakhra",price:75,weight:"250 gm",section:"flavour"},
-{name:"Maggi Masala Khakhra",price:75,weight:"250 gm",section:"flavour"},
-{name:"Katkate Khakhra",price:75,weight:"250 gm",section:"flavour"},
-{name:"Pav Bhaji Khakhra",price:75,weight:"250 gm",section:"flavour"},
-{name:"Jeeralu Khakhra",price:75,weight:"250 gm",section:"flavour"},
-{name:"Pizza Khakhra",price:85,weight:"250 gm",section:"flavour"},
-{name:"Cheese Khakhra",price:85,weight:"250 gm",section:"flavour"},
-{name:"Peri Peri Khakhra",price:85,weight:"250 gm",section:"flavour"},
-{name:"Tomato Khakhra",price:85,weight:"250 gm",section:"flavour"},
-{name:"Cream & Onion Khakhra",price:90,weight:"250 gm",section:"flavour"},
-{name:"Manchurian Khakhra",price:85,weight:"250 gm",section:"flavour"},
-{name:"Cheese Chilli Khakhra",price:90,weight:"250 gm",section:"flavour"},
-{name:"Multi Grain Khakhra",price:90,weight:"250 gm",section:"flavour"},
-{name:"Ghee Khakhra",price:120,weight:"250 gm",section:"flavour"}
-
-];
-
-
-
-function getQty(name){
-    const item = cart.find(p => p.name === name);
-    return item ? item.qty : 0;
-}
-
-const plainContainer = document.getElementById("plainProducts");
-const flavourContainer = document.getElementById("flavourProducts");
+{id:"MM019",name:"Pani Puri Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{id:"MM020",name:"Chat Masala Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{id:"MM021",name:"Maggi Masala Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{id:"MM022",name:"Katkate Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{id:"MM023",name:"Pav Bhaji Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{id:"MM024",name:"Jeeralu Khakhra",price:75,weight:"250 gm",section:"flavour"},
+{id:"MM025",name:"Pizza Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{id:"MM026",name:"Cheese Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{id:"MM027",name:"Peri Peri Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{id:"MM028",name:"Tomato Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{id:"MM029",name:"Cream & Onion Khakhra",price:90,weight:"250 gm",section:"flavour"},
+{id:"MM030",name:"Manchurian Khakhra",price:85,weight:"250 gm",section:"flavour"},
+{id:"MM031",name:"Cheese Chilli
 function renderProducts(){
 
-    plainContainer.innerHTML = "";
-    flavourContainer.innerHTML = "";
+    plainContainer.innerHTML="";
+    flavourContainer.innerHTML="";
 
     products.forEach((p,index)=>{
 
-        const html = `
+        const html=`
+
         <div class="product">
 
             <h3>${p.name}</h3>
@@ -268,29 +268,36 @@ function renderProducts(){
                 </div>
 
                 <div class="qty">
+
                     <button onclick="changeQty(${index},-1)">−</button>
-                    <span>${getQty('${p.name}')}</span>
+
+                    <span>${getQty(p.id)}</span>
+
                     <button onclick="changeQty(${index},1)">+</button>
+
                 </div>
 
             </div>
 
-        </div>`;
+        </div>
+        `;
 
-        if(p.section === "plain"){
-            plainContainer.innerHTML += html;
+        if(p.section==="plain"){
+            plainContainer.innerHTML+=html;
         }else{
-            flavourContainer.innerHTML += html;
+            flavourContainer.innerHTML+=html;
         }
 
     });
 
 }
-function changeQty(index, value){
 
-    if(value > 0){
+function changeQty(index,value){
+
+    if(value>0){
 
         addToCart(
+            products[index].id,
             products[index].name,
             products[index].price,
             products[index].weight
@@ -298,7 +305,7 @@ function changeQty(index, value){
 
     }else{
 
-        removeFromCart(products[index].name);
+        removeFromCart(products[index].id);
 
     }
 
@@ -309,32 +316,28 @@ function changeQty(index, value){
 
 function updateCart(){
 
-    document.getElementById("cartCount").textContent = getTotalItems();
+    document.getElementById("cartCount").textContent=getTotalItems();
 
-    document.getElementById("cartTotal").textContent = getTotalAmount();
+    document.getElementById("cartTotal").textContent=getTotalAmount();
 
 }
-    
-
 function sendWhatsApp(){
 
-    if(cart.length === 0){
+    if(cart.length===0){
         alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
         return;
     }
 
-    let total = getTotalAmount();
-
-    let msg = "નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
+    let msg="નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
 
     cart.forEach(item=>{
-        msg += `${item.name} (${item.weight}) x ${item.qty} = ₹${item.qty * item.price}\n`;
+        msg+=`${item.name} (${item.weight}) x ${item.qty} = ₹${item.qty*item.price}\n`;
     });
 
-    msg += "\nકુલ રકમ : ₹" + total;
+    msg+="\nકુલ રકમ : ₹"+getTotalAmount();
 
     window.open(
-        "https://wa.me/919712149344?text=" + encodeURIComponent(msg),
+        "https://wa.me/919712149344?text="+encodeURIComponent(msg),
         "_blank"
     );
 
@@ -342,7 +345,9 @@ function sendWhatsApp(){
 
     updateCart();
     renderProducts();
+
 }
+
 renderProducts();
 updateCart();
 
