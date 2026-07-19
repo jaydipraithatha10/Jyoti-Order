@@ -16,29 +16,30 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#f6f0e8;
-padding-bottom:120px;
+background:#f8f3ea;
+padding-bottom:110px;
 }
 
-.topbar{
+header{
+position:sticky;
+top:0;
 background:#5b3716;
 color:#fff;
 padding:15px;
 display:flex;
 align-items:center;
 gap:15px;
-position:sticky;
-top:0;
 z-index:999;
+box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 
-.back-btn{
-color:#fff;
-text-decoration:none;
+.back{
 font-size:28px;
+text-decoration:none;
+color:#fff;
 }
 
-.topbar h1{
+header h1{
 font-size:24px;
 }
 
@@ -49,17 +50,17 @@ display:block;
 
 .hero-text{
 background:#fff8ef;
-padding:20px;
+padding:18px;
 text-align:center;
 }
 
 .hero-text h2{
-color:#8b5a00;
-margin-bottom:10px;
+color:#b8860b;
+margin-bottom:8px;
 }
 
 .hero-text p{
-color:#555;
+color:#666;
 }
 
 .products{
@@ -74,9 +75,15 @@ margin-bottom:15px;
 box-shadow:0 4px 12px rgba(0,0,0,.12);
 }
 
+.product img{
+width:100%;
+border-radius:12px;
+margin-bottom:12px;
+}
+
 .product h3{
 color:#5b3716;
-margin-bottom:15px;
+margin-bottom:12px;
 }
 
 .bottom{
@@ -85,14 +92,16 @@ justify-content:space-between;
 align-items:center;
 }
 
-.bottom span{
+.price span{
+display:block;
 color:#777;
+font-size:15px;
 }
 
-.bottom h4{
-margin-top:5px;
+.price h4{
 font-size:28px;
 color:#b8860b;
+margin-top:5px;
 }
 
 .qty{
@@ -126,16 +135,16 @@ right:0;
 bottom:0;
 background:#5b3716;
 color:#fff;
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px;
 }
 
 #cartBar button{
 background:#25D366;
-color:#fff;
 border:none;
+color:#fff;
 padding:12px 18px;
 border-radius:10px;
 font-size:16px;
@@ -149,9 +158,9 @@ cursor:pointer;
 
 <body>
 
-<header class="topbar">
+<header>
 
-<a href="khakhra.html" class="back-btn">⬅</a>
+<a href="khakhra.html" class="back">⬅</a>
 
 <h1>🥨 Hand Made Khakhra</h1>
 
@@ -171,136 +180,199 @@ cursor:pointer;
 
 </section>
 
-<div id="products" class="products"></div>
+<div id="products" class="products">
+
+</div>
 
 <div id="cartBar">
 
 <div>
-🛒 <span id="cartCount">0</span> Items
-</div>
-
-<div>
-₹ <span id="cartTotal">0</span>
-</div>
-
-<button onclick="sendWhatsApp()">
-Order
-</button>
-
-</div>
-
-<script src="cart.js"></script>
 
 <script>
+
 const products = [
-{name:"Naylon Sada Khakhra",price:150,weight:"500 gm"},
-{name:"Naylon Methi Khakhra",price:150,weight:"500 gm"},
-{name:"Naylon Masala Khakhra",price:150,weight:"500 gm"},
-{name:"Naylon Jeera Khakhra",price:150,weight:"500 gm"},
-{name:"Bajara Methi Khakhra",price:180,weight:"500 gm"},
-{name:"Juwar Khakhra",price:180,weight:"500 gm"},
-{name:"Kothmir Marcha Khakhra",price:180,weight:"500 gm"}
+{
+name:"Naylon Sada Khakhra",
+price:150,
+weight:"500 gm",
+image:"plain.png"
+},
+{
+name:"Naylon Methi Khakhra",
+price:150,
+weight:"500 gm",
+image:"methi.png"
+},
+{
+name:"Naylon Masala Khakhra",
+price:150,
+weight:"500 gm",
+image:"masala.png"
+},
+{
+name:"Naylon Jeera Khakhra",
+price:150,
+weight:"500 gm",
+image:"jeera.png"
+},
+{
+name:"Bajara Methi Khakhra",
+price:180,
+weight:"500 gm",
+image:"bajara.png"
+},
+{
+name:"Juwar Khakhra",
+price:180,
+weight:"500 gm",
+image:"juwar.png"
+},
+{
+name:"Kothmir Marcha Khakhra",
+price:180,
+weight:"500 gm",
+image:"kothmir.png"
+}
 ];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const productsDiv = document.getElementById("products");
 
 function getQty(name){
-    const item = cart.find(p=>p.name===name);
-    return item ? item.qty : 0;
+const item = cart.find(p=>p.name===name);
+return item ? item.qty : 0;
 }
 
 function renderProducts(){
 
-    productsDiv.innerHTML = "";
+productsDiv.innerHTML="";
 
-    products.forEach((p,index)=>{
+products.forEach((p,index)=>{
 
-        productsDiv.innerHTML += `
-        <div class="product">
+productsDiv.innerHTML+=`
 
-            <h3>${p.name}</h3>
+<div class="product">
 
-            <div class="bottom">
+<img src="${p.image}" alt="${p.name}">
 
-                <div>
-                    <span>${p.weight}</span>
-                    <h4>₹${p.price}</h4>
-                </div>
+<h3>${p.name}</h3>
 
-                <div class="qty">
+<div class="bottom">
 
-                    <button onclick="changeQty(${index},-1)">−</button>
+<div class="price">
 
-                    <span>${getQty(p.name)}</span>
+<span>${p.weight}</span>
 
-                    <button onclick="changeQty(${index},1)">+</button>
+<h4>₹${p.price}</h4>
 
-                </div>
+</div>
 
-            </div>
+<div class="qty">
 
-        </div>`;
-    });
+<button onclick="changeQty(${index},-1)">−</button>
 
+<span>${getQty(p.name)}</span>
+
+<button onclick="changeQty(${index},1)">+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
-function changeQty(index,value){
 
-    if(value > 0){
+function getTotalItems() {
+    return cart.reduce((total, item) => total + item.qty, 0);
+}
 
-        addToCart(
-            products[index].name,
-            products[index].price,
-            products[index].weight
-        );
+function getTotalAmount() {
+    return cart.reduce((total, item) => total + (item.qty * item.price), 0);
+}
 
-    }else{
+function updateCart() {
+    document.getElementById("cartCount").textContent = getTotalItems();
+    document.getElementById("cartTotal").textContent = getTotalAmount();
+    saveCart();
+}
 
-        removeFromCart(products[index].name);
+function changeQty(index, value) {
+
+    const product = products[index];
+    const existing = cart.find(item => item.name === product.name);
+
+    if (value === 1) {
+
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push({
+                name: product.name,
+                price: product.price,
+                weight: product.weight,
+                image: product.image,
+                qty: 1
+            });
+        }
+
+    } else {
+
+        if (existing) {
+            existing.qty--;
+
+            if (existing.qty <= 0) {
+                cart = cart.filter(item => item.name !== product.name);
+            }
+        }
 
     }
 
     updateCart();
     renderProducts();
-
 }
 
-function updateCart(){
+document.getElementById("orderBtn").addEventListener("click", function () {
 
-    document.getElementById("cartCount").textContent = getTotalItems();
-
-    document.getElementById("cartTotal").textContent = getTotalAmount();
-
-}
-
-function sendWhatsApp(){
-
-    if(cart.length === 0){
+    if (cart.length === 0) {
         alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
         return;
     }
 
-    let msg = "નમસ્તે, મને નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
+    window.location.href = "cart.html";
 
-    cart.forEach(item=>{
-        msg += `${item.name} (${item.weight}) x ${item.qty} = ₹${item.qty * item.price}\n`;
-    });
-
-    msg += "\nકુલ રકમ : ₹" + getTotalAmount();
-
-    window.open(
-        "https://wa.me/919712149344?text=" + encodeURIComponent(msg),
-        "_blank"
-    );
-
-    clearCart();
-
-    updateCart();
-    renderProducts();
-}
+});
 
 renderProducts();
 updateCart();
+
 </script>
 
 </body>
 </html>
+
+</script>
+🛒 <span id="cartCount">0</span> Items
+
+</div>
+
+<div>
+
+₹ <span id="cartTotal">0</span>
+
+</div>
+
+<button id="orderBtn">
+
+Order
+
+</button>
+
+</div>
