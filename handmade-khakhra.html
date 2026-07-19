@@ -442,6 +442,10 @@ for(let i=0;i<qty.length;i++){
 }
 
 msg += "\nકુલ રકમ : ₹" + total;
+if(total === 0){
+    alert("કૃપા કરીને ઓછામાં ઓછો એક Product પસંદ કરો.");
+    return;
+}
 
 window.open("https://wa.me/919712149344?text=" + encodeURIComponent(msg));
 
