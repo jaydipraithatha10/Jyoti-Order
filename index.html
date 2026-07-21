@@ -164,7 +164,85 @@ background:#25D366;
 color:#fff;
 text-decoration:none;
 border-radius:10px;
+}
 
+/* ===== Premium Category Effect ===== */
+
+.category-card{
+background:linear-gradient(180deg,#3A2618,#2B1D12);
+}
+
+.category-card:active{
+transform:scale(.97);
+}
+
+.category-card img{
+transition:.3s;
+}
+
+.category-card:hover img{
+transform:scale(1.08);
+}
+
+.category-card:hover h3{
+color:#FFD700;
+}
+
+.search-box input{
+background:#fff;
+color:#222;
+border:2px solid #D4A017;
+}
+
+.search-box input::placeholder{
+color:#777;
+}
+
+.search-box input:focus{
+border-color:#FFD700;
+box-shadow:0 0 12px rgba(255,215,0,.4);
+}
+
+.title,
+.our-products h2{
+letter-spacing:1px;
+text-transform:uppercase;
+}
+
+@media(max-width:480px){
+
+.logo{
+width:80px;
+height:80px;
+}
+
+header h1{
+font-size:23px;
+}
+
+.category-card{
+padding:15px;
+}
+
+.category-card img{
+width:75px;
+height:75px;
+}
+
+.category-card h3{
+font-size:17px;
+}
+
+.whatsapp-btn{
+width:100%;
+display:block;
+}
+
+}
+
+html{
+scroll-behavior:smooth;
+}
 </style>
 
 </head>
