@@ -348,7 +348,81 @@ Premium Homemade Products
 
 </footer>
 
-<script src="script.js"></script>
+<script>
+const products = [
+{
+id:1,
+name:"Naylon Sada Khakhra",
+category:"Khakhra",
+price:150,
+weight:"500 gm",
+image:"https://via.placeholder.com/300x300?text=Khakhra"
+},
+{
+id:2,
+name:"Mix Kathod",
+category:"Pickles",
+price:100,
+weight:"250 gm",
+image:"https://via.placeholder.com/300x300?text=Mix+Kathod"
+}
+];
+
+const productList = document.getElementById("product-list");
+
+function loadProducts(list){
+
+productList.innerHTML="";
+
+list.forEach(product=>{
+
+productList.innerHTML += `
+<div class="card">
+
+<img src="${product.image}">
+
+<div class="card-body">
+
+<h3>${product.name}</h3>
+
+<p>${product.weight}</p>
+
+<div class="price">₹ ${product.price}</div>
+
+<button class="add-btn" onclick="addToCart(${product.id})">
+Add To Cart
+</button>
+
+</div>
+
+</div>
+`;
+
+});
+
+}
+
+loadProducts(products);
+
+let cart=[];
+
+function addToCart(id){
+
+const item=products.find(p=>p.id===id);
+
+cart.push(item);
+
+document.getElementById("cart-count").innerHTML=cart.length;
+
+let total=0;
+
+cart.forEach(i=>total+=i.price);
+
+document.getElementById("total").innerHTML=total;
+
+}
+
+</script>
 
 </body>
 </html>
