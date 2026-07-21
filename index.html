@@ -1,280 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Jyoti Gruh Udhyog | Rajkot</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+/* CSS Part 1 પછી અહીં આવશે */
+
+</style>
 
 </head>
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
 
-body{
-background:#183A2D;
-color:#fff;
-padding-bottom:90px;
-}
-
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px;
-background:#2A2018;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 2px 10px rgba(0,0,0,.3);
-}
-
-.logo-area{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-.logo{
-width:55px;
-height:55px;
-border-radius:50%;
-background:#fff;
-}
-
-.logo-area h1{
-font-size:20px;
-color:#D4A017;
-}
-
-.logo-area p{
-font-size:13px;
-color:#ddd;
-}
-
-.cart-icon{
-position:relative;
-font-size:26px;
-color:#D4A017;
-}
-
-.cart-icon span{
-position:absolute;
-top:-8px;
-right:-10px;
-background:red;
-color:#fff;
-width:18px;
-height:18px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:11px;
-}
-
-.banner{
-margin:15px;
-padding:35px 20px;
-text-align:center;
-border-radius:18px;
-background:linear-gradient(135deg,#7A4A16,#D4A017);
-color:#fff;
-}
-
-.banner h2{
-font-size:28px;
-margin-bottom:10px;
-}
-
-.banner p{
-font-size:15px;
-}
-
-.search-box{
-padding:15px;
-}
-
-.search-box input{
-width:100%;
-padding:14px;
-border:none;
-border-radius:10px;
-font-size:16px;
-outline:none;
-}
-
-.categories{
-display:flex;
-overflow:auto;
-padding:0 15px 15px;
-gap:10px;
-}
-
-.categories button{
-padding:10px 18px;
-border:none;
-border-radius:30px;
-background:#D4A017;
-color:#222;
-font-weight:bold;
-white-space:nowrap;
-cursor:pointer;
-}
-
-.categories button.active{
-background:#fff;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-gap:15px;
-padding:15px;
-}
-
-.card{
-background:#234636;
-border-radius:16px;
-overflow:hidden;
-box-shadow:0 5px 12px rgba(0,0,0,.25);
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-4px);
-}
-
-.card img{
-width:100%;
-height:170px;
-object-fit:cover;
-}
-
-.card-body{
-padding:12px;
-}
-
-.card-body h3{
-font-size:18px;
-margin-bottom:6px;
-}
-
-.price{
-font-size:20px;
-font-weight:bold;
-color:#FFD54F;
-margin:8px 0;
-}
-
-.add-btn{
-width:100%;
-padding:11px;
-border:none;
-border-radius:8px;
-background:#D4A017;
-font-size:15px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.cart-bar{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:#2A2018;
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 -2px 10px rgba(0,0,0,.4);
-}
-
-.cart-bar button{
-background:#25D366;
-color:#fff;
-border:none;
-padding:14px 22px;
-border-radius:10px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-
-footer{
-text-align:center;
-padding:30px 15px;
-}
-
-.footer-logo{
-width:80px;
-margin-bottom:10px;
-}
-
-footer h3{
-color:#D4A017;
-margin-bottom:5px;
-}
-
-footer p{
-color:#ddd;
-font-size:14px;
-}
-</style>
 <body>
 
-<!-- Header -->
+<div class="container">
 
 <header>
 
-<div class="logo-area">
+<img src="logo.png"
+class="logo">
 
-<img src="logo.png" class="logo">
-
-<div>
-
-<h1>Jyoti Gruh Udhyog</h1>
+<h1>JYOTI GRUH UDHYOG</h1>
 
 <p>Rajkot</p>
 
-</div>
-
-</div>
-
-<div class="cart-icon">
-
-<i class="fa-solid fa-cart-shopping"></i>
-
-<span id="cart-count">0</span>
-
-</div>
-
 </header>
 
-<!-- Banner -->
+<section class="our-products">
 
-<section class="banner">
-
-<h2>Traditional Taste Of Kathiyawad</h2>
-
-<p>Premium Homemade Products</p>
+<h2>OUR PRODUCTS</h2>
 
 </section>
-
-<!-- Search -->
 
 <div class="search-box">
 
@@ -285,144 +61,62 @@ placeholder="Search Products...">
 
 </div>
 
-<!-- Categories -->
+<div class="category-grid">
 
-<section class="categories">
+<div class="category-card"
+onclick="openCategory('Khakhra')">
 
-<button class="active">All</button>
+<img src="images/khakhra.jpg">
 
-<button>Khakhra</button>
-
-<button>Pickles</button>
-
-<button>Namkeen</button>
-
-<button>Bakery</button>
-
-</section>
-
-<!-- Products -->
-
-<section id="product-list" class="products">
-
-<!-- Google Sheet Products Here -->
-
-</section>
-
-<!-- Cart -->
-
-<div class="cart-bar">
-
-<div>
-
-<h3>Total :
-₹ <span id="total">0</span>
-
-</h3>
+<h3>Khakhra</h3>
 
 </div>
 
-<button id="orderBtn">
+<div class="category-card"
+onclick="openCategory('Pickles')">
 
-<i class="fa-brands fa-whatsapp"></i>
+<img src="images/pickles.jpg">
 
-Order Now
-
-</button>
+<h3>Pickles</h3>
 
 </div>
 
-<footer>
+<div class="category-card"
+onclick="openCategory('Dry Fruits')">
 
-<img src="logo.png" class="footer-logo">
+<img src="images/dryfruits.jpg">
 
-<h3>Jyoti Gruh Udhyog</h3>
+<h3>Dry Fruits</h3>
 
-<p>Rajkot</p>
+</div>
 
-<p>
+<div class="category-card"
+onclick="openCategory('Namkeen')">
 
-Premium Homemade Products
+<img src="images/namkeen.jpg">
 
-</p>
+<h3>Namkeen</h3>
 
-</footer>
+</div>
 
-<script>
-const products = [
-{
-id:1,
-name:"Naylon Sada Khakhra",
-category:"Khakhra",
-price:150,
-weight:"500 gm",
-image:"https://via.placeholder.com/300x300?text=Khakhra"
-},
-{
-id:2,
-name:"Mix Kathod",
-category:"Pickles",
-price:100,
-weight:"250 gm",
-image:"https://via.placeholder.com/300x300?text=Mix+Kathod"
-}
-];
+<div class="category-card"
+onclick="openCategory('Bakery')">
 
-const productList = document.getElementById("product-list");
+<img src="images/bakery.jpg">
 
-function loadProducts(list){
+<h3>Bakery</h3>
 
-productList.innerHTML="";
+</div>
 
-list.forEach(product=>{
+<div class="category-card"
+onclick="openCategory('Others')">
 
-productList.innerHTML += `
-<div class="card">
+<img src="images/others.jpg">
 
-<img src="${product.image}">
-
-<div class="card-body">
-
-<h3>${product.name}</h3>
-
-<p>${product.weight}</p>
-
-<div class="price">₹ ${product.price}</div>
-
-<button class="add-btn" onclick="addToCart(${product.id})">
-Add To Cart
-</button>
+<h3>Others</h3>
 
 </div>
 
 </div>
-`;
 
-});
-
-}
-
-loadProducts(products);
-
-let cart=[];
-
-function addToCart(id){
-
-const item=products.find(p=>p.id===id);
-
-cart.push(item);
-
-document.getElementById("cart-count").innerHTML=cart.length;
-
-let total=0;
-
-cart.forEach(i=>total+=i.price);
-
-document.getElementById("total").innerHTML=total;
-
-}
-
-</script>
-
-</body>
-</html>
+<div id="products"></div>
