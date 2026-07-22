@@ -102,6 +102,7 @@ function csvToJSON(csv) {
 /* Load Categories */
 
 async function loadCategories() {
+alert("loadCategories Started");
 
     const csv = await getCSV(CATEGORY_URL);
 
