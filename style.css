@@ -709,3 +709,241 @@ text-align:center;
 .hidden{
 display:none;
 }
+/*=========================================
+LOADER
+=========================================*/
+
+#loader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,255,255,.9);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.loader{
+width:50px;
+height:50px;
+border:5px solid #e5e5e5;
+border-top:5px solid var(--primary);
+border-radius:50%;
+animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+/*=========================================
+FADE ANIMATION
+=========================================*/
+
+.fade-in{
+animation:fadeIn .4s ease-in-out;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/*=========================================
+ZOOM ANIMATION
+=========================================*/
+
+.zoom{
+animation:zoomIn .3s ease;
+}
+
+@keyframes zoomIn{
+from{
+opacity:0;
+transform:scale(.95);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+/*=========================================
+TOP BUTTON
+=========================================*/
+
+#topBtn{
+position:fixed;
+right:18px;
+bottom:155px;
+width:48px;
+height:48px;
+border:none;
+border-radius:50%;
+background:var(--primary);
+color:#fff;
+font-size:18px;
+cursor:pointer;
+display:none;
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+transition:.3s;
+z-index:998;
+}
+
+#topBtn:hover{
+background:var(--primary-dark);
+}
+
+/*=========================================
+TOAST MESSAGE
+=========================================*/
+
+.toast{
+position:fixed;
+left:50%;
+bottom:90px;
+transform:translateX(-50%);
+background:#323232;
+color:#fff;
+padding:12px 18px;
+border-radius:8px;
+font-size:14px;
+opacity:0;
+visibility:hidden;
+transition:.3s;
+z-index:9999;
+}
+
+.toast.show{
+opacity:1;
+visibility:visible;
+}
+
+/*=========================================
+SCROLLBAR
+=========================================*/
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:#f1f1f1;
+}
+
+::-webkit-scrollbar-thumb{
+background:var(--primary);
+border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background:var(--primary-dark);
+}
+
+/*=========================================
+IMAGE
+=========================================*/
+
+img{
+max-width:100%;
+display:block;
+}
+
+/*=========================================
+RESPONSIVE
+=========================================*/
+
+@media (min-width:768px){
+
+.category-grid{
+grid-template-columns:repeat(4,1fr);
+}
+
+.product-grid{
+grid-template-columns:repeat(4,1fr);
+}
+
+.hero h2{
+font-size:36px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.contact-buttons{
+justify-content:center;
+}
+
+.contact-buttons a{
+max-width:220px;
+}
+
+}
+
+@media (max-width:480px){
+
+.header h1{
+font-size:22px;
+}
+
+.hero{
+padding:25px 15px;
+}
+
+.hero h2{
+font-size:22px;
+}
+
+.hero p{
+font-size:14px;
+}
+
+.category-card img{
+height:120px;
+}
+
+.product-card img{
+height:150px;
+}
+
+.product-name{
+font-size:14px;
+}
+
+.price{
+font-size:18px;
+}
+
+.add-btn,
+.buy-btn{
+font-size:14px;
+padding:10px;
+}
+
+.cart-btn{
+padding:10px 16px;
+font-size:14px;
+}
+
+.whatsapp-float{
+width:52px;
+height:52px;
+font-size:24px;
+}
+
+}
+
+/*=========================================
+END OF STYLE.CSS
+=========================================*/
