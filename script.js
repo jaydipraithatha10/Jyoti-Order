@@ -182,3 +182,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+async function loadSubCategories(){
+
+const categoryId = localStorage.getItem("categoryId");
+
+const data = await getCSV(SUBCATEGORY_URL);
+
+const list = csvToJSON(data);
+
+const container = document.getElementById("subcategoryContainer");
+
+container.innerHTML="";
+
+list.forEach(item=>{
+
+if(item.Status!="Active") return;
+
+if(item.CategoryID!=categoryId) return;
+
+container.innerHTML+=`
+
+<div class="card" onclick="openSubCategory('${item.ID}')">
+
+<img src="${item.Image}" alt="">
+
+<h3>${item.SubCategory}</h3>
+
+</div>
+
+`;
+
+});
+
+}
+
+function openSubCategory(id){
+
+localStorage.setItem("subCategoryId",id);
+
+window.location.href="products.html";
+
+}
