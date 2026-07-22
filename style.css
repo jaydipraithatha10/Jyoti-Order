@@ -78,6 +78,7 @@ section{
     border-bottom:4px solid var(--gold);
 
     box-shadow:0 5px 18px rgba(0,0,0,.08);
+    position:relative;
 
 }
 
@@ -737,6 +738,15 @@ section{
 
     padding:30px 15px;
 
+}
+.back-btn{
+    position:absolute;
+    left:20px;
+    top:25px;
+    font-size:28px;
+    color:var(--primary);
+    text-decoration:none;
+    font-weight:bold;
 }
 
 }
