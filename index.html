@@ -1,352 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="gu">
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Jyoti Gruh Udhyog | Rajkot</title>
+<title>Jyoti Gruh Udhyog</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#173629;
-color:#fff;
-}
-
-.container{
-max-width:500px;
-margin:auto;
-}
-
-header{
-text-align:center;
-padding:25px 15px;
-background:#2B1D12;
-}
-
-.logo{
-width:90px;
-height:90px;
-border-radius:50%;
-border:4px solid #D4A017;
-background:#fff;
-}
-
-header h1{
-margin-top:15px;
-font-size:28px;
-color:#D4A017;
-font-weight:700;
-}
-
-header p{
-margin-top:5px;
-font-size:17px;
-color:#fff;
-}
-
-.our-products{
-text-align:center;
-padding:25px 10px 10px;
-}
-
-.our-products h2{
-font-size:26px;
-color:#D4A017;
-}
-
-.search-box{
-padding:15px;
-}
-
-.search-box input{
-width:100%;
-padding:15px;
-border:none;
-border-radius:12px;
-font-size:16px;
-outline:none;
-background:#fff;
-color:#222;
-border:2px solid #D4A017;
-}
-
-.category-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-padding:15px;
-}
-
-.category-card{
-background:linear-gradient(180deg,#3A2618,#2B1D12);
-border:2px solid #D4A017;
-border-radius:20px;
-padding:20px;
-text-align:center;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 5px 15px rgba(0,0,0,.25);
-}
-
-.category-card:hover{
-transform:translateY(-5px);
-}
-
-.footer-content{
-text-align:center;
-padding:35px 20px;
-background:#2B1D12;
-margin-top:30px;
-}
-
-.footer-logo{
-width:70px;
-margin-bottom:10px;
-}
-
-.footer-content h2{
-color:#D4A017;
-margin-bottom:5px;
-}
-
-.footer-content p{
-color:#ddd;
-margin:4px 0;
-}
-
-.whatsapp-btn{
-display:inline-block;
-margin-top:18px;
-padding:12px 22px;
-background:#25D366;
-color:#fff;
-text-decoration:none;
-border-radius:10px;
-}
-
-@media(max-width:480px){
-
-.logo{
-width:80px;
-height:80px;
-}
-
-header h1{
-font-size:23px;
-}
-
-.category-card{
-padding:15px;
-}
-
-.category-card img{
-width:75px;
-height:75px;
-}
-
-.category-card h3{
-font-size:17px;
-}
-
-.whatsapp-btn{
-width:100%;
-display:block;
-}
-
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div class="container">
+<!-- Loader -->
 
-<header>
+<div id="loader">
+    <div class="spinner"></div>
+</div>
 
-<img src="logo.png" class="logo">
+<!-- Header -->
 
-<h1>JYOTI GRUH UDHYOG</h1>
+<header class="header">
 
-<p>Rajkot</p>
+    <img src="logo.png" class="logo" alt="Jyoti Gruh Udhyog Logo">
+
+    <h1>Jyoti Gruh Udhyog</h1>
+
+    <p>Premium Farsan • Khakhra • Pickle • Snacks</p>
 
 </header>
 
-<section class="our-products">
-
-<h2>OUR PRODUCTS</h2>
-
-</section>
+<!-- Search -->
 
 <div class="search-box">
 
 <input
 type="text"
 id="search"
-placeholder="Search Products...">
+placeholder="અહીં Category શોધો..."
+onkeyup="searchCategory()">
 
 </div>
 
-<div class="category-grid" id="categoryGrid">
+<!-- Categories -->
+
+<section>
+
+<div id="categoryGrid" class="category-grid">
+
+<!-- Categories Google Sheetમાંથી અહીં Auto Load થશે -->
 
 </div>
 
-<div id="products"></div>
+</section>
 
-<footer>
+<!-- Floating Cart -->
 
-<div class="footer-content">
+<div class="cart-bar">
 
-<img src="logo.png" class="footer-logo">
+<div>
 
-<h2>Jyoti Gruh Udhyog</h2>
-
-<p>Rajkot</p>
-
-<p>Premium Homemade Products</p>
-
-<a href="https://wa.me/919712149344" class="whatsapp-btn">
-
-<i class="fa-brands fa-whatsapp"></i>
-
-Order on WhatsApp
-
-</a>
+🛒 <span id="cartCount">0</span>
 
 </div>
 
-</footer>
+<div id="cartTotal">
+
+₹0
 
 </div>
 
-<script>
-const SHEET_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=2013716827&single=true&output=csv";
+<button onclick="window.location.href='cart.html'">
 
-fetch(SHEET_URL)
-.then(response=>response.text())
-.then(csv=>{
+View Cart
 
-const rows=csv.trim().split("\n");
+</button>
 
-let html="";
-
-for(let i=1;i<rows.length;i++){
-
-const cols=rows[i].split(",");
-
-const category=cols[1].trim();
-const image=cols[2].trim();
-const status=cols[3].trim();
-
-if(status==="Active"){
-
-html+=`
-<div class="category-card" onclick="openCategory('${category}')">
-<img src="images/${image}" alt="${category}">
-<h3>${category}</h3>
 </div>
-`;
 
-}
-
-}
-
-document.getElementById("categoryGrid").innerHTML=html;
-
-});
-
-document.getElementById("search").addEventListener("keyup",function(){
-
-const value=this.value.toLowerCase();
-
-document.querySelectorAll(".category-card").forEach(card=>{
-
-card.style.display=
-card.innerText.toLowerCase().includes(value)
-? "block"
-: "none";
-
-});
-
-});
-
-function openCategory(category){
-
-switch(category){
-
-case "Khakhra":
-window.location.href="khakhra.html";
-break;
-
-case "Pickles":
-window.location.href="pickles.html";
-break;
-
-case "Dry Fruits":
-window.location.href="dryfruits.html";
-break;
-
-case "Namkeen":
-window.location.href="namkeen.html";
-break;
-
-case "Bakery":
-window.location.href="bakery.html";
-break;
-
-case "Others":
-window.location.href="others.html";
-break;
-
-default:
-alert(category+" page is not available.");
-
-}
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
-.category-card img{
-width:90px;
-height:90px;
-object-fit:cover;
-border-radius:15px;
-margin-bottom:12px;
-border:2px solid #D4A017;
-}
-
-.category-card h3{
-font-size:20px;
-color:#D4A017;
-}
-
-#products{
-padding:15px;
-}
