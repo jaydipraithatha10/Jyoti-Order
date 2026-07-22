@@ -94,3 +94,90 @@ function csvToJSON(csv) {
     return data;
 
 }
+
+/* ===================================
+   SCRIPT.JS - PART 2
+=================================== */
+
+/* Load Categories */
+
+async function loadCategories() {
+
+    const csv = await getCSV(CATEGORY_URL);
+
+    if (!csv) return;
+
+    categories = csvToJSON(csv);
+
+    const grid = document.getElementById("categoryGrid");
+
+    if (!grid) return;
+
+    let html = "";
+
+    categories.forEach(item => {
+
+        if (item.Status !== "Active") return;
+
+        html += `
+        <div class="category-card fade-in"
+             onclick="openCategory('${item.ID}')">
+
+            <img src="${item.Image}"
+                 alt="${item.Category}"
+                 onerror="this.src='no-image.png'">
+
+            <h3>${item.Category}</h3>
+
+        </div>
+        `;
+
+    });
+
+    grid.innerHTML = html;
+
+}
+
+/* Search Category */
+
+function searchCategory() {
+
+    const keyword = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    document.querySelectorAll(".category-card").forEach(card => {
+
+        const text = card.innerText.toLowerCase();
+
+        card.style.display =
+            text.includes(keyword)
+            ? ""
+            : "none";
+
+    });
+
+}
+
+/* Category Click */
+
+function openCategory(id) {
+
+    localStorage.setItem("selectedCategoryId", id);
+
+    window.location.href = "category.html";
+
+}
+
+/* Auto Load */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    if (document.getElementById("categoryGrid")) {
+
+        loadCategories();
+
+    }
+
+});
