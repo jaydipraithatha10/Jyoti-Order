@@ -911,3 +911,174 @@ font-size:14px;
 }
 
 }
+
+/*==================================================
+PREMIUM LOADER
+==================================================*/
+
+#loader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(18,53,36,.95);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.spinner{
+width:65px;
+height:65px;
+border:6px solid rgba(255,255,255,.20);
+border-top:6px solid var(--gold);
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+/*==================================================
+FADE ANIMATION
+==================================================*/
+
+.fade-in{
+animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+0%{
+opacity:0;
+transform:translateY(25px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* Card Hover Animation */
+
+.category-card,
+.product-card,
+.offer-item,
+.contact-section{
+
+animation:fadeIn .5s ease;
+
+}
+
+/*==================================================
+SCROLLBAR
+==================================================*/
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:#eeeeee;
+}
+
+::-webkit-scrollbar-thumb{
+background:var(--gold);
+border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background:var(--goldDark);
+}
+
+/*==================================================
+TEXT SELECTION
+==================================================*/
+
+::selection{
+background:var(--gold);
+color:#fff;
+}
+
+/*==================================================
+IMAGE EFFECT
+==================================================*/
+
+img{
+max-width:100%;
+display:block;
+}
+
+.category-card img,
+.product-card img{
+transition:.4s;
+}
+
+.category-card:hover img,
+.product-card:hover img{
+transform:scale(1.05);
+}
+
+/*==================================================
+BUTTON EFFECT
+==================================================*/
+
+button,
+.shop-btn,
+.call-btn,
+.wa-btn,
+.location-btn{
+transition:.3s ease;
+}
+
+button:active,
+.shop-btn:active,
+.call-btn:active,
+.wa-btn:active{
+transform:scale(.96);
+}
+
+/*==================================================
+LINKS
+==================================================*/
+
+a{
+color:inherit;
+text-decoration:none;
+}
+
+/*==================================================
+RESPONSIVE
+==================================================*/
+
+@media(max-width:768px){
+
+body{
+font-size:16px;
+}
+
+.hero h2{
+font-size:30px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.offer-section h2,
+.contact-section h2{
+font-size:24px;
+}
+
+.footer{
+padding-bottom:90px;
+}
+
+}
+
+/*==================================================
+THE END
+==================================================*/
