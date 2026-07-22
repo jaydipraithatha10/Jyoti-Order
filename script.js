@@ -8,6 +8,7 @@
 const CATEGORY_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=2013716827&single=true&output=csv";
 
 const SUBCATEGORY_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=35788410&single=true&output=csv";
+
 const PRODUCT_URL = "";
 
 /* Global Variables */
@@ -62,7 +63,7 @@ async function getCSV(url) {
 }
 
 /* ==========================
-   CSV → JSON
+   CSV to JSON
 ========================== */
 
 function csvToJSON(csv) {
@@ -94,7 +95,6 @@ function csvToJSON(csv) {
     return data;
 
 }
-
 /* ===================================
    SCRIPT.JS - PART 2
 =================================== */
@@ -102,8 +102,6 @@ function csvToJSON(csv) {
 /* Load Categories */
 
 async function loadCategories() {
-
-
 
     const csv = await getCSV(CATEGORY_URL);
 
@@ -153,77 +151,18 @@ function searchCategory() {
 
         const text = card.innerText.toLowerCase();
 
-        card.style.display =
-            text.includes(keyword)
-            ? ""
-            : "none";
+        card.style.display = text.includes(keyword) ? "" : "none";
 
     });
 
 }
 
-/* Category Click */
-
-
-
-/* Auto Load */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    if (document.getElementById("categoryGrid")) {
-        loadCategories();
-    }
-
-    if (document.getElementById("subcategoryContainer")) {
-        loadSubCategories();
-    }
-
-});
-async function loadSubCategories(){
-
-async function loadSubCategories(){
-
-    alert("loadSubCategories Started");
-
-    const categoryId = localStorage.getItem("categoryId");
-    alert(categoryId);
-
-    const data = await getCSV(SUBCATEGORY_URL);
-    alert(data);
-
-    const list = csvToJSON(data);
-const categoryId = localStorage.getItem("categoryId");
-
-const data = await getCSV(SUBCATEGORY_URL);
-
-const list = csvToJSON(data);
-
-const container = document.getElementById("subcategoryContainer");
-
-container.innerHTML="";
-
-list.forEach(item=>{
-
-if(item.Status!="Active") return;
-
-if(item.CategoryID!=categoryId) return;
-
-container.innerHTML+=`
-
-<div class="category-card fade-in" onclick="openSubCategory('${item.ID}')">
-<img src="${item.Image}" alt="">
-
-<h3>${item.SubCategory}</h3>
-
-</div>
-
-`;
-
-});
-
-}
+/* Open Category */
 
 function openCategory(id) {
+
     localStorage.setItem("categoryId", id);
+
     window.location.href = "category.html";
+
 }
