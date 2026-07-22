@@ -1,27 +1,31 @@
-/* ===========================
-   GOOGLE FONT
-=========================== */
-
+/*====================================
+ GOOGLE FONT
+====================================*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* ===========================
-   ROOT
-=========================== */
-
+/*====================================
+ ROOT COLORS
+====================================*/
 :root{
-    --primary:#5C3A21;
-    --primary-dark:#3E2615;
-    --secondary:#D4AF37;
+
+    --primary:#5A3A22;
+    --primary-dark:#3F2717;
+    --gold:#D4AF37;
+    --gold-light:#F5D97A;
+
     --bg:#FFF8F0;
-    --white:#ffffff;
-    --text:#2d2d2d;
-    --light:#777;
-    --border:#E7DCCF;
+    --white:#FFFFFF;
+
+    --text:#2D2D2D;
+    --light:#666666;
+
+    --border:#E7D8C8;
+
 }
 
-/* ===========================
-   RESET
-=========================== */
+/*====================================
+ RESET
+====================================*/
 
 *{
     margin:0;
@@ -35,347 +39,198 @@ html{
 }
 
 body{
+
     background:var(--bg);
     color:var(--text);
-    line-height:1.6;
+    overflow-x:hidden;
+
 }
 
-/* ===========================
-   HEADER
-=========================== */
+img{
 
+    max-width:100%;
+    display:block;
 
+}
 
+a{
+    text-decoration:none;
+}
 
+section{
+
+    padding:30px 18px;
+
+}
+
+/*====================================
+ HEADER
+====================================*/
 
 .header{
-    background:#FFF8F0;
+
+    background:linear-gradient(180deg,#fff,#fff8f0);
+
     text-align:center;
-    padding:30px 20px;
-    border-bottom:4px solid #D4AF37;
+
+    padding:35px 20px 25px;
+
+    border-bottom:4px solid var(--gold);
+
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
 }
+
+/*====================================
+ LOGO
+====================================*/
 
 .logo{
+
     width:170px;
+
     height:170px;
-    display:block;
-    margin:0 auto 15px;
+
     object-fit:contain;
-    border:none;
-    background:transparent;
-    padding:0;
-    box-shadow:none;
+
+    margin:auto;
+
+    margin-bottom:15px;
+
 }
 
+/*====================================
+ TITLE
+====================================*/
+
 .header h1{
+
+    color:var(--primary);
+
     font-size:34px;
-    color:#5C3A21;
-    font-weight:700;
-    margin:10px 0 5px;
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+
 }
 
 .header p{
+
     color:#666;
-    font-size:17px;
+
+    margin-top:8px;
+
+    font-size:16px;
+
 }
 
-
-
-/* ===========================
-   HERO
-=========================== */
+/*====================================
+ HERO
+====================================*/
 
 .hero{
+
     margin:20px;
-    padding:35px 20px;
+
+    padding:40px 25px;
+
+    border-radius:22px;
+
     text-align:center;
-    background:linear-gradient(135deg,#5C3A21,#8B5E3C);
+
+    background:linear-gradient(135deg,#5A3A22,#8A5A37);
+
     color:#fff;
-    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
 }
 
 .hero h2{
-    font-size:28px;
+
+    font-size:30px;
+
+    line-height:1.4;
+
     margin-bottom:15px;
+
 }
 
 .hero p{
-    font-size:16px;
+
+    font-size:17px;
+
     opacity:.95;
+
 }
 
+/*====================================
+ SHOP BUTTON
+====================================*/
+
 .shop-btn{
+
     display:inline-block;
+
     margin-top:25px;
-    padding:14px 30px;
-    background:var(--secondary);
-    color:#000;
-    text-decoration:none;
-    border-radius:10px;
+
+    padding:14px 28px;
+
+    background:var(--gold);
+
+    color:var(--primary);
+
     font-weight:700;
+
+    border-radius:12px;
+
     transition:.3s;
+
 }
 
 .shop-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
     transform:translateY(-3px);
+
 }
 
-/* ===========================
-   SEARCH
-=========================== */
+/*====================================
+ SEARCH BOX
+====================================*/
 
 .search-box{
-    margin:25px 20px;
+
+    margin:20px;
+
 }
 
 .search-box input{
+
     width:100%;
-    padding:15px;
+
+    height:56px;
+
+    padding:0 18px;
+
     border:2px solid var(--primary);
-    border-radius:12px;
+
+    border-radius:14px;
+
     outline:none;
+
     font-size:16px;
-}
 
-/* ===========================
-   SECTION TITLE
-=========================== */
-
-.section-title{
-    text-align:center;
-    color:var(--primary);
-    margin:25px 0;
-    font-size:28px;
-}
-
-/* ===========================
-   CATEGORY GRID
-=========================== */
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:18px;
-    padding:20px;
-}
-
-/* ===========================
-   CATEGORY CARD
-=========================== */
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
-    padding:15px;
-}
-
-@media(min-width:768px){
-    .category-grid{
-        grid-template-columns:repeat(4,1fr);
-    }
-}
-
-.category-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-}
-
-.category-card img{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    display:block;
-}
-
-.category-card h3{
-    padding:12px;
-    font-size:17px;
-    color:#5C3A21;
-    font-weight:600;
-}
-
-
-
-
-
-
-
-/* ===========================
-   CONTACT
-=========================== */
-
-.contact-section{
-    margin:40px 20px;
-    padding:30px;
     background:#fff;
-    border-radius:18px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
-
-.contact-section h2{
-    color:var(--primary);
-    margin-bottom:15px;
-}
-
-.contact-section p{
-    margin:10px 0;
-}
-
-.contact-buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    margin-top:20px;
-    flex-wrap:wrap;
-}
-
-.call-btn,
-.wa-btn{
-    padding:12px 24px;
-    border-radius:10px;
-    text-decoration:none;
-    color:#fff;
-    font-weight:600;
-}
-
-.call-btn{
-    background:var(--primary);
-}
-
-.wa-btn{
-    background:#25D366;
-}
-
-/* ===========================
-   FOOTER
-=========================== */
-
-.footer{
-    background:var(--primary);
-    color:#fff;
-    text-align:center;
-    padding:35px 20px;
-}
-
-.footer-logo{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    background:#fff;
-    padding:4px;
-    margin-bottom:12px;
-}
-
-.footer h3{
-    margin-bottom:8px;
-}
-
-.footer p{
-    opacity:.9;
-}
-
-.copyright{
-    margin-top:15px;
-    font-size:14px;
-}
-
-/* ===========================
-   FLOATING WHATSAPP
-=========================== */
-
-.whatsapp-float{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    width:60px;
-    height:60px;
-    background:#25D366;
-    color:#fff;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-decoration:none;
-    font-size:30px;
-    box-shadow:0 6px 15px rgba(0,0,0,.25);
-    z-index:999;
-}
-
-/* ===========================
-   RESPONSIVE
-=========================== */
-
-@media(max-width:768px){
-
-.hero h2{
-    font-size:22px;
-}
-
-.header h1{
-    font-size:26px;
-}
-
-.section-title{
-    font-size:24px;
-}
-
-.category-grid{
-    grid-template-columns:repeat(2,1fr);
-}
-
-.category-card img{
-    height:130px;
-}
 
 }
 
-@media(max-width:480px){
+.search-box input::placeholder{
 
-.hero{
-    margin:15px;
-    padding:25px 15px;
-}
-
-.shop-btn{
-    width:100%;
-}
-.category-content{
-    padding:12px;
-    text-align:center;
-}
-
-.category-content h3{
-    font-size:17px;
-    color:#5C3A21;
-    margin-bottom:8px;
-    font-weight:600;
-}
-
-.view-more{
-    display:inline-block;
-    color:#D4AF37;
-    font-size:14px;
-    font-weight:700;
-    transition:.3s;
-}
-
-.category-card:hover .view-more{
-    transform:translateX(5px);
-}
-
-.contact-buttons{
-    flex-direction:column;
-}
-
-.call-btn,
-.wa-btn{
-    width:100%;
-}
-
-.category-grid{
-    gap:15px;
-}
+    color:#888;
 
 }
