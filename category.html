@@ -6,60 +6,92 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Khakhra Categories</title>
+<title>Sub Categories | Jyoti Gruh Udhyog</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
+
+<!-- ================= HEADER ================= -->
+
 <header class="header">
-    <h1>Jyoti Gruh Udhyog</h1>
-    <p>ગુજરાતના અસલી સ્વાદની ઓળખ</p>
+
+<a href="index.html" class="back-btn">←</a>
+
+<img src="logo.png" class="logo" alt="Logo">
+
+<h1 id="categoryTitle">Category</h1>
+
+<p>તમારી પસંદગીની કેટેગરી પસંદ કરો</p>
+
 </header>
+
+<!-- ================= SEARCH ================= -->
 
 <section>
 
-<div id="subcategoryContainer" class="category-grid">
+<div class="search-box">
+
+<input
+type="text"
+id="searchSub"
+placeholder="🔍 Sub Category શોધો..."
+onkeyup="searchSubCategory()">
 
 </div>
 
 </section>
 
+<!-- ================= SUB CATEGORY ================= -->
 
-<div id="subcategoryContainer" class="category-grid">
+<section>
+
+<h2 class="section-title">
+
+સબ કેટેગરી
+
+</h2>
+
+<div
+id="subcategoryContainer"
+class="category-grid">
+
+<!-- Dynamic Data -->
 
 </div>
 
 </section>
+
+<!-- ================= FOOTER ================= -->
+
 <footer class="footer">
 
-    <h2>Jyoti Gruh Udhyog</h2>
+<h3>Jyoti Gruh Udhyog</h3>
 
-    <p class="tagline">ગુજરાતના અસલી સ્વાદની ઓળખ</p>
+<p>Premium Gujarati Snacks</p>
 
-    <div class="footer-contact">
-        📍 Rajkot, Gujarat
-    </div>
+<p class="copyright">
 
-    <div class="footer-contact">
-        📞 +91 9712149344
-    </div>
+© 2026 All Rights Reserved
 
-    <a href="https://wa.me/919712149344"
-       target="_blank"
-       class="footer-btn">
-       💬 WhatsApp પર ઓર્ડર કરો
-    </a>
-
-    <div class="footer-line"></div>
-
-    <p class="copyright">
-        © 2026 Jyoti Gruh Udhyog. All Rights Reserved.
-    </p>
+</p>
 
 </footer>
-<script src="script.js"></script>
+
+<!-- ================= WHATSAPP ================= -->
+
+<a
+href="https://wa.me/919712149344"
+class="whatsapp-float"
+target="_blank">
+
+💬
+
+</a>
+
+<script src="category.js"></script>
 
 </body>
 
