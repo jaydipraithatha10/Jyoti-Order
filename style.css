@@ -720,3 +720,67 @@ display:none!important;
 .show{
 display:block!important;
 }
+.hero{
+text-align:center;
+padding:50px 20px;
+background:#123524;
+}
+
+.hero h2{
+font-size:38px;
+color:#ffffff;
+margin-bottom:15px;
+font-weight:700;
+}
+
+.hero p{
+font-size:22px;
+color:#f5f5f5;
+margin-bottom:25px;
+}
+.shop-btn{
+display:inline-block;
+background:#D4AF37;
+color:#ffffff;
+text-decoration:none;
+padding:14px 32px;
+border-radius:50px;
+font-size:20px;
+font-weight:bold;
+transition:.3s;
+}
+
+.shop-btn:hover{
+background:#b68d20;
+transform:scale(1.05);
+}
+.search-box{
+padding:20px;
+}
+
+.search-box input{
+width:100%;
+max-width:600px;
+height:58px;
+border-radius:40px;
+border:3px solid #D4AF37;
+padding:0 22px;
+font-size:22px;
+outline:none;
+}
+.offer-box{
+display:grid;
+gap:15px;
+margin-top:20px;
+}
+
+.offer-item{
+background:#ffffff;
+color:#123524;
+padding:18px;
+border-radius:15px;
+font-size:20px;
+font-weight:600;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
