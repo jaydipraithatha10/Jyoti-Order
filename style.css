@@ -59,20 +59,15 @@ box-shadow:0 6px 20px rgba(0,0,0,.25);
 /* Logo */
 
 .logo{
-
+display:block;
 width:120px;
 height:120px;
-
+margin:0 auto;
 border-radius:50%;
-
 border:5px solid var(--gold);
-
 background:#fff;
-
 object-fit:cover;
-
 box-shadow:0 8px 25px rgba(0,0,0,.30);
-
 }
 
 /* Brand Name */
