@@ -809,3 +809,13 @@ background:#D4AF37;
 .wa-btn{
 background:#25D366;
 }
+.cart-bar button{
+background:#D4AF37;
+color:#fff;
+border:none;
+padding:12px 24px;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
