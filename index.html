@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="gu">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Jyoti Gruh Udhyog</title>
-<!-- SEO -->
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Jyoti Gruh Udhyog - Premium Khakhra, Pickles, Farsan, Snacks & Traditional Gujarati Products.">
+<title>
+Jyoti Gruh Udhyog
+</title>
 
-<meta name="keywords" content="Khakhra, Pickle, Farsan, Gujarati Snacks, Rajkot, Jyoti Gruh Udhyog">
+<meta name="description"
+content="Premium Khakhra, Pickles, Farsan & Traditional Gujarati Snacks">
 
-<meta name="author" content="Jyoti Gruh Udhyog">
+<meta name="theme-color"
+content="#123524">
 
-<meta name="theme-color" content="#8B5A2B">
+<link rel="icon"
+href="logo.png">
 
-<link rel="icon" href="logo.png">
-
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="style.css">
 
 </head>
 
@@ -27,35 +31,48 @@
 <!-- Loader -->
 
 <div id="loader">
-    <div class="spinner"></div>
+
+<div class="spinner"></div>
+
 </div>
 
 <!-- Header -->
 
-<header class="header">
+<header class="header fade-in">
 
-    <img src="logo.png" class="logo" alt="Jyoti Gruh Udhyog Logo">
+<img
+src="logo.png"
+class="logo"
+alt="Jyoti Gruh Udhyog">
 
-    <h1>Jyoti Gruh Udhyog</h1>
+<h1>
+Jyoti Gruh Udhyog
+</h1>
 
-    <p>Premium Farsan • Khakhra • Pickle • Snacks</p>
+<p>
+Premium Khakhra • Pickles • Farsan
+</p>
 
 </header>
-<!-- Hero Banner -->
 
-<section class="hero">
+<!-- Hero -->
 
-    <h2>
-        સ્વાદ જે વિશ્વાસ જીતે
-    </h2>
+<section class="hero fade-in">
 
-    <p>
-        Premium Quality • Fresh Products • Fast Delivery
-    </p>
+<h2>
+ગુજરાતનો અસલી સ્વાદ
+</h2>
 
-    <a href="#categoryGrid" class="shop-btn">
-        ખરીદી શરૂ કરો
-    </a>
+<p>
+Premium Quality Products • Fast Delivery • Trusted Brand
+</p>
+
+<a href="#categoryGrid"
+class="shop-btn">
+
+🛒 ખરીદી શરૂ કરો
+
+</a>
 
 </section>
 
@@ -66,7 +83,7 @@
 <input
 type="text"
 id="search"
-placeholder="અહીં Category શોધો..."
+placeholder="🔍 અહીં Category શોધો..."
 onkeyup="searchCategory()">
 
 </div>
@@ -75,148 +92,18 @@ onkeyup="searchCategory()">
 
 <section>
 
-<div id="categoryGrid" class="category-grid">
+<h2 style="text-align:center;color:#123524;margin-bottom:20px;">
 
-<!-- Categories Google Sheetમાંથી અહીં Auto Load થશે -->
+અમારી Categories
+
+</h2>
+
+<div
+id="categoryGrid"
+class="category-grid">
+
+<!-- Google Sheetમાંથી Categories અહીં આવશે -->
 
 </div>
 
 </section>
-<!-- Offer Section -->
-
-<section class="offer-section">
-
-    <h2>🌟 અમારી ખાસ વિશેષતાઓ</h2>
-
-    <div class="offer-box">
-
-        <div class="offer-item">
-            ✅ Premium Quality Products
-        </div>
-
-        <div class="offer-item">
-            🥜 શુદ્ધ અને તાજી સામગ્રી
-        </div>
-
-        <div class="offer-item">
-            🚚 ઝડપી હોમ ડિલિવરી
-        </div>
-
-        <div class="offer-item">
-            ❤️ ગ્રાહકનો વિશ્વાસ અમારી ઓળખ
-        </div>
-
-    </div>
-
-</section>
-
-<!-- Contact -->
-
-<section class="contact-section">
-
-    <h2>અમારો સંપર્ક કરો</h2>
-
-    <p><strong>Jyoti Gruh Udhyog</strong></p>
-
-    <p>📍 Rajkot, Gujarat</p>
-
-    <p>📞 +91 9712149344</p>
-
-    <p>✉️ WhatsApp દ્વારા સરળ ઓર્ડર</p>
-
-</section>
-<div class="contact-buttons">
-
-<a href="tel:+919712149344" class="call-btn">
-📞 Call Now
-</a>
-
-<a href="https://wa.me/919712149344"
-class="wa-btn"
-target="_blank">
-💬 WhatsApp
-</a>
-
-</div>
-
-<!-- Footer -->
-
-<footer class="footer">
-
-    <p>© 2026 Jyoti Gruh Udhyog</p>
-
-    <p>Made with ❤️ in Rajkot</p>
-
-</footer>
-
-<!-- Floating Cart -->
-
-<div class="cart-bar">
-
-<div>
-
-🛒 <span id="cartCount">0</span>
-
-</div>
-
-<div id="cartTotal">
-
-₹0
-
-</div>
-
-<button onclick="window.location.href='cart.html'">
-
-View Cart
-
-</button>
-
-</div>
-
-<script src="script.js"></script>
-<!-- Floating WhatsApp -->
-
-<a href="https://wa.me/919712149344"
-   class="whatsapp-float"
-   target="_blank">
-
-    💬
-
-</a>
-
-<!-- Back To Top -->
-
-<button id="topBtn"
-        onclick="window.scrollTo({top:0,behavior:'smooth'})">
-
-⬆
-
-</button>
-
-<script>
-
-window.onscroll=function(){
-
-const btn=document.getElementById("topBtn");
-
-if(document.body.scrollTop>200 ||
-
-document.documentElement.scrollTop>200){
-
-btn.style.display="block";
-
-}else{
-
-btn.style.display="none";
-
-}
-
-};
-
-</script>
-
-<script src="script.js"></script>
-
-</body>
-</html>
-
