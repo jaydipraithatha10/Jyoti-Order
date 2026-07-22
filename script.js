@@ -5,20 +5,11 @@
 =================================== */
 
 /* Google Sheet CSV URLs */
-const CATEGORY_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=2013716827&single=true&output=csv";
+ "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=2013716827&single=true&output=csv";
 
-window.onload = function () {
-    loadCategories();
-};
+const SUBCATEGORY_URL = "PASTE_SUBCATEGORY_CSV_URL";
 
-async function loadCategories() {
-
-    const response = await fetch(CATEGORY_CSV);
-    const csv = await response.text();
-
-    console.log(csv);
-
-}
+const PRODUCT_URL = "PASTE_PRODUCT_CSV_URL";
 const CATEGORY_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=2013716827&single=true&output=csv";
 const CATEGORY_URL=
 const SUBCATEGORY_URL="PASTE_SUBCATEGORY_CSV_URL";
