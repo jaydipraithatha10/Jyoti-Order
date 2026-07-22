@@ -163,22 +163,18 @@ function searchCategory() {
 
 /* Category Click */
 
-function openCategory(id) {
 
-    localStorage.setItem("selectedCategoryId", id);
-
-    window.location.href = "category.html";
-
-}
 
 /* Auto Load */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     if (document.getElementById("categoryGrid")) {
-
         loadCategories();
+    }
 
+    if (document.getElementById("subcategoryContainer")) {
+        loadSubCategories();
     }
 
 });
