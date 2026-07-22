@@ -53,32 +53,36 @@ async function loadCategories(){
 /* ===========================
    SHOW CATEGORIES
 =========================== */
-
 function showCategories(data){
 
-    const grid=document.getElementById("categoryGrid");
+    const grid = document.getElementById("categoryGrid");
 
-    grid.innerHTML="";
+    grid.innerHTML = "";
 
     data.forEach(item=>{
 
-        grid.innerHTML+=`
+        grid.innerHTML += `
+        <div class="category-card" onclick="openCategory('${item.id}')">
 
-        <div class="category-card"
-        onclick="openCategory('${item.id}')">
+            <img src="${item.image}" alt="${item.name}">
 
-            <img src="${item.image}"
-            alt="${item.name}">
+            <div class="category-content">
 
-            <h3>${item.name}</h3>
+                <h3>${item.name}</h3>
+
+                <span class="view-more">
+                    જુઓ →
+                </span>
+
+            </div>
 
         </div>
-
         `;
 
     });
 
 }
+
 
 /* ===========================
    SEARCH
