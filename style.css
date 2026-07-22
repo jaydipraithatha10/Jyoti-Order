@@ -447,3 +447,198 @@ transition:.3s;
 transform:scale(1.03);
 
 }
+
+/*=====================================
+ OFFER SECTION
+======================================*/
+
+.offer-section{
+
+padding:25px 20px;
+
+}
+
+.offer-section h2{
+
+text-align:center;
+font-size:28px;
+color:var(--gold);
+margin-bottom:20px;
+
+}
+
+.offer-box{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+
+}
+
+.offer-item{
+
+background:#ffffff;
+color:var(--green);
+padding:18px;
+border-radius:18px;
+text-align:center;
+font-size:17px;
+font-weight:700;
+box-shadow:var(--shadow);
+transition:.3s;
+
+}
+
+.offer-item:hover{
+
+transform:translateY(-5px);
+
+}
+
+/*=====================================
+ CONTACT
+======================================*/
+
+.contact-section{
+
+margin:25px 20px;
+padding:25px;
+background:#ffffff;
+border-radius:22px;
+box-shadow:var(--shadow);
+text-align:center;
+
+}
+
+.contact-section h2{
+
+color:var(--green);
+margin-bottom:15px;
+
+}
+
+.contact-section p{
+
+color:#444;
+font-size:18px;
+margin:8px 0;
+
+}
+
+.contact-buttons{
+
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+
+}
+
+.call-btn,
+.wa-btn{
+
+padding:14px 28px;
+border-radius:40px;
+text-decoration:none;
+font-size:18px;
+font-weight:700;
+color:#fff;
+
+}
+
+.call-btn{
+
+background:#D4AF37;
+
+}
+
+.wa-btn{
+
+background:#25D366;
+
+}
+
+/*=====================================
+ CART BAR
+======================================*/
+
+.cart-bar{
+
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#123524;
+padding:14px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 -5px 15px rgba(0,0,0,.25);
+z-index:999;
+
+}
+
+.cart-bar div{
+
+font-size:20px;
+font-weight:700;
+color:#fff;
+
+}
+
+.cart-bar button{
+
+background:var(--gold);
+color:#fff;
+border:none;
+padding:12px 28px;
+border-radius:35px;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+
+}
+
+/*=====================================
+ FLOATING BUTTONS
+======================================*/
+
+.whatsapp-float{
+
+position:fixed;
+right:18px;
+bottom:95px;
+width:60px;
+height:60px;
+background:#25D366;
+color:#fff;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+text-decoration:none;
+box-shadow:0 8px 20px rgba(0,0,0,.30);
+z-index:999;
+
+}
+
+#topBtn{
+
+position:fixed;
+left:18px;
+bottom:95px;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:var(--gold);
+color:#fff;
+font-size:22px;
+cursor:pointer;
+display:none;
+box-shadow:0 8px 20px rgba(0,0,0,.30);
+z-index:999;
+
+}
