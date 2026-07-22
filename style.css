@@ -581,3 +581,142 @@ font-size:14px;
 }
 
 }
+/* ===================================
+   ANIMATIONS & UTILITIES
+=================================== */
+
+/* Fade Animation */
+
+.fade-in{
+animation:fadeIn .6s ease-in-out;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* Zoom Animation */
+
+.zoom-in{
+animation:zoomIn .4s ease;
+}
+
+@keyframes zoomIn{
+from{
+opacity:0;
+transform:scale(.9);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+/* Slide Up */
+
+.slide-up{
+animation:slideUp .5s ease;
+}
+
+@keyframes slideUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* Offer Banner */
+
+.offer-banner{
+background:linear-gradient(90deg,#FFD700,#D4A017);
+color:#2B1D12;
+padding:12px;
+margin:15px;
+border-radius:12px;
+text-align:center;
+font-weight:700;
+box-shadow:var(--shadow);
+}
+
+/* Bestseller Ribbon */
+
+.ribbon{
+position:absolute;
+top:12px;
+left:-35px;
+background:#E53935;
+color:#fff;
+padding:6px 40px;
+font-size:12px;
+font-weight:700;
+transform:rotate(-45deg);
+}
+
+/* No Image */
+
+.no-image{
+background:#eee;
+display:flex;
+align-items:center;
+justify-content:center;
+height:150px;
+color:#777;
+font-size:14px;
+border-radius:12px;
+}
+
+/* Back To Top */
+
+#topBtn{
+position:fixed;
+bottom:85px;
+right:18px;
+width:50px;
+height:50px;
+border:none;
+border-radius:50%;
+background:var(--primary);
+color:#2B1D12;
+font-size:22px;
+cursor:pointer;
+display:none;
+box-shadow:var(--shadow);
+z-index:999;
+}
+
+#topBtn:hover{
+background:#FFD700;
+}
+
+/* Utility Classes */
+
+.text-center{
+text-align:center;
+}
+
+.mt-10{margin-top:10px;}
+.mt-20{margin-top:20px;}
+.mt-30{margin-top:30px;}
+
+.mb-10{margin-bottom:10px;}
+.mb-20{margin-bottom:20px;}
+.mb-30{margin-bottom:30px;}
+
+.hidden{
+display:none!important;
+}
+
+.show{
+display:block!important;
+}
