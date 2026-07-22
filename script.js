@@ -103,6 +103,11 @@ function csvToJSON(csv) {
 
 async function loadCategories() {
 
+const categoryId = localStorage.getItem("categoryId");
+alert("Category ID = " + categoryId);
+
+const data = await getCSV(SUBCATEGORY_URL);
+alert(data);
 
     const csv = await getCSV(CATEGORY_URL);
 
