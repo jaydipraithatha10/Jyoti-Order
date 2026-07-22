@@ -45,15 +45,13 @@ overflow-x:hidden;
 /* Header */
 
 .header{
-
 background:linear-gradient(180deg,#3B2416,#2B1B11);
-
-text-align:center;
-
 padding:35px 20px;
-
-box-shadow:0 6px 20px rgba(0,0,0,.25);
-
+text-align:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 }
 
 /* Logo */
