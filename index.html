@@ -5,27 +5,19 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Jyoti Gruh Udhyog | Rajkot</title>
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <style>
 
-/* CSS Part 1 પછી અહીં આવશે */
 *{
 margin:0;
 padding:0;
@@ -91,6 +83,9 @@ border:none;
 border-radius:12px;
 font-size:16px;
 outline:none;
+background:#fff;
+color:#222;
+border:2px solid #D4A017;
 }
 
 .category-grid{
@@ -99,39 +94,20 @@ grid-template-columns:1fr 1fr;
 gap:15px;
 padding:15px;
 }
+
 .category-card{
-background:#2B1D12;
+background:linear-gradient(180deg,#3A2618,#2B1D12);
 border:2px solid #D4A017;
 border-radius:20px;
 padding:20px;
 text-align:center;
 cursor:pointer;
-transition:0.3s;
-box-shadow:0 5px 15px rgba(0,0,0,0.25);
+transition:.3s;
+box-shadow:0 5px 15px rgba(0,0,0,.25);
 }
 
 .category-card:hover{
 transform:translateY(-5px);
-box-shadow:0 8px 20px rgba(212,160,23,0.4);
-}
-
-.category-card img{
-width:90px;
-height:90px;
-object-fit:cover;
-border-radius:15px;
-margin-bottom:12px;
-border:2px solid #D4A017;
-}
-
-.category-card h3{
-font-size:20px;
-color:#D4A017;
-margin-top:5px;
-}
-
-#products{
-padding:15px;
 }
 
 .footer-content{
@@ -164,49 +140,6 @@ background:#25D366;
 color:#fff;
 text-decoration:none;
 border-radius:10px;
-}
-
-/* ===== Premium Category Effect ===== */
-
-.category-card{
-background:linear-gradient(180deg,#3A2618,#2B1D12);
-}
-
-.category-card:active{
-transform:scale(.97);
-}
-
-.category-card img{
-transition:.3s;
-}
-
-.category-card:hover img{
-transform:scale(1.08);
-}
-
-.category-card:hover h3{
-color:#FFD700;
-}
-
-.search-box input{
-background:#fff;
-color:#222;
-border:2px solid #D4A017;
-}
-
-.search-box input::placeholder{
-color:#777;
-}
-
-.search-box input:focus{
-border-color:#FFD700;
-box-shadow:0 0 12px rgba(255,215,0,.4);
-}
-
-.title,
-.our-products h2{
-letter-spacing:1px;
-text-transform:uppercase;
 }
 
 @media(max-width:480px){
@@ -243,6 +176,7 @@ display:block;
 html{
 scroll-behavior:smooth;
 }
+
 </style>
 
 </head>
@@ -253,8 +187,7 @@ scroll-behavior:smooth;
 
 <header>
 
-<img src="logo.png"
-class="logo">
+<img src="logo.png" class="logo">
 
 <h1>JYOTI GRUH UDHYOG</h1>
 
@@ -277,65 +210,12 @@ placeholder="Search Products...">
 
 </div>
 
-<div class="category-grid">
-
-<div class="category-card"
-onclick="openCategory('Khakhra')">
-
-<img src="images/khakhra.jpg">
-
-<h3>Khakhra</h3>
-
-</div>
-
-<div class="category-card"
-onclick="openCategory('Pickles')">
-
-<img src="images/pickles.jpg">
-
-<h3>Pickles</h3>
-
-</div>
-
-<div class="category-card"
-onclick="openCategory('Dry Fruits')">
-
-<img src="images/dryfruits.jpg">
-
-<h3>Dry Fruits</h3>
-
-</div>
-
-<div class="category-card"
-onclick="openCategory('Namkeen')">
-
-<img src="images/namkeen.jpg">
-
-<h3>Namkeen</h3>
-
-</div>
-
-<div class="category-card"
-onclick="openCategory('Bakery')">
-
-<img src="images/bakery.jpg">
-
-<h3>Bakery</h3>
-
-</div>
-
-<div class="category-card"
-onclick="openCategory('Others')">
-
-<img src="images/others.jpg">
-
-<h3>Others</h3>
-
-</div>
+<div class="category-grid" id="categoryGrid">
 
 </div>
 
 <div id="products"></div>
+
 <footer>
 
 <div class="footer-content">
@@ -349,8 +229,11 @@ onclick="openCategory('Others')">
 <p>Premium Homemade Products</p>
 
 <a href="https://wa.me/919712149344" class="whatsapp-btn">
+
 <i class="fa-brands fa-whatsapp"></i>
+
 Order on WhatsApp
+
 </a>
 
 </div>
@@ -360,38 +243,110 @@ Order on WhatsApp
 </div>
 
 <script>
+const SHEET_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=2013716827&single=true&output=csv";
 
-/* JavaScript Part પછી અહીં આવશે */
+fetch(SHEET_URL)
+.then(response=>response.text())
+.then(csv=>{
+
+const rows=csv.trim().split("\n");
+
+let html="";
+
+for(let i=1;i<rows.length;i++){
+
+const cols=rows[i].split(",");
+
+const category=cols[1].trim();
+const image=cols[2].trim();
+const status=cols[3].trim();
+
+if(status==="Active"){
+
+html+=`
+<div class="category-card" onclick="openCategory('${category}')">
+<img src="images/${image}" alt="${category}">
+<h3>${category}</h3>
+</div>
+`;
+
+}
+
+}
+
+document.getElementById("categoryGrid").innerHTML=html;
+
+});
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+const value=this.value.toLowerCase();
+
+document.querySelectorAll(".category-card").forEach(card=>{
+
+card.style.display=
+card.innerText.toLowerCase().includes(value)
+? "block"
+: "none";
+
+});
+
+});
 
 function openCategory(category){
 
-    if(category=="Khakhra"){
-        window.location.href="khakhra.html";
-    }
+switch(category){
 
-    else if(category=="Pickles"){
-        window.location.href="pickles.html";
-    }
+case "Khakhra":
+window.location.href="khakhra.html";
+break;
 
-    else if(category=="Dry Fruits"){
-        window.location.href="dryfruits.html";
-    }
+case "Pickles":
+window.location.href="pickles.html";
+break;
 
-    else if(category=="Namkeen"){
-        window.location.href="namkeen.html";
-    }
+case "Dry Fruits":
+window.location.href="dryfruits.html";
+break;
 
-    else if(category=="Bakery"){
-        window.location.href="bakery.html";
-    }
+case "Namkeen":
+window.location.href="namkeen.html";
+break;
 
-    else if(category=="Others"){
-        window.location.href="others.html";
-    }
+case "Bakery":
+window.location.href="bakery.html";
+break;
+
+case "Others":
+window.location.href="others.html";
+break;
+
+default:
+alert(category+" page is not available.");
 
 }
+
+}
+
 </script>
 
 </body>
 
 </html>
+.category-card img{
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:12px;
+border:2px solid #D4A017;
+}
+
+.category-card h3{
+font-size:20px;
+color:#D4A017;
+}
+
+#products{
+padding:15px;
+}
