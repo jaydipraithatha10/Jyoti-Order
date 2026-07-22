@@ -202,8 +202,7 @@ if(item.CategoryID!=categoryId) return;
 
 container.innerHTML+=`
 
-<div class="card" onclick="openSubCategory('${item.ID}')">
-
+<div class="category-card fade-in" onclick="openSubCategory('${item.ID}')">
 <img src="${item.Image}" alt="">
 
 <h3>${item.SubCategory}</h3>
@@ -216,10 +215,7 @@ container.innerHTML+=`
 
 }
 
-function openSubCategory(id){
-
-localStorage.setItem("subCategoryId",id);
-
-window.location.href="products.html";
-
+function openCategory(id) {
+    localStorage.setItem("categoryId", id);
+    window.location.href = "category.html";
 }
