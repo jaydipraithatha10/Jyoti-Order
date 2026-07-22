@@ -103,11 +103,7 @@ function csvToJSON(csv) {
 
 async function loadCategories() {
 
-const categoryId = localStorage.getItem("categoryId");
-alert("Category ID = " + categoryId);
 
-const data = await getCSV(SUBCATEGORY_URL);
-alert(data);
 
     const csv = await getCSV(CATEGORY_URL);
 
@@ -185,6 +181,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 async function loadSubCategories(){
 
+async function loadSubCategories(){
+
+    alert("loadSubCategories Started");
+
+    const categoryId = localStorage.getItem("categoryId");
+    alert(categoryId);
+
+    const data = await getCSV(SUBCATEGORY_URL);
+    alert(data);
+
+    const list = csvToJSON(data);
 const categoryId = localStorage.getItem("categoryId");
 
 const data = await getCSV(SUBCATEGORY_URL);
