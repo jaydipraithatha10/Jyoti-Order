@@ -1,240 +1,114 @@
-/* ===================================
-   JYOTI GRUH UDHYOG
-   SCRIPT.JS - PART 1
-=================================== */
-
-/* Google Sheet CSV URLs */
-
-const CATEGORY_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=2013716827&single=true&output=csv";
-
-const SUBCATEGORY_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=35788410&single=true&output=csv";
-
-const PRODUCT_URL = "";
-
-/* Global Variables */
-
-let categories = [];
-let subcategories = [];
-let products = [];
-let cart = [];
-
-/* ==========================
-   Loader
-========================== */
-
-function showLoader() {
-    const loader = document.getElementById("loader");
-    if (loader) loader.style.display = "flex";
-}
-
-function hideLoader() {
-    const loader = document.getElementById("loader");
-    if (loader) loader.style.display = "none";
-}
-
-/* ==========================
-   Fetch CSV
-========================== */
-
-async function getCSV(url) {
-
-    try {
-
-        showLoader();
-
-        const response = await fetch(url);
-
-        const csv = await response.text();
-
-        hideLoader();
-
-        return csv;
-
-    } catch (error) {
-
-        hideLoader();
-
-        console.error(error);
-
-        return "";
-
-    }
-
-}
-
-/* ==========================
-   CSV to JSON
-========================== */
-
-function csvToJSON(csv) {
-
-    const rows = csv.trim().split("\n");
-
-    const headers = rows[0].split(",");
-
-    const data = [];
-
-    for (let i = 1; i < rows.length; i++) {
-
-        const obj = {};
-
-        const cols = rows[i].split(",");
-
-        headers.forEach((header, index) => {
-
-            obj[header.trim()] = cols[index]
-                ? cols[index].trim()
-                : "";
-
-        });
-
-        data.push(obj);
-
-    }
-
-    return data;
-
-}
-/* ===================================
-   SCRIPT.JS - PART 2
-=================================== */
-
-/* Load Categories */
-
-async function loadCategories() {
-
-    const csv = await getCSV(CATEGORY_URL);
-
-    if (!csv) return;
-
-    categories = csvToJSON(csv);
-
-    const grid = document.getElementById("categoryGrid");
-
-    if (!grid) return;
-
-    let html = "";
-
-    categories.forEach(item => {
-
-        if (item.Status !== "Active") return;
-
-        html += `
-        <div class="category-card fade-in"
-             onclick="openCategory('${item.ID}')">
-
-            <img src="${item.Image}"
-                 alt="${item.Category}"
-                 onerror="this.src='no-image.png'">
-
-            <h3>${item.Category}</h3>
-
-        </div>
-        `;
-
-    });
-
-    grid.innerHTML = html;
-
-}
-
-/* Search Category */
-
-function searchCategory() {
-
-    const keyword = document
-        .getElementById("search")
-        .value
-        .toLowerCase();
-
-    document.querySelectorAll(".category-card").forEach(card => {
-
-        const text = card.innerText.toLowerCase();
-
-        card.style.display = text.includes(keyword) ? "" : "none";
-
-    });
-
-}
-
-/* Open Category */
-
-function openCategory(id) {
-
-    localStorage.setItem("categoryId", id);
-
-    window.location.href = "category.html";
-
-}
-/* ===================================
-   SCRIPT.JS - PART 3
-=================================== */
-
-/* Load Sub Categories */
-
-async function loadSubCategories() {
-
-    const categoryId = localStorage.getItem("categoryId");
-
-    if (!categoryId) return;
-
-    const csv = await getCSV(SUBCATEGORY_URL);
-
-    if (!csv) return;
-
-    subcategories = csvToJSON(csv);
-
-    const container = document.getElementById("subcategoryContainer");
-
-    if (!container) return;
-
-    let html = "";
-
-    subcategories.forEach(item => {
-
-        if (item.Status !== "Active") return;
-
-        if (item.CategoryID !== categoryId) return;
-
-        html += `
-        <div class="category-card fade-in"
-             onclick="openSubCategory('${item.ID}')">
-
-            <img src="${item.Image}"
-                 alt="${item.SubCategory}"
-                 onerror="this.src='no-image.png'">
-
-            <h3>${item.SubCategory}</h3>
-
-        </div>
-        `;
-
-    });
-
-    container.innerHTML = html;
-
-}
-
-/* Open Sub Category */
-
-function openSubCategory(id) {
-
-    localStorage.setItem("subCategoryId", id);
-
-    window.location.href = "products.html";
-
-}
-
-/* Auto Load */
+const categoryURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=2013716827&single=true&output=csv";
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    if (document.getElementById("categoryGrid")) {
+    if(document.getElementById("categoryGrid")){
         loadCategories();
     }
 
-    if (document.getElementById("subcategoryContainer")) {
-        loadSubCategories();
-    }
-
 });
+
+let allCategories = [];
+
+/* ===========================
+   LOAD CATEGORIES
+=========================== */
+
+async function loadCategories(){
+
+    const res = await fetch(categoryURL);
+    const csv = await res.text();
+
+    const rows = csv.trim().split("\n").slice(1);
+
+    const grid = document.getElementById("categoryGrid");
+
+    grid.innerHTML="";
+
+    allCategories=[];
+
+    rows.forEach(row=>{
+
+        const col=row.split(",");
+
+        const id=col[0];
+        const name=col[1];
+        const image=col[2];
+        const status=col[3];
+
+        if(status.trim()!="Active") return;
+
+        allCategories.push({
+            id,
+            name,
+            image
+        });
+
+    });
+
+    showCategories(allCategories);
+
+}
+
+/* ===========================
+   SHOW CATEGORIES
+=========================== */
+
+function showCategories(data){
+
+    const grid=document.getElementById("categoryGrid");
+
+    grid.innerHTML="";
+
+    data.forEach(item=>{
+
+        grid.innerHTML+=`
+
+        <div class="category-card"
+        onclick="openCategory('${item.id}')">
+
+            <img src="${item.image}"
+            alt="${item.name}">
+
+            <h3>${item.name}</h3>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+/* ===========================
+   SEARCH
+=========================== */
+
+function searchCategory(){
+
+    const value=document
+    .getElementById("search")
+    .value
+    .toLowerCase();
+
+    const filtered=allCategories.filter(item=>
+
+        item.name.toLowerCase().includes(value)
+
+    );
+
+    showCategories(filtered);
+
+}
+
+/* ===========================
+   OPEN CATEGORY
+=========================== */
+
+function openCategory(id){
+
+    localStorage.setItem("categoryId",id);
+
+    window.location.href="category.html";
+
+}
