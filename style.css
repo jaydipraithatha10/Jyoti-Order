@@ -163,15 +163,17 @@ body{
    CATEGORY CARD
 =========================== */
 
-.category-card{
-    background:#fff;
-    border-radius:18px;
-    overflow:hidden;
-    cursor:pointer;
-    text-align:center;
-    border:1px solid #eee;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-    transition:.3s;
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    padding:15px;
+}
+
+@media(min-width:768px){
+    .category-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
 }
 
 .category-card:hover{
