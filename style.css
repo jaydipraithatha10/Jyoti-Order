@@ -1079,6 +1079,41 @@ padding-bottom:90px;
 
 }
 
+/*==============================
+ANNOUNCEMENT BAR
+==============================*/
+
+.announcement{
+
+padding:15px 20px;
+
+}
+
+.announcement-box{
+
+background:linear-gradient(90deg,#D4AF37,#F0CF62);
+
+padding:15px 20px;
+
+border-radius:50px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:12px;
+
+font-size:18px;
+
+font-weight:700;
+
+color:#123524;
+
+box-shadow:var(--shadow);
+
+}
 /*==================================================
 THE END
 ==================================================*/
