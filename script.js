@@ -196,3 +196,78 @@ loadCategories();
 }
 
 });
+/* ===================================
+   SCRIPT.JS - PART 3
+=================================== */
+
+/* Load Subcategories */
+
+async function loadSubcategories() {
+
+    const csv = await getCSV(SUBCATEGORY_URL);
+
+    subcategories = csvToJSON(csv);
+
+    const selectedCategory = localStorage.getItem("selectedCategory");
+
+    let html = "";
+
+    subcategories.forEach(item => {
+
+        if (
+            item.Category === selectedCategory &&
+            item.Status === "Active"
+        ) {
+
+            html += `
+            <div class="category-card fade-in"
+            onclick="openSubcategory('${item.Subcategory}')">
+
+                <img src="${item.Image}"
+                alt="${item.Subcategory}"
+                onerror="this.src='no-image.png'">
+
+                <h3>${item.Subcategory}</h3>
+
+            </div>
+            `;
+
+        }
+
+    });
+
+    const grid = document.getElementById("subcategoryGrid");
+
+    if (grid) {
+        grid.innerHTML = html;
+    }
+
+    const title = document.getElementById("pageTitle");
+
+    if (title) {
+        title.innerText = selectedCategory;
+    }
+
+}
+
+/* Open Subcategory */
+
+function openSubcategory(name) {
+
+    localStorage.setItem("selectedSubcategory", name);
+
+    window.location.href = "products.html";
+
+}
+
+/* Auto Load */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    if (document.getElementById("subcategoryGrid")) {
+
+        loadSubcategories();
+
+    }
+
+});
