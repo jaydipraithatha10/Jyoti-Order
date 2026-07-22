@@ -819,3 +819,85 @@ font-size:18px;
 font-weight:bold;
 cursor:pointer;
 }
+/* Hero Button */
+
+.shop-btn{
+display:inline-block;
+margin-top:20px;
+padding:14px 35px;
+background:#D4AF37;
+color:#fff !important;
+text-decoration:none;
+border-radius:50px;
+font-size:18px;
+font-weight:bold;
+box-shadow:0 4px 12px rgba(0,0,0,.3);
+}
+
+.shop-btn:hover{
+background:#b88a00;
+}
+
+/* Contact Buttons */
+
+.contact-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.call-btn,
+.wa-btn{
+display:inline-block;
+padding:12px 25px;
+border-radius:30px;
+text-decoration:none;
+color:#fff !important;
+font-weight:bold;
+font-size:18px;
+}
+
+.call-btn{
+background:#D4AF37;
+}
+
+.wa-btn{
+background:#25D366;
+}
+
+/* Hero */
+
+.hero{
+text-align:center;
+padding:40px 20px;
+}
+
+/* Search */
+
+.search-box{
+text-align:center;
+margin:20px;
+}
+
+.search-box input{
+width:100%;
+max-width:600px;
+height:55px;
+border-radius:40px;
+padding:0 20px;
+font-size:20px;
+border:3px solid #D4AF37;
+}
+
+/* Offer Cards */
+
+.offer-item{
+background:#fff;
+color:#123524;
+padding:15px;
+margin:10px 0;
+border-radius:15px;
+font-weight:bold;
+}
