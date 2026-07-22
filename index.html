@@ -188,3 +188,82 @@ target="_blank">
 <p>Premium Gujarati Snacks & Pickles</p>
 
 </footer>
+<!-- ==========================
+     FLOATING CART BAR
+========================== -->
+
+<div class="cart-bar">
+
+<div>
+🛒 <span id="cartCount">0</span>
+</div>
+
+<div id="cartTotal">
+₹0
+</div>
+
+<button onclick="window.location.href='cart.html'">
+View Cart
+</button>
+
+</div>
+
+<!-- ==========================
+     WHATSAPP FLOATING BUTTON
+========================== -->
+
+<a href="https://wa.me/919712149344"
+class="whatsapp-float"
+target="_blank"
+aria-label="WhatsApp">
+
+💬
+
+</a>
+
+<!-- ==========================
+     BACK TO TOP
+========================== -->
+
+<button id="topBtn"
+onclick="scrollToTop()"
+aria-label="Back to Top">
+
+⬆
+
+</button>
+
+<!-- ==========================
+     JAVASCRIPT
+========================== -->
+
+<script src="script.js"></script>
+
+<script>
+
+function scrollToTop(){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+window.onscroll=function(){
+
+const btn=document.getElementById("topBtn");
+
+if(document.documentElement.scrollTop>250){
+
+btn.style.display="block";
+
+}else{
+
+btn.style.display="none";
+
+}
+
+};
+
+</script>
