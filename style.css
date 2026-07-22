@@ -784,3 +784,28 @@ font-weight:600;
 box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 
+.contact-buttons{
+display:flex;
+gap:15px;
+justify-content:center;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.call-btn,
+.wa-btn{
+padding:14px 28px;
+border-radius:40px;
+text-decoration:none;
+font-size:18px;
+font-weight:bold;
+color:#fff;
+}
+
+.call-btn{
+background:#D4AF37;
+}
+
+.wa-btn{
+background:#25D366;
+}
