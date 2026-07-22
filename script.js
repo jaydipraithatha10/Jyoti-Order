@@ -66,15 +66,7 @@ function showCategories(data){
 
             <img src="${item.image}" alt="${item.name}">
 
-            <div class="category-content">
-
-                <h3>${item.name}</h3>
-
-                <span class="view-more">
-                    જુઓ →
-                </span>
-
-            </div>
+            <h3>${item.name}</h3>
 
         </div>
         `;
@@ -82,7 +74,6 @@ function showCategories(data){
     });
 
 }
-
 
 /* ===========================
    SEARCH
