@@ -271,3 +271,124 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+/* ===================================
+   SCRIPT.JS - PART 4
+=================================== */
+
+/* Load Products */
+
+async function loadProducts() {
+
+    const csv = await getCSV(PRODUCT_URL);
+
+    products = csvToJSON(csv);
+
+    const category = localStorage.getItem("selectedCategory");
+    const subcategory = localStorage.getItem("selectedSubcategory");
+
+    let html = "";
+
+    products.forEach(item => {
+
+        if (
+            item.Category === category &&
+            item.Subcategory === subcategory &&
+            item.Status === "Active"
+        ) {
+
+            html += `
+            <div class="product-card fade-in">
+
+                <img src="${item.Image}"
+                alt="${item.Product}"
+                onerror="this.src='no-image.png'">
+
+                <h3>${item.Product}</h3>
+
+                <p class="price">₹${item.Price}</p>
+
+                <div class="qty-box">
+
+                    <button onclick="changeQty('${item.ID}',-1)">−</button>
+
+                    <span id="qty-${item.ID}">1</span>
+
+                    <button onclick="changeQty('${item.ID}',1)">+</button>
+
+                </div>
+
+                <button class="add-btn"
+                onclick="addToCart('${item.ID}')">
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+            `;
+
+        }
+
+    });
+
+    const box = document.getElementById("productGrid");
+
+    if (box) {
+
+        box.innerHTML = html;
+
+    }
+
+}
+
+/* Quantity */
+
+const qty = {};
+
+function changeQty(id, value) {
+
+    if (!qty[id]) qty[id] = 1;
+
+    qty[id] += value;
+
+    if (qty[id] < 1) qty[id] = 1;
+
+    document.getElementById("qty-" + id).innerText = qty[id];
+
+}
+
+/* Add To Cart */
+
+function addToCart(id) {
+
+    const product = products.find(p => p.ID == id);
+
+    if (!product) return;
+
+    cart.push({
+
+        ...product,
+
+        qty: qty[id] || 1
+
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCartBar();
+
+    alert(product.Product + " Added To Cart");
+
+}
+
+/* Auto Load */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    if (document.getElementById("productGrid")) {
+
+        loadProducts();
+
+    }
+
+});
