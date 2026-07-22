@@ -57,15 +57,15 @@ justify-content:center;
 /* Logo */
 
 .logo{
-display:block;
 width:120px;
 height:120px;
-margin:0 auto;
+display:block;
+margin:0 auto 20px auto;
 border-radius:50%;
 border:5px solid var(--gold);
 background:#fff;
 object-fit:cover;
-box-shadow:0 8px 25px rgba(0,0,0,.30);
+flex-shrink:0;
 }
 
 /* Brand Name */
@@ -1000,11 +1000,10 @@ color:#fff;
 IMAGE EFFECT
 ==================================================*/
 
+
 img{
-max-width:100%;
 display:block;
 }
-
 .category-card img,
 .product-card img{
 transition:.4s;
