@@ -65,30 +65,23 @@ async function loadSubCategories() {
 }
 
 // Show Sub Categories
-function showSubCategories(data) {
+function showSubCategories(data){
 
     const container = document.getElementById("subcategoryContainer");
 
     container.innerHTML = "";
 
-    if (data.length === 0) {
-        container.innerHTML =
-        "<h3 style='text-align:center;'>No Sub Category Found</h3>";
-        return;
-    }
-
     data.forEach(item => {
 
         container.innerHTML += `
-        <div class="category-card" onclick="openProducts('${item.id}')">
+        <div class="category-card"
+             onclick="alert('Clicked ID = ${item.id}')">
 
-            <img src="${item.image || 'logo.png'}" alt="${item.name}">
+            <img src="${item.image || 'logo.png'}">
 
             <h3>${item.name}</h3>
 
-        </div>
-        `;
-
+        </div>`;
     });
 
 }
