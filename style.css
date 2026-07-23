@@ -276,3 +276,120 @@ body{
 }
 
 }
+/* ===========================
+   HERO SLIDER
+=========================== */
+
+.hero{
+    padding:15px;
+}
+
+.slider{
+    position:relative;
+    width:100%;
+    height:220px;
+    overflow:hidden;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
+    background:#eee;
+}
+
+.slider img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:opacity .6s ease, transform 6s ease;
+    animation:zoom 6s linear infinite;
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.08);
+    }
+}
+
+/* ===========================
+   SLIDER BUTTONS
+=========================== */
+
+.slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:rgba(0,0,0,.45);
+    color:#fff;
+    font-size:24px;
+    cursor:pointer;
+    transition:.3s;
+    z-index:10;
+}
+
+.slider-btn:hover{
+    background:#8B5A2B;
+}
+
+.prev{
+    left:12px;
+}
+
+.next{
+    right:12px;
+}
+
+/* ===========================
+   DOTS
+=========================== */
+
+.slider-dots{
+    position:absolute;
+    bottom:12px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:8px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:rgba(255,255,255,.6);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.dot.active{
+    background:#D4AF37;
+    transform:scale(1.3);
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:480px){
+
+.slider{
+    height:180px;
+}
+
+.slider-btn{
+    width:38px;
+    height:38px;
+    font-size:20px;
+}
+
+.dot{
+    width:10px;
+    height:10px;
+}
+
+}
