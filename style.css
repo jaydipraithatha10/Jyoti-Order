@@ -138,6 +138,7 @@ body{
     background:#fff;
     border-radius:20px;
     padding:20px;
+    text-align:center;
     box-shadow:0 4px 12px rgba(0,0,0,.1);
 }
 
@@ -149,6 +150,7 @@ body{
 .contact p{
     font-size:18px;
     margin:10px 0;
+    text-align:center;
 }
 
 .contact-btn{
