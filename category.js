@@ -29,14 +29,14 @@ async function loadSubCategories(){
         const id = col[0].trim();
         const catId = col[1].trim();
         const name = col[2].trim();
-        const image = col[3].trim();
+        const image = col[3].trim().replace(/"/g, "");
         const status = col[4].trim().toLowerCase();
 
         if(catId !== categoryId) return;
 
         if(status !== "active") return;
 
-        <img src="${image}" alt="${name}" onerror="this.style.border='2px solid red'; console.log(this.src)">
+        const image = col[3].trim().replace(/"/g, "");
 
             <img src="${image}" alt="${name}">
 
