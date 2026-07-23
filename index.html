@@ -1,179 +1,84 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyoti Gruh Udhyog</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Jyoti Gruh Udhyog</title>
-
-<meta name="description"
-content="Premium Gujarati Snacks">
-
-<meta name="theme-color"
-content="#5C3A21">
-
-<link rel="icon" href="logo.png">
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+    <!-- Header -->
+    <header>
 
-<header class="header">
+        <img src="logo.png" class="logo">
 
-<img src="logo.png"
-class="logo"
-alt="Jyoti Gruh Udhyog">
+        <h1>Jyoti Gruh Udhyog</h1>
 
-<h1>Jyoti Gruh Udhyog</h1>
+        <p>Premium Gujarati Snacks</p>
 
-<p>ગુજરાતના અસલી સ્વાદની ઓળખ</p>
+    </header>
 
-</header>
+    <!-- Search -->
+    <section class="search-section">
 
-<!-- ================= HERO ================= -->
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="Search Category..."
+            onkeyup="searchCategory()">
 
-<section class="hero">
+    </section>
 
-<h2>
-ગુજરાતના શ્રેષ્ઠ નાસ્તા હવે તમારા ઘર સુધી
-</h2>
+    <!-- Category -->
+    <section>
 
-<p>
+        <h2 class="title">
+            Our Categories
+        </h2>
 
-Khakhra • Pickle • Farsan • Papad
+        <div id="categoryContainer">
 
-</p>
+        </div>
 
-<a href="#categoryGrid"
-class="shop-btn">
+    </section>
 
-🛒 ખરીદી શરૂ કરો
+    <!-- Contact -->
 
-</a>
+    <section class="contact">
 
-</section>
+        <h2>અમારો સંપર્ક</h2>
 
-<!-- ================= SEARCH ================= -->
+        <p>📍 Rajkot, Gujarat</p>
 
-<section>
+        <p>📞 +91 9712149344</p>
 
-<div class="search-box">
+        <a href="tel:+919712149344">Call</a>
 
-<input
+        |
 
-type="text"
+        <a href="https://wa.me/919712149344">
+            WhatsApp
+        </a>
 
-id="search"
+    </section>
 
-placeholder="🔍 Category શોધો..."
+    <!-- Footer -->
 
-onkeyup="searchCategory()">
+    <footer>
 
-</div>
+        <h2>Jyoti Gruh Udhyog</h2>
 
-</section>
+        <p>Premium Gujarati Snacks</p>
 
-<!-- ================= CATEGORIES ================= -->
+        <p>© 2026 All Rights Reserved</p>
 
-<section>
+    </footer>
 
-<h2 class="section-title">
-
-અમારી કેટેગરીઓ
-
-</h2>
-
-<div
-id="categoryGrid"
-class="category-grid">
-
-<!-- Google Sheet Categories -->
-
-</div>
-
-</section>
-
-<!-- ================= CONTACT ================= -->
-
-<section class="contact-section">
-
-<h2>
-
-અમારો સંપર્ક
-
-</h2>
-
-<p>
-
-📍 Rajkot, Gujarat
-
-</p>
-
-<p>
-
-📞 +91 9712149344
-
-</p>
-
-<div class="contact-buttons">
-
-<a
-href="tel:+919712149344"
-class="call-btn">
-
-📞 Call
-
-</a>
-
-<a
-href="https://wa.me/919712149344"
-
-class="wa-btn"
-
-target="_blank">
-
-💬 WhatsApp
-
-</a>
-
-</div>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
-
-<h3>Jyoti Gruh Udhyog</h3>
-
-<p>Premium Gujarati Snacks</p>
-
-<p class="copyright">
-© 2026 All Rights Reserved
-</p>
-
-</footer>
-<!-- ================= FLOATING WHATSAPP ================= -->
-
-<a
-
-href="https://wa.me/919712149344"
-
-class="whatsapp-float"
-
-target="_blank">
-
-💬
-
-</a>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
