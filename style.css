@@ -54,17 +54,17 @@ body{
 }
 
 .slider{
-    overflow:hidden;
-    border-radius:20px;
-    box-shadow:0 6px 18px rgba(0,0,0,.15);
+    height:220px;
+    background:#fff;
 }
 
 .slider img{
     width:100%;
-    height:200px;
-    object-fit:cover;
-    display:block;
+    height:100%;
+    object-fit:contain;
+    background:#fff;
 }
+
 
 /* ===========================
    SEARCH
@@ -382,11 +382,27 @@ body{
 }
 
 .slider-btn{
-    width:38px;
-    height:38px;
-    font-size:20px;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:rgba(0,0,0,.45);
+    color:#fff;
+    font-size:22px;
+    z-index:100;
+    cursor:pointer;
 }
 
+.prev{
+    left:12px;
+}
+
+.next{
+    right:12px;
+}
 .dot{
     width:10px;
     height:10px;
