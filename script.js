@@ -12,9 +12,9 @@ let allCategories = [];
 // ===========================
 
 const banners = [
-    "banner1.jpg",
-    "banner2.jpg",
-    "banner3.jpg"
+    "banner1.png",
+    "banner2.png",
+    "banner3.png"
 ];
 
 let currentBanner = 0;
