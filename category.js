@@ -1,70 +1,88 @@
 // ===========================
-// SUB CATEGORY CSV
+// Google Sheet CSV URL
 // ===========================
 
 const subCategoryURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=35788410&single=true&output=csv";
 
+// ===========================
+// Get Category ID
+// ===========================
+
 const categoryId = localStorage.getItem("categoryId");
 
 // ===========================
-// LOAD SUB CATEGORIES
+// Load Sub Categories
 // ===========================
 
-async function loadSubCategories(){
+async function loadSubCategories() {
 
-    const res = await fetch(subCategoryURL);
-    const csv = await res.text();
+    try {
 
-    const rows = csv.trim().split("\n").slice(1);
+        const response = await fetch(subCategoryURL);
+        const csv = await response.text();
 
-    const grid = document.getElementById("subCategoryGrid");
+        const rows = csv.trim().split("\n").slice(1);
 
-    grid.innerHTML = "";
+        const grid = document.getElementById("subCategoryGrid");
 
-    rows.forEach(row=>{
+        grid.innerHTML = "";
 
-        const col = row.split(",");
+        rows.forEach(row => {
 
-        const id = col[0].trim();
-        const catId = col[1].trim();
-        const name = col[2].trim();
-        const image = col[3].trim().replace(/"/g, "");
-        const status = col[4].trim().toLowerCase();
+            const col = row.split(",");
 
-        if(catId !== categoryId) return;
+            const id = col[0]?.trim();
+            const catId = col[1]?.trim();
+            const name = col[2]?.trim();
+            const image = col[3]?.trim().replace(/"/g, "");
+            const status = col[4]?.trim().toLowerCase();
 
-        if(status !== "active") return;
+            if (catId !== categoryId) return;
 
-        const image = col[3].trim().replace(/"/g, "");
+            if (status !== "active") return;
 
-            <img src="${image}" alt="${name}">
+            grid.innerHTML += `
+                <div class="card" onclick="openProducts('${id}','${name}')">
 
-            <div class="content">
+                    <img src="${image}" alt="${name}">
 
-                <h2>${name}</h2>
+                    <div class="content">
 
-                <button>Explore →</button>
+                        <h2>${name}</h2>
 
-            </div>
+                        <button>Explore →</button>
 
-        </div>`;
-    });
+                    </div>
+
+                </div>
+            `;
+
+        });
+
+    } catch (error) {
+
+        console.error("Error Loading Sub Categories:", error);
+
+    }
 
 }
 
 // ===========================
-// OPEN PRODUCTS
+// Open Products
 // ===========================
 
-function openProducts(id,name){
+function openProducts(id, name) {
 
-    localStorage.setItem("subCategoryId",id);
+    localStorage.setItem("subCategoryId", id);
+    localStorage.setItem("subCategoryName", name);
 
-    localStorage.setItem("subCategoryName",name);
-
-    window.location.href="products.html";
+    window.location.href = "products.html";
 
 }
 
-document.addEventListener("DOMContentLoaded",loadSubCategories);
+// ===========================
+// Page Load
+// ===========================
+
+document.addEventListener("DOMContentLoaded", loadSubCategories);
