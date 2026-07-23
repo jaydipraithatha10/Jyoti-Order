@@ -188,9 +188,11 @@ footer{
 }
 
 footer img{
-    width:70px;
+    width:45px;
+    height:45px;
     border-radius:50%;
-    margin-bottom:10px;
+    object-fit:cover;
+    margin-bottom:8px;
 }
 
 footer h3{
