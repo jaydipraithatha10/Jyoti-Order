@@ -234,3 +234,207 @@ section{
     color:#888;
 
 }
+/*====================================
+ SECTION TITLE
+====================================*/
+
+.section-title{
+
+    text-align:center;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+    margin-bottom:25px;
+
+    position:relative;
+
+}
+
+.section-title::after{
+
+    content:"";
+
+    width:80px;
+
+    height:4px;
+
+    background:var(--gold);
+
+    display:block;
+
+    margin:10px auto 0;
+
+    border-radius:20px;
+
+}
+
+/*====================================
+ CATEGORY GRID
+====================================*/
+
+.category-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+/*====================================
+ CATEGORY CARD
+====================================*/
+
+.category-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    border:2px solid transparent;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.category-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--gold);
+
+    box-shadow:0 14px 28px rgba(0,0,0,.15);
+
+}
+
+.category-card img{
+
+    width:100%;
+
+    aspect-ratio:1/1;
+
+    object-fit:cover;
+
+}
+
+.category-card h3{
+
+    padding:15px;
+
+    text-align:center;
+
+    color:var(--primary);
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+/*====================================
+ CONTACT SECTION
+====================================*/
+
+.contact-section{
+
+    margin:20px;
+
+    padding:30px;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.contact-section h2{
+
+    color:var(--primary);
+
+    font-size:28px;
+
+    margin-bottom:15px;
+
+}
+
+.contact-section p{
+
+    margin:10px 0;
+
+    color:var(--light);
+
+    font-size:16px;
+
+}
+
+/*====================================
+ CONTACT BUTTONS
+====================================*/
+
+.contact-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
+
+}
+
+.call-btn,
+.wa-btn{
+
+    padding:14px 24px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    color:#fff;
+
+    transition:.3s;
+
+}
+
+.call-btn{
+
+    background:var(--primary);
+
+}
+
+.call-btn:hover{
+
+    background:var(--primary-dark);
+
+}
+
+.wa-btn{
+
+    background:#25D366;
+
+}
+
+.wa-btn:hover{
+
+    transform:translateY(-3px);
+
+}
