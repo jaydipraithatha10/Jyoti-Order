@@ -141,6 +141,6 @@ function openProducts(id){
 
     localStorage.setItem("subCategoryId",id);
 
-    window.location.href="products.html";
+    window.location.href = "product.html";
 
 }
