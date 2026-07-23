@@ -36,9 +36,7 @@ async function loadSubCategories(){
 
         if(status !== "active") return;
 
-        grid.innerHTML += `
-        <div class="card"
-             onclick="openProducts('${id}','${name}')">
+        <img src="${image}" alt="${name}" onerror="this.style.border='2px solid red'; console.log(this.src)">
 
             <img src="${image}" alt="${name}">
 
