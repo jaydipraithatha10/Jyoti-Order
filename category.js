@@ -75,7 +75,7 @@ function showSubCategories(data){
 
         container.innerHTML += `
         <div class="category-card"
-             onclick="alert('Clicked ID = ${item.id}')">
+        onclick="openProducts('${item.id}')"
 
             <img src="${item.image || 'logo.png'}">
 
