@@ -1,97 +1,68 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sub Categories | Jyoti Gruh Udhyog</title>
+<title>Khakhra</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="category.css">
 
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header class="header">
 
-<a href="index.html" class="back-btn">←</a>
+<a href="index.html" class="back-btn">&#8592;</a>
 
-<img src="logo.png" class="logo" alt="Logo">
+<img src="logo.png" class="logo">
 
-<h1 id="categoryTitle">Category</h1>
+<h1>Khakhra</h1>
 
 <p>તમારી પસંદગીની કેટેગરી પસંદ કરો</p>
 
 </header>
 
-<!-- ================= SEARCH ================= -->
+<section class="cards">
 
-<section>
+<div class="card"
+onclick="location.href='products.html?type=homemade'">
 
-<div class="search-box">
+<img src="homemade.jpg">
 
-<input
-type="text"
-id="searchSub"
-placeholder="🔍 Sub Category શોધો..."
-onkeyup="searchSubCategory()">
+<div class="content">
+
+<h2>🫓 Home Made</h2>
+
+<p>Traditional Taste & Handmade Quality</p>
+
+<button>Explore →</button>
+
+</div>
+
+</div>
+
+<div class="card"
+onclick="location.href='products.html?type=machine'">
+
+<img src="machine.jpg">
+
+<div class="content">
+
+<h2>🏭 Machine Made</h2>
+
+<p>Premium Quality & Perfect Finish</p>
+
+<button>Explore →</button>
+
+</div>
 
 </div>
 
 </section>
-
-<!-- ================= SUB CATEGORY ================= -->
-
-<section>
-
-<h2 class="section-title">
-
-સબ કેટેગરી
-
-</h2>
-
-<div
-id="subcategoryContainer"
-class="category-grid">
-
-<!-- Dynamic Data -->
-
-</div>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
-
-<h3>Jyoti Gruh Udhyog</h3>
-
-<p>Premium Gujarati Snacks</p>
-
-<p class="copyright">
-
-© 2026 All Rights Reserved
-
-</p>
-
-</footer>
-
-<!-- ================= WHATSAPP ================= -->
-
-<a
-href="https://wa.me/919712149344"
-class="whatsapp-float"
-target="_blank">
-
-💬
-
-</a>
-
-<script src="category.js"></script>
 
 </body>
 
