@@ -6,311 +6,47 @@
 
 <title>My Cart | Jyoti Gruh Udhyog</title>
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#f8f3ea;
-padding-bottom:100px;
-}
-
-header{
-position:sticky;
-top:0;
-background:#5b3716;
-color:#fff;
-padding:15px;
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.back{
-color:#fff;
-text-decoration:none;
-font-size:28px;
-}
-
-header h1{
-font-size:24px;
-}
-
-#cartItems{
-padding:15px;
-}
-
-.item{
-background:#fff;
-padding:18px;
-margin-bottom:15px;
-border-radius:15px;
-box-shadow:0 4px 10px rgba(0,0,0,.1);
-}
-
-.item h3{
-color:#5b3716;
-margin-bottom:8px;
-}
-
-.weight{
-color:#777;
-margin-bottom:5px;
-}
-
-.price{
-font-size:24px;
-font-weight:bold;
-color:#b8860b;
-margin-bottom:15px;
-}
-
-.qty{
-display:flex;
-justify-content:flex-end;
-align-items:center;
-gap:10px;
-}
-
-.qty button{
-width:40px;
-height:40px;
-border:none;
-border-radius:50%;
-background:#b8860b;
-color:#fff;
-font-size:22px;
-cursor:pointer;
-}
-
-.qty span{
-font-size:20px;
-font-weight:bold;
-min-width:25px;
-text-align:center;
-}
-
-.empty{
-text-align:center;
-padding:60px 20px;
-font-size:22px;
-color:#777;
-}
-
-#bottomBar{
-position:fixed;
-left:0;
-right:0;
-bottom:0;
-background:#5b3716;
-color:#fff;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px;
-}
-
-#bottomBar button{
-background:#25D366;
-border:none;
-color:#fff;
-padding:12px 20px;
-border-radius:10px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
 
-<header>
+<header class="header">
 
-<a href="handmade-khakhra.html" class="back">⬅</a>
+<a href="products.html" class="back-btn">←</a>
+
+<img src="logo.png" class="logo">
 
 <h1>My Cart</h1>
 
+<p>તમારો ઓર્ડર ચકાસો</p>
+
 </header>
 
-<div id="cartItems"></div>
+<section>
 
-<div id="bottomBar">
-
-<div>
-
-<b>Total :</b>
-
-₹ <span id="totalAmount">0</span>
+<div id="cartContainer">
 
 </div>
 
-<button id="orderBtn">
+<h2 style="text-align:center;margin:20px;">
+Total : ₹<span id="totalPrice">0</span>
+</h2>
 
-WhatsApp Order
+<div style="text-align:center;margin-bottom:40px;">
+
+<button class="shop-btn"
+onclick="sendWhatsApp()">
+
+📲 Order on WhatsApp
 
 </button>
 
 </div>
-<script>
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+</section>
 
-const cartItems = document.getElementById("cartItems");
-const totalAmount = document.getElementById("totalAmount");
-
-function saveCart(){
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-function getTotal(){
-    return cart.reduce((sum,item)=>sum + (item.price * item.qty),0);
-}
-
-function renderCart(){
-
-    cartItems.innerHTML = "";
-
-    if(cart.length === 0){
-
-        cartItems.innerHTML = `
-        <div class="empty">
-            🛒<br><br>
-            તમારું Cart ખાલી છે.
-        </div>`;
-
-        totalAmount.textContent = "0";
-        return;
-    }
-
-    cart.forEach((item,index)=>{
-
-        cartItems.innerHTML += `
-
-        <div class="item">
-
-            <h3>${item.name}</h3>
-
-            <div class="weight">${item.weight}</div>
-
-            <div class="price">₹${item.price}</div>
-
-            <div class="qty">
-
-                <button onclick="changeQty(${index},-1)">−</button>
-
-                <span>${item.qty}</span>
-
-                <button onclick="changeQty(${index},1)">+</button>
-
-                <button onclick="removeItem(${index})">🗑</button>
-
-            </div>
-
-        </div>
-
-        `;
-
-    });
-
-    totalAmount.textContent = getTotal();
-
-}
-function changeQty(index,value){
-
-    if(value===1){
-
-        cart[index].qty++;
-
-    }else{
-
-        cart[index].qty--;
-
-        if(cart[index].qty<=0){
-
-            cart.splice(index,1);
-
-        }
-
-    }
-
-    saveCart();
-
-    renderCart();
-
-}
-
-function removeItem(index){
-
-    if(confirm("આ Product Cart માંથી કાઢી નાખવો છે?")){
-
-        cart.splice(index,1);
-
-        saveCart();
-
-        renderCart();
-
-    }
-
-}
-
-window.addEventListener("storage",function(){
-
-    cart=JSON.parse(localStorage.getItem("cart"))||[];
-
-    renderCart();
-
-});
-document.getElementById("orderBtn").addEventListener("click",function(){
-
-    if(cart.length===0){
-
-        alert("કૃપા કરીને પહેલા Product ઉમેરો.");
-
-        return;
-
-    }
-
-    let message = "🙏 નમસ્તે, મારે નીચે મુજબ ઓર્ડર કરવો છે.\n\n";
-
-    cart.forEach(function(item){
-
-        message += item.name + " (" + item.weight + ")";
-        message += "\nQty : " + item.qty;
-        message += "\nPrice : ₹" + item.price;
-        message += "\nSubtotal : ₹" + (item.qty * item.price);
-        message += "\n\n";
-
-    });
-
-    message += "-------------------------\n";
-    message += "કુલ રકમ : ₹" + getTotal();
-    message += "\n\nJyoti Gruh Udhyog";
-
-    window.open(
-        "https://wa.me/919712149344?text=" +
-        encodeURIComponent(message),
-        "_blank"
-    );
-
-    cart = [];
-
-    saveCart();
-
-    renderCart();
-
-});
-
-renderCart();
-
-</script>
+<script src="cart.js"></script>
 
 </body>
 </html>
