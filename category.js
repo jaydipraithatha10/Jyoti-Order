@@ -50,7 +50,7 @@ async function loadSubCategories() {
 
         if (col[1].trim() !== categoryId) return;
 
-        if (col[4].trim().toLowerCase() !== "active") return;
+        
 
         allSubCategories.push({
             id: col[0].trim(),
