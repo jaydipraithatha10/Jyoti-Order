@@ -150,3 +150,47 @@ body{
 }
 
 }
+.cards{
+    display:grid;
+    gap:30px;
+    padding:25px;
+}
+
+.card{
+    background:#fff;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.card img{
+    width:100%;
+    height:260px;
+    object-fit:contain;
+    object-position:center;
+    background:#fff;
+    display:block;
+    padding:15px;
+}
+
+.content{
+    padding:25px;
+    text-align:center;
+}
+
+.content h2{
+    font-size:36px;
+    color:#5c3a21;
+    margin-bottom:20px;
+}
+
+.content button{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:50px;
+    font-size:28px;
+    color:#fff;
+    cursor:pointer;
+    background:linear-gradient(90deg,#8c5a2b,#d9b232);
+}
