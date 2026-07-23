@@ -176,6 +176,18 @@ body{
 .contact-btn a:last-child{
     background:#25D366;
 }
+.contact{
+    text-align:center;
+}
+
+.contact-info{
+    text-align:center;
+}
+
+.contact-info p{
+    margin:12px 0;
+    font-size:20px;
+}
 
 /* ===========================
    FOOTER
