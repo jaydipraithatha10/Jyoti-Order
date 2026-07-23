@@ -11,7 +11,6 @@
 <meta name="theme-color" content="#5C3A21">
 
 <link rel="icon" href="logo.png">
-
 <link rel="stylesheet" href="style.css">
 
 </head>
@@ -30,14 +29,31 @@
 
 </header>
 
-
-<!-- Banner Slider -->
+<!-- Premium Hero Slider -->
 
 <section class="hero">
 
     <div class="slider">
 
+        <button class="slider-btn prev" onclick="prevSlide()">
+            &#10094;
+        </button>
+
         <img id="sliderImage" src="banner1.png" alt="Banner">
+
+        <button class="slider-btn next" onclick="nextSlide()">
+            &#10095;
+        </button>
+
+        <div class="slider-dots">
+
+            <span class="dot active" onclick="goToSlide(0)"></span>
+
+            <span class="dot" onclick="goToSlide(1)"></span>
+
+            <span class="dot" onclick="goToSlide(2)"></span>
+
+        </div>
 
     </div>
 
@@ -48,10 +64,10 @@
 <section class="search-section">
 
     <input
-    type="text"
-    id="search"
-    placeholder="🔍 Search Category..."
-    onkeyup="searchCategory()">
+        type="text"
+        id="search"
+        placeholder="🔍 Search Category..."
+        onkeyup="searchCategory()">
 
 </section>
 
@@ -84,17 +100,13 @@
     <div class="contact-buttons">
 
         <a href="tel:+919712149344" class="call-btn">
-
             📞 Call
-
         </a>
 
         <a href="https://wa.me/919712149344"
-        target="_blank"
-        class="wa-btn">
-
+           target="_blank"
+           class="wa-btn">
             💬 WhatsApp
-
         </a>
 
     </div>
@@ -115,10 +127,9 @@
 
 <!-- Floating WhatsApp -->
 
-<a
-href="https://wa.me/919712149344"
-target="_blank"
-class="floating">
+<a href="https://wa.me/919712149344"
+   target="_blank"
+   class="floating">
 
 💬
 
