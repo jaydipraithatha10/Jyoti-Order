@@ -11,6 +11,10 @@ let allCategories = [];
 // AUTO SLIDER
 // ===========================
 
+// ===========================
+// PREMIUM HERO SLIDER
+// ===========================
+
 const banners = [
     "banner1.png",
     "banner2.png",
@@ -18,27 +22,103 @@ const banners = [
 ];
 
 let currentBanner = 0;
+let sliderInterval;
 
-function startSlider(){
+function updateDots() {
+    document.querySelectorAll(".dot").forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentBanner);
+    });
+}
+
+function showSlide(index) {
 
     const img = document.getElementById("sliderImage");
 
-    if(!img) return;
+    img.style.opacity = "0";
 
-    setInterval(()=>{
-
-        currentBanner++;
-
-        if(currentBanner >= banners.length){
-            currentBanner = 0;
-        }
-
-        img.src = banners[currentBanner];
-
-    },3000);
+    setTimeout(() => {
+        img.src = banners[index];
+        img.style.opacity = "1";
+        updateDots();
+    }, 300);
 
 }
 
+function nextSlide() {
+
+    currentBanner++;
+
+    if (currentBanner >= banners.length)
+        currentBanner = 0;
+
+    showSlide(currentBanner);
+
+}
+
+function prevSlide() {
+
+    currentBanner--;
+
+    if (currentBanner < 0)
+        currentBanner = banners.length - 1;
+
+    showSlide(currentBanner);
+
+}
+
+function goToSlide(index) {
+
+    currentBanner = index;
+
+    showSlide(currentBanner);
+
+}
+
+function startSlider() {
+
+    sliderInterval = setInterval(nextSlide, 3000);
+
+}
+
+function stopSlider() {
+
+    clearInterval(sliderInterval);
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    startSlider();
+
+    loadCategories();
+
+    const slider = document.querySelector(".slider");
+
+    slider.addEventListener("mouseenter", stopSlider);
+
+    slider.addEventListener("mouseleave", startSlider);
+
+    let startX = 0;
+
+    slider.addEventListener("touchstart", e => {
+        startX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener("touchend", e => {
+
+        let endX = e.changedTouches[0].clientX;
+
+        if (startX - endX > 50)
+            nextSlide();
+
+        if (endX - startX > 50)
+            prevSlide();
+
+    });
+
+});
+
+        
 // ===========================
 // LOAD
 // ===========================
