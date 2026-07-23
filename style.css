@@ -438,3 +438,305 @@ section{
     transform:translateY(-3px);
 
 }
+/*====================================
+ FOOTER
+====================================*/
+
+.footer{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    margin-top:40px;
+
+}
+
+.footer h3{
+
+    font-size:24px;
+
+    margin-bottom:10px;
+
+    font-weight:700;
+
+}
+
+.footer p{
+
+    font-size:15px;
+
+    opacity:.9;
+
+    margin:5px 0;
+
+}
+
+.copyright{
+
+    margin-top:15px;
+
+    font-size:14px;
+
+    color:#f5e7c4;
+
+}
+
+/*====================================
+ FLOATING WHATSAPP
+====================================*/
+
+.whatsapp-float{
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    width:60px;
+
+    height:60px;
+
+    background:#25D366;
+
+    color:#fff;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:30px;
+
+    text-decoration:none;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+    z-index:999;
+
+    transition:.3s;
+
+}
+
+.whatsapp-float:hover{
+
+    transform:scale(1.1);
+
+}
+
+/*====================================
+ LOADER
+====================================*/
+
+.loader{
+
+    width:50px;
+
+    height:50px;
+
+    border:5px solid #eee;
+
+    border-top:5px solid var(--gold);
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+    margin:40px auto;
+
+}
+
+@keyframes spin{
+
+    100%{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/*====================================
+ FADE ANIMATION
+====================================*/
+
+.category-card,
+.hero,
+.contact-section{
+
+    animation:fadeUp .7s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*====================================
+ SCROLLBAR
+====================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f3f3f3;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--gold);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary);
+
+}
+
+/*====================================
+ RESPONSIVE
+====================================*/
+
+@media(max-width:768px){
+
+.header{
+
+    padding:25px 15px;
+
+}
+
+.logo{
+
+    width:140px;
+
+    height:140px;
+
+}
+
+.header h1{
+
+    font-size:28px;
+
+}
+
+.hero{
+
+    margin:15px;
+
+    padding:30px 18px;
+
+}
+
+.hero h2{
+
+    font-size:24px;
+
+}
+
+.hero p{
+
+    font-size:15px;
+
+}
+
+.shop-btn{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+.section-title{
+
+    font-size:24px;
+
+}
+
+.contact-buttons{
+
+    flex-direction:column;
+
+}
+
+.call-btn,
+.wa-btn{
+
+    width:100%;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.category-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:14px;
+
+}
+
+.category-card h3{
+
+    font-size:16px;
+
+    padding:12px;
+
+}
+
+.search-box{
+
+    margin:15px;
+
+}
+
+.search-box input{
+
+    height:52px;
+
+    font-size:15px;
+
+}
+
+.footer{
+
+    padding:30px 15px;
+
+}
+
+}
