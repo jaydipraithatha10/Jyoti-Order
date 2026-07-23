@@ -1,61 +1,127 @@
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+displayCart();
 
-let cart = JSON.parse(localStorage.getItem("jyotiCart")) || [];
+function displayCart() {
 
-function saveCart() {
-    localStorage.setItem("jyotiCart", JSON.stringify(cart));
-}
+    const container = document.getElementById("cartContainer");
+    const total = document.getElementById("totalPrice");
 
-function addToCart(id, name, price, weight) {
+    container.innerHTML = "";
 
-    let item = cart.find(p => p.id === id);
+    let grandTotal = 0;
 
-    if (item) {
-        item.qty++;
-    } else {
-        cart.push({
-            id,
-            name,
-            price,
-            weight,
-            qty: 1
-        });
+    if (cart.length === 0) {
+        container.innerHTML = "<h3 style='text-align:center'>Cart is Empty</h3>";
+        total.innerText = "0";
+        return;
     }
 
-    saveCart();
+    cart.forEach((item, index) => {
+
+        if (!item.qty) item.qty = 1;
+
+        const amount = item.qty * Number(item.price);
+
+        grandTotal += amount;
+
+        container.innerHTML += `
+        <div class="category-card">
+
+            <img src="${item.image || 'logo.png'}">
+
+            <h3>${item.name}</h3>
+
+            <p>${item.weight}</p>
+
+            <h2>₹${item.price}</h2>
+
+            <div style="display:flex;justify-content:center;gap:10px;margin-top:10px;">
+
+                <button onclick="decreaseQty(${index})">-</button>
+
+                <b>${item.qty}</b>
+
+                <button onclick="increaseQty(${index})">+</button>
+
+            </div>
+
+            <button
+            style="margin-top:10px;background:red;color:#fff;border:none;padding:8px 15px;border-radius:5px;"
+            onclick="removeItem(${index})">
+
+            Remove
+
+            </button>
+
+        </div>
+        `;
+
+    });
+
+    total.innerText = grandTotal;
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
 }
 
-function removeFromCart(id) {
+function increaseQty(index){
 
-    let item = cart.find(p => p.id === id);
+    cart[index].qty++;
 
-    if (!item) return;
+    displayCart();
 
-    item.qty--;
+}
 
-    if (item.qty <= 0) {
-        cart = cart.filter(p => p.id !== id);
+function decreaseQty(index){
+
+    if(cart[index].qty>1){
+
+        cart[index].qty--;
+
     }
 
-    saveCart();
+    displayCart();
+
 }
 
-function getQty(id) {
+function removeItem(index){
 
-    let item = cart.find(p => p.id === id);
+    cart.splice(index,1);
 
-    return item ? item.qty : 0;
+    displayCart();
+
 }
 
-function getTotalItems() {
-    return cart.reduce((a, b) => a + b.qty, 0);
-}
+function sendWhatsApp(){
 
-function getTotalAmount() {
-    return cart.reduce((a, b) => a + (b.qty * b.price), 0);
-}
+    let message="*Jyoti Gruh Udhyog Order*%0A%0A";
 
-function clearCart() {
-    cart = [];
-    saveCart();
+    let total=0;
+
+    cart.forEach(item=>{
+
+        const amount=item.qty*Number(item.price);
+
+        total+=amount;
+
+        message +=
+`${item.name}
+${item.weight}
+Qty : ${item.qty}
+₹${item.price}
+Subtotal : ₹${amount}
+
+`;
+
+        message += "%0A";
+
+    });
+
+    message += "*Total : ₹"+total+"*";
+
+    window.open(
+    "https://wa.me/919712149344?text="+message,
+    "_blank");
+
 }
