@@ -30,16 +30,20 @@ function updateDots() {
     });
 }
 
-function showSlide(index) {
+function showSlide(index){
 
     const img = document.getElementById("sliderImage");
 
     img.style.opacity = "0";
 
     setTimeout(() => {
+
         img.src = banners[index];
-        img.style.opacity = "1";
-        updateDots();
+
+        img.onload = () => {
+            img.style.opacity = "1";
+        };
+
     }, 300);
 
 }
