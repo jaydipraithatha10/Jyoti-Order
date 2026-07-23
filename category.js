@@ -65,6 +65,7 @@ async function loadSubCategories() {
 }
 
 // Show Sub Categories
+
 function showSubCategories(data){
 
     const container = document.getElementById("subcategoryContainer");
@@ -74,18 +75,18 @@ function showSubCategories(data){
     data.forEach(item => {
 
         container.innerHTML += `
-        <div class="category-card"
-        onclick="openProducts('${item.id}')"
+        <div class="category-card" onclick="openProducts('${item.id}')">
 
-            <img src="${item.image || 'logo.png'}">
+            <img src="${item.image || 'logo.png'}" alt="${item.name}">
 
             <h3>${item.name}</h3>
 
-        </div>`;
+        </div>
+        `;
+
     });
 
 }
-
 // Search
 function searchSubCategory() {
 
