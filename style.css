@@ -6,11 +6,11 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-    background:#F8F3EC;
+    background:#f8f4ed;
     color:#2d2d2d;
 }
 
@@ -22,25 +22,27 @@ body{
     background:#fff;
     text-align:center;
     padding:20px;
-    border-bottom:4px solid #d4af37;
+    border-bottom:4px solid #D4AF37;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
 .logo{
     width:90px;
     height:90px;
     border-radius:50%;
+    object-fit:cover;
 }
 
 .header h1{
-    font-size:34px;
     margin-top:10px;
-    color:#3b2416;
+    font-size:34px;
+    color:#4b2c20;
 }
 
 .header p{
-    color:#666;
-    font-size:18px;
     margin-top:5px;
+    color:#777;
+    font-size:18px;
 }
 
 /* ===========================
@@ -52,15 +54,14 @@ body{
 }
 
 .slider{
-    width:100%;
-    border-radius:20px;
     overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    border-radius:20px;
+    box-shadow:0 6px 18px rgba(0,0,0,.15);
 }
 
 .slider img{
     width:100%;
-    height:220px;
+    height:200px;
     object-fit:cover;
     display:block;
 }
@@ -73,13 +74,14 @@ body{
     padding:15px;
 }
 
-.search-box input{
+.search-section input{
     width:100%;
-    padding:15px;
+    padding:15px 18px;
+    border:2px solid #8b5a2b;
+    border-radius:16px;
     font-size:17px;
-    border-radius:15px;
-    border:2px solid #6B4226;
     outline:none;
+    background:#fff;
 }
 
 /* ===========================
@@ -92,24 +94,24 @@ body{
 
 .category-section h2{
     text-align:center;
-    font-size:30px;
     margin-bottom:20px;
     color:#5c3a21;
+    font-size:30px;
 }
 
 .category-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:15px;
+    gap:16px;
 }
 
 .category-card{
     background:#fff;
     border-radius:18px;
     overflow:hidden;
-    box-shadow:0 4px 12px rgba(0,0,0,.12);
-    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
     transition:.3s;
+    cursor:pointer;
 }
 
 .category-card:hover{
@@ -124,9 +126,9 @@ body{
 
 .category-card h3{
     text-align:center;
-    padding:12px;
-    font-size:20px;
-    color:#3b2416;
+    padding:14px;
+    color:#4b2c20;
+    font-size:24px;
 }
 
 /* ===========================
@@ -136,128 +138,94 @@ body{
 .contact{
     margin:20px 15px;
     background:#fff;
-    border-radius:20px;
-    padding:20px;
+    border-radius:22px;
+    padding:25px;
     text-align:center;
-    box-shadow:0 4px 12px rgba(0,0,0,.1);
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
 }
 
 .contact h2{
-    text-align:center;
-    margin-bottom:15px;
-}
-
-.contact p{
-    font-size:18px;
-    margin:10px 0;
-    text-align:center;
-}
-
-.contact-btn{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
-}
-
-.contact-btn a{
-    flex:1;
-    text-align:center;
-    padding:14px;
-    text-decoration:none;
-    color:#fff;
-    border-radius:10px;
-    font-weight:bold;
-}
-
-.contact-btn a:first-child{
-    background:#6B4226;
-}
-
-.contact-btn a:last-child{
-    background:#25D366;
-}
-.contact{
-    margin:20px 15px;
-    background:#fff;
-    border-radius:20px;
-    padding:25px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,.12);
+    font-size:34px;
+    margin-bottom:20px;
 }
 
 .contact-info{
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
-    margin:20px 0;
+    gap:15px;
+    margin-bottom:25px;
 }
 
 .contact-info p{
+    font-size:24px;
+}
+
+.contact-buttons{
     display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
+    gap:15px;
+}
+
+.contact-buttons a{
+    flex:1;
+    padding:15px;
+    text-decoration:none;
+    color:#fff;
     font-size:22px;
-    margin:10px 0;
-    width:100%;
+    border-radius:15px;
+    font-weight:bold;
+}
+
+.call-btn{
+    background:#7a4b2c;
+}
+
+.wa-btn{
+    background:#25D366;
 }
 
 /* ===========================
    FOOTER
 =========================== */
 
-
 .footer{
-    background:#2d1b12;
+    margin-top:30px;
+    background:#2f1d14;
     color:#fff;
     text-align:center;
-    padding:25px 15px;
-    margin-top:30px;
+    padding:25px;
 }
 
 .footer h3{
-    font-size:24px;
+    font-size:34px;
     margin-bottom:8px;
 }
 
 .footer p{
     color:#ddd;
-    font-size:16px;
-    margin:4px 0;
+    font-size:20px;
+    margin:5px 0;
 }
-
-.copyright{
-    margin-top:10px;
-    font-size:14px;
-}
-
-
- 
-
-   
-
-
 
 /* ===========================
-   FLOATING WHATSAPP
+   FLOATING BUTTON
 =========================== */
 
 .floating{
     position:fixed;
-    right:20px;
+    right:18px;
     bottom:20px;
-    width:60px;
-    height:60px;
+    width:65px;
+    height:65px;
     background:#25D366;
     color:#fff;
-    text-decoration:none;
     border-radius:50%;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:30px;
-    box-shadow:0 5px 15px rgba(0,0,0,.3);
+    text-decoration:none;
+    font-size:34px;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
 
 /* ===========================
@@ -270,12 +238,41 @@ body{
     font-size:28px;
 }
 
-.category-card img{
-    height:120px;
+.header p{
+    font-size:16px;
 }
 
 .slider img{
     height:180px;
+}
+
+.category-card img{
+    height:120px;
+}
+
+.category-card h3{
+    font-size:18px;
+}
+
+.contact h2{
+    font-size:28px;
+}
+
+.contact-info p{
+    font-size:18px;
+}
+
+.contact-buttons a{
+    font-size:18px;
+    padding:13px;
+}
+
+.footer h3{
+    font-size:22px;
+}
+
+.footer p{
+    font-size:15px;
 }
 
 }
