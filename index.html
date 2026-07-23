@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="en">
 
 <head>
 
@@ -16,11 +16,11 @@
 
 <body>
 
-<!-- Header -->
+<!-- HEADER -->
 
 <header class="header">
 
-<img src="logo.png" class="logo" alt="Logo">
+<img src="logo.png" class="logo">
 
 <h1>Jyoti Gruh Udhyog</h1>
 
@@ -28,80 +28,122 @@
 
 </header>
 
-<!-- Hero Banner -->
+<!-- HERO -->
 
 <section class="hero">
 
 <div class="slider">
 
-<img src="banner.png" id="sliderImage" alt="Banner">
+<img id="sliderImage" src="banner1.jpg" alt="Banner">
 
 </div>
 
 </section>
 
-<!-- Search -->
+<!-- SEARCH -->
 
 <section class="search-section">
+
+<div class="search-box">
 
 <input
 type="text"
 id="search"
-placeholder="🔍 Search Category...">
-
-</section>
-
-<!-- Categories -->
-
-<section>
-
-<h2 class="title">
-
-અમારી કેટેગરીઓ
-
-</h2>
-
-<div id="categoryGrid">
+placeholder="🔍 Search Category..."
+onkeyup="searchCategory()">
 
 </div>
 
 </section>
 
-<!-- Contact -->
+<!-- CATEGORY -->
+
+<section class="category-section">
+
+<h2>
+
+Choose Your Category
+
+</h2>
+
+<div
+id="categoryGrid"
+class="category-grid">
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
 
 <section class="contact">
 
-<h2>અમારો સંપર્ક</h2>
+<h2>
+
+Contact Us
+
+</h2>
 
 <p>📍 Rajkot, Gujarat</p>
 
 <p>📞 +91 9712149344</p>
 
-<div class="buttons">
+<div class="contact-btn">
 
 <a href="tel:+919712149344">
+
 📞 Call
+
 </a>
 
-<a href="https://wa.me/919712149344" target="_blank">
+<a
+href="https://wa.me/919712149344"
+target="_blank">
+
 💬 WhatsApp
+
 </a>
 
 </div>
 
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 
 <footer>
 
+<img src="logo.png">
+
+<h3>
+
+Jyoti Gruh Udhyog
+
+</h3>
+
 <p>
 
-© 2026 Jyoti Gruh Udhyog
+Premium Gujarati Snacks
+
+</p>
+
+<p>
+
+© 2026 All Rights Reserved
 
 </p>
 
 </footer>
+
+<!-- FLOATING BUTTON -->
+
+<a
+href="https://wa.me/919712149344"
+target="_blank"
+class="floating">
+
+💬
+
+</a>
 
 <script src="script.js"></script>
 
