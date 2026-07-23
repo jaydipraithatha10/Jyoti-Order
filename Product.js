@@ -1,9 +1,9 @@
 const productURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=0&single=true&output=csv";
 
-const subCategoryId =
+const subCategoryId = localStorage.getItem("subCategoryId");
+
 alert("SubCategory ID = " + subCategoryId);
- localStorage.getItem("subCategoryId");
 
 document.addEventListener("DOMContentLoaded", loadProducts);
 
@@ -18,21 +18,26 @@ async function loadProducts() {
     container.innerHTML = "";
 
     rows.forEach(row => {
-alert(row);
 
         const col = row.split(",");
 
-        if (col[1].trim() !== subCategoryId) return;
-        if (col[6].trim().toLowerCase() !== "active") return;
+        if (col[1].trim() === subCategoryId &&
+            col[6].trim().toLowerCase() === "active") {
 
-        container.innerHTML += `
-            <div class="product-card">
-                <img src="${col[5] || 'logo.png'}" alt="${col[2]}">
-                <h3>${col[2]}</h3>
-                <p>${col[3]}</p>
-                <h4>₹${col[4]}</h4>
-            </div>
-        `;
+            container.innerHTML += `
+                <div class="product-card">
+                    <img src="${col[5] ? col[5].trim() : 'logo.png'}" alt="${col[2]}">
+                    <h3>${col[2]}</h3>
+                    <p>${col[3]}</p>
+                    <h4>₹${col[4]}</h4>
+                </div>
+            `;
+        }
+
     });
+
+    if (container.innerHTML === "") {
+        container.innerHTML = "<h3>No Products Found</h3>";
+    }
 
 }
