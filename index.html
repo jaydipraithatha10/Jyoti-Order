@@ -8,89 +8,99 @@
 
 <title>Jyoti Gruh Udhyog</title>
 
-<link rel="stylesheet" href="style.css">
+<meta name="theme-color" content="#5C3A21">
 
 <link rel="icon" href="logo.png">
+
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- Header -->
 
 <header class="header">
 
-<img src="logo.png" class="logo">
+    <img src="logo.png" class="logo" alt="Logo">
 
-<h1>Jyoti Gruh Udhyog</h1>
+    <h1>Jyoti Gruh Udhyog</h1>
 
-<p>Premium Gujarati Snacks</p>
+    <p>Premium Gujarati Snacks</p>
 
 </header>
 
-<!-- HERO -->
+<!-- Banner Slider -->
 
 <section class="hero">
 
-<div class="slider">
+    <div class="slider">
 
-<img id="sliderImage" src="banner.png" alt="Banner">
+        <img id="sliderImage" src="banner1.jpg" alt="Banner">
 
-</div>
+    </div>
 
 </section>
 
-<!-- SEARCH -->
+<!-- Search -->
 
 <section class="search-section">
 
-<div class="search-box">
-
-<input
-type="text"
-id="search"
-placeholder="🔍 Search Category..."
-onkeyup="searchCategory()">
-
-</div>
+    <input
+    type="text"
+    id="search"
+    placeholder="🔍 Search Category..."
+    onkeyup="searchCategory()">
 
 </section>
 
-<!-- CATEGORY -->
+<!-- Categories -->
 
 <section class="category-section">
 
-<h2>
+    <h2>Choose Your Category</h2>
 
-Choose Your Category
+    <div id="categoryGrid" class="category-grid">
 
-</h2>
-
-<div
-id="categoryGrid"
-class="category-grid">
-
-</div>
+    </div>
 
 </section>
 
-<!-- CONTACT -->
+<!-- Contact -->
 
 <section class="contact">
 
     <h2>Contact Us</h2>
 
     <div class="contact-info">
+
         <p>📍 Rajkot, Gujarat</p>
+
         <p>📞 +91 9712149344</p>
+
     </div>
 
-    <div class="contact-btn">
-        <a href="tel:+919712149344">📞 Call</a>
-        <a href="https://wa.me/919712149344" target="_blank">💬 WhatsApp</a>
+    <div class="contact-buttons">
+
+        <a href="tel:+919712149344" class="call-btn">
+
+            📞 Call
+
+        </a>
+
+        <a href="https://wa.me/919712149344"
+        target="_blank"
+        class="wa-btn">
+
+            💬 WhatsApp
+
+        </a>
+
     </div>
 
 </section>
+
+<!-- Footer -->
 
 <footer class="footer">
 
@@ -98,13 +108,11 @@ class="category-grid">
 
     <p>Premium Gujarati Snacks</p>
 
-    <p class="copyright">
-        © 2026 All Rights Reserved
-    </p>
+    <p>© 2026 All Rights Reserved</p>
 
 </footer>
 
-<!-- FLOATING BUTTON -->
+<!-- Floating WhatsApp -->
 
 <a
 href="https://wa.me/919712149344"
@@ -118,5 +126,4 @@ class="floating">
 <script src="script.js"></script>
 
 </body>
-
 </html>
