@@ -31,7 +31,7 @@ async function loadProducts() {
             console.log(id, subId, product, status);
 
             if (subId != subCategoryId) return;
-            
+            if (status != "active") return;
 
             container.innerHTML += `
                 <div class="product-card">
