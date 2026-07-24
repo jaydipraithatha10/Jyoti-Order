@@ -224,3 +224,14 @@ function removeFromCart(id) {
     loadProducts();
 
 }
+// =======================================
+// Part 5 - Page Load
+// =======================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    updateCartCount();
+
+    loadProducts();
+
+});
