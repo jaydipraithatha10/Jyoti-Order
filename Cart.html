@@ -1,34 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart - Jyoti Gruh Udhyog</title>
+    <title>Shopping Cart</title>
+
     <link rel="stylesheet" href="cart.css">
 </head>
 <body>
 
 <header class="header">
-    <button onclick="history.back()">⬅ Back</button>
-    <h2>My Cart</h2>
+
+    <button class="back-btn" onclick="history.back()">⬅</button>
+
+    <h2>Shopping Cart</h2>
+
 </header>
 
 <main>
 
-    <div id="cartItems"></div>
+    <div id="cartContainer">
 
-    <div class="total-box">
-        <h3>Total : ₹<span id="grandTotal">0</span></h3>
+        <!-- Cart Items Here -->
+
     </div>
 
-    <button id="whatsappBtn" class="order-btn">
-        📲 Place Order on WhatsApp
-    </button>
+    <div class="total-box">
 
-    <button id="clearCart" class="clear-btn">
-        🗑 Clear Cart
-    </button>
+        <h3>Total : ₹<span id="grandTotal">0</span></h3>
+
+    </div>
+
+    <div class="buttons">
+
+        <button class="clear-btn" onclick="clearCart()">
+            Clear Cart
+        </button>
+
+        <button class="order-btn" onclick="sendWhatsAppOrder()">
+            Order on WhatsApp
+        </button>
+
+    </div>
 
 </main>
 
