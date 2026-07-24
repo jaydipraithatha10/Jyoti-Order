@@ -4,19 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - Jyoti Gruh Udhyog</title>
+
     <link rel="stylesheet" href="product.css">
 </head>
 <body>
 
-<header class="header">
-    <h1>Products</h1>
-</header>
+    <header class="header">
 
-<main>
-    <section id="productGrid" class="product-grid"></section>
-</main>
+        <button class="back-btn" onclick="history.back()">⬅</button>
 
-<script src="Product.js"></script>
+        <h2>Products</h2>
+
+        <div class="cart-icon" onclick="window.location.href='cart.html'">
+            🛒 <span id="cartCount">0</span>
+        </div>
+
+    </header>
+
+    <main>
+
+        <section id="productGrid" class="product-grid">
+
+            <!-- Products Load Here -->
+
+        </section>
+
+    </main>
+
+    <script src="Product.js"></script>
 
 </body>
 </html>
