@@ -231,3 +231,14 @@ function changeQty(id, change) {
     loadProducts();
 
 }
+// =======================================
+// Part 5 - Start Page
+// =======================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    updateCartCount();
+
+    loadProducts();
+
+});
