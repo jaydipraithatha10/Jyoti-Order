@@ -116,3 +116,34 @@ function addToCart(id, subId, name, weight, price) {
     // alert(name + " Added to Cart");
 
 }
+// ================================
+// Start Page
+// ================================
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    try {
+
+        await loadProducts();
+
+        updateCartCount();
+
+    } catch (error) {
+
+        console.error("Error Loading Products:", error);
+
+        document.getElementById("productGrid").innerHTML = `
+            <div style="
+                text-align:center;
+                padding:30px;
+                color:red;
+                font-size:20px;
+                font-weight:bold;
+            ">
+                Failed to Load Products
+            </div>
+        `;
+
+    }
+
+});
