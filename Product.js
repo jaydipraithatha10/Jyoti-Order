@@ -2,70 +2,90 @@ const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAa
 
 const subCategoryId = localStorage.getItem("subCategoryId");
 
+console.log("Selected SubCategory ID:", subCategoryId);
+
 async function loadProducts() {
-    const response = await fetch(csvUrl);
-    const csv = await response.text();
 
-    const rows = csv.trim().split("\n").slice(1);
+    try {
 
-    const container = document.getElementById("productGrid");
-    container.innerHTML = "";
+        const response = await fetch(csvUrl);
+        const csv = await response.text();
 
-    rows.forEach(row => {
+        const rows = csv.trim().split(/\r?\n/).slice(1);
 
-        const cols = row.split(",");
+        const container = document.getElementById("productGrid");
 
-        const id = cols[0].trim();
-        const subId = cols[1].trim();
-        const product = cols[2].trim();
-        const weight = cols[3].trim();
-        const price = cols[4].trim();
-        const status = cols[5].trim();
+        container.innerHTML = "";
 
-        if (subId !== subCategoryId) return;
-        if (status.toLowerCase() !== "active") return;
+        rows.forEach(row => {
 
-        container.innerHTML += `
-        <div class="product-card">
+            const cols = row.split(",");
 
-            <h3>${product}</h3>
+            const id = cols[0]?.trim();
+            const subId = cols[1]?.trim();
+            const product = cols[2]?.trim();
+            const weight = cols[3]?.trim();
+            const price = cols[4]?.trim();
+            const status = cols[5]?.trim().toLowerCase();
 
-            <p>${weight}</p>
+            console.log(id, subId, product, status);
 
-            <h4>₹${price}</h4>
+            if (subId != subCategoryId) return;
+            if (status != "active") return;
 
-            <button class="cart-btn"
-                data-id="${id}"
-                data-name="${product}"
-                data-weight="${weight}"
-                data-price="${price}">
-                Add to Cart
-            </button>
+            container.innerHTML += `
+                <div class="product-card">
 
-        </div>
-        `;
-    });
+                    <h3>${product}</h3>
 
-    document.querySelectorAll(".cart-btn").forEach(btn => {
+                    <p>${weight}</p>
 
-        btn.addEventListener("click", function () {
+                    <h4>₹${price}</h4>
 
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    <button class="cart-btn"
+                        data-id="${id}"
+                        data-name="${product}"
+                        data-weight="${weight}"
+                        data-price="${price}">
+                        Add to Cart
+                    </button>
 
-            cart.push({
-                id: this.dataset.id,
-                name: this.dataset.name,
-                weight: this.dataset.weight,
-                price: this.dataset.price,
-                qty: 1
-            });
+                </div>
+            `;
 
-            localStorage.setItem("cart", JSON.stringify(cart));
-
-            alert("Product Added Successfully");
         });
 
-    });
+        document.querySelectorAll(".cart-btn").forEach(btn => {
+
+            btn.addEventListener("click", function () {
+
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                cart.push({
+                    id: this.dataset.id,
+                    name: this.dataset.name,
+                    weight: this.dataset.weight,
+                    price: this.dataset.price,
+                    qty: 1
+                });
+
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                alert("Product Added Successfully");
+
+            });
+
+        });
+
+        if (container.innerHTML === "") {
+            container.innerHTML = "<h3>No Products Found</h3>";
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
 
 }
 
