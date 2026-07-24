@@ -77,7 +77,7 @@ function openProducts(id, name) {
     localStorage.setItem("subCategoryId", id);
     localStorage.setItem("subCategoryName", name);
 
-    window.location.href = "products.html";
+    window.location.href = "product.html";
 
 }
 
