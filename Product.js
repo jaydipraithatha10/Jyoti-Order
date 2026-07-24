@@ -199,3 +199,36 @@ function changeQty(id, subId, product, weight, price, change) {
     loadProducts();
 
 }
+// ==========================================
+// Part 4
+// Order Now & Page Load
+// ==========================================
+
+// Order Now
+function orderNow() {
+
+    const cart = getCart();
+
+    if (cart.length === 0) {
+
+        alert("Please select at least one product.");
+
+        return;
+
+    }
+
+    window.location.href = "checkout.html";
+
+}
+
+// ===============================
+// Page Load
+// ===============================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    updateCartCount();
+
+    loadProducts();
+
+});
