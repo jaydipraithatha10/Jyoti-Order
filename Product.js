@@ -126,3 +126,83 @@ async function loadProducts() {
     });
 
 }
+// =======================================
+// Part 3 - Add To Cart
+// =======================================
+
+function addToCart(id, subId, name, weight, price) {
+
+    let cart = getCart();
+
+    const index = cart.findIndex(item => item.id == id);
+
+    if (index >= 0) {
+
+        cart[index].qty++;
+
+    } else {
+
+        cart.push({
+            id: id,
+            subCategoryId: subId,
+            name: name,
+            weight: weight,
+            price: Number(price),
+            qty: 1
+        });
+
+    }
+
+    saveCart(cart);
+
+    updateCartCount();
+
+    refreshProductCard(id);
+
+}
+
+// =======================================
+// Refresh Product Card
+// =======================================
+
+function refreshProductCard(id) {
+
+    const cart = getCart();
+
+    const item = cart.find(p => p.id == id);
+
+    const box = document.getElementById("action" + id);
+
+    if (!box) return;
+
+    if (!item) {
+
+        box.innerHTML = `
+            <button class="add-btn"
+                onclick="addToCart('${id}','','','','0')">
+                Add to Cart
+            </button>
+        `;
+
+        return;
+    }
+
+    box.innerHTML = `
+        <div class="qty-box">
+
+            <button class="qty-btn"
+                onclick="changeQty('${id}',-1)">
+                -
+            </button>
+
+            <span class="qty">${item.qty}</span>
+
+            <button class="qty-btn"
+                onclick="changeQty('${id}',1)">
+                +
+            </button>
+
+        </div>
+    `;
+
+}
