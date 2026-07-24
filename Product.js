@@ -153,3 +153,49 @@ async function loadProducts() {
     }
 
 }
+// ==========================================
+// Part 3
+// Change Quantity
+// ==========================================
+
+function changeQty(id, subId, product, weight, price, change) {
+
+    let cart = getCart();
+
+    const index = cart.findIndex(item => item.id == id);
+
+    // Product નથી અને + દબાવ્યું
+    if (index == -1 && change == 1) {
+
+        cart.push({
+            id: id,
+            subCategoryId: subId,
+            name: product,
+            weight: weight,
+            price: Number(price),
+            qty: 1
+        });
+
+    }
+
+    // Product પહેલેથી Cart માં છે
+    else if (index != -1) {
+
+        cart[index].qty += change;
+
+        // Qty 0 થાય તો Remove
+        if (cart[index].qty <= 0) {
+
+            cart.splice(index, 1);
+
+        }
+
+    }
+
+    saveCart(cart);
+
+    updateCartCount();
+
+    loadProducts();
+
+}
