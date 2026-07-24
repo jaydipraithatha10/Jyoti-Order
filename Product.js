@@ -1,14 +1,11 @@
 const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=0&single=true&output=csv";
 
-const subCategoryId = localStorage.getItem("subCategoryId");
-
-console.log("Selected SubCategory ID:", subCategoryId);
-
 async function loadProducts() {
 
     try {
 
         const response = await fetch(csvUrl);
+
         const csv = await response.text();
 
         const rows = csv.trim().split(/\r?\n/).slice(1);
@@ -21,33 +18,29 @@ async function loadProducts() {
 
             const cols = row.split(",");
 
-            const id = cols[0]?.trim();
-            const subId = cols[1]?.trim();
-            const product = cols[2]?.trim();
-            const weight = cols[3]?.trim();
-            const price = cols[4]?.trim();
-            const status = cols[5]?.trim().toLowerCase();
+            const id = cols[0].trim();
+            const subId = cols[1].trim();
+            const product = cols[2].trim();
+            const weight = cols[3].trim();
+            const price = cols[4].trim();
+            const status = cols[5].trim();
 
-            console.log(id, subId, product, status);
+            if (status.toLowerCase() !== "active") return;
 
-            
             container.innerHTML += `
                 <div class="product-card">
-
                     <h3>${product}</h3>
-
                     <p>${weight}</p>
-
                     <h4>₹${price}</h4>
 
                     <button class="cart-btn"
                         data-id="${id}"
+                        data-subid="${subId}"
                         data-name="${product}"
                         data-weight="${weight}"
                         data-price="${price}">
                         Add to Cart
                     </button>
-
                 </div>
             `;
 
@@ -61,6 +54,7 @@ async function loadProducts() {
 
                 cart.push({
                     id: this.dataset.id,
+                    subCategoryId: this.dataset.subid,
                     name: this.dataset.name,
                     weight: this.dataset.weight,
                     price: this.dataset.price,
@@ -75,13 +69,12 @@ async function loadProducts() {
 
         });
 
-        if (container.innerHTML === "") {
-            container.innerHTML = "<h3>No Products Found</h3>";
-        }
+    } catch (err) {
 
-    } catch (error) {
+        console.error(err);
 
-        console.error(error);
+        document.getElementById("productGrid").innerHTML =
+            "<h3>Error Loading Products</h3>";
 
     }
 
