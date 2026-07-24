@@ -107,3 +107,70 @@ function removeItem(index) {
     displayCart();
 
 }
+// ===============================
+// Clear Cart
+// ===============================
+
+function clearCart() {
+
+    if (confirm("Are you sure you want to clear the cart?")) {
+
+        cart = [];
+
+        localStorage.removeItem("cart");
+
+        displayCart();
+
+    }
+
+}
+
+// ===============================
+// WhatsApp Order
+// ===============================
+
+function sendWhatsAppOrder() {
+
+    if (cart.length === 0) {
+
+        alert("Your Cart is Empty");
+
+        return;
+
+    }
+
+    let message = "🛒 *Jyoti Gruh Udhyog Order*%0A%0A";
+
+    let grandTotal = 0;
+
+    cart.forEach((item, index) => {
+
+        const total = item.price * item.qty;
+
+        grandTotal += total;
+
+        message += `${index + 1}. ${item.name}%0A`;
+        message += `Weight : ${item.weight}%0A`;
+        message += `Qty : ${item.qty}%0A`;
+        message += `Price : ₹${item.price}%0A`;
+        message += `Total : ₹${total}%0A%0A`;
+
+    });
+
+    message += `*Grand Total : ₹${grandTotal}*`;
+
+    // અહીં તમારો નંબર મૂકો
+    const phone = "91XXXXXXXXXX";
+
+    window.open(
+        `https://wa.me/${phone}?text=${message}`,
+        "_blank"
+    );
+
+}
+
+// ===============================
+// Page Load
+// ===============================
+
+displayCart();
