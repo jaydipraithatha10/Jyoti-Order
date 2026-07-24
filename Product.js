@@ -160,3 +160,50 @@ async function loadProducts() {
     }
 
 }
+// ============================================
+// Part 3
+// Change Quantity
+// ============================================
+
+function changeQty(id, subId, name, weight, price, change) {
+
+    let cart = getCart();
+
+    let index = cart.findIndex(item => item.id == id);
+
+    if (index > -1) {
+
+        cart[index].qty += change;
+
+        if (cart[index].qty <= 0) {
+
+            cart.splice(index, 1);
+
+        }
+
+    } else {
+
+        if (change > 0) {
+
+            cart.push({
+
+                id: id,
+                subId: subId,
+                name: name,
+                weight: weight,
+                price: price,
+                qty: 1
+
+            });
+
+        }
+
+    }
+
+    saveCart(cart);
+
+    updateSummary();
+
+    loadProducts();
+
+}
