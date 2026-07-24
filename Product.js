@@ -81,3 +81,38 @@ async function loadProducts() {
     });
 
 }
+// ================================
+// Add To Cart
+// ================================
+
+function addToCart(id, subId, name, weight, price) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existing = cart.find(item => item.id === id);
+
+    if (existing) {
+
+        existing.qty += 1;
+
+    } else {
+
+        cart.push({
+            id: id,
+            subCategoryId: subId,
+            name: name,
+            weight: weight,
+            price: parseFloat(price),
+            qty: 1
+        });
+
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCartCount();
+
+    // Optional: Message
+    // alert(name + " Added to Cart");
+
+}
