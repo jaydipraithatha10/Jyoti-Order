@@ -120,7 +120,7 @@ document.getElementById("whatsappBtn").onclick=function(){
 
     message+=`*Total : ₹${total}*`;
 
-    window.open("https://wa.me/91YOURNUMBER?text="+message,"_blank");
+    window.open("https://wa.me/919712149344?text="+message,"_blank");
 
     localStorage.removeItem("cart");
 
