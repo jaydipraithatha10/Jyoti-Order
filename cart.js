@@ -76,3 +76,34 @@ function displayCart() {
     totalElement.innerText = grandTotal;
 
 }
+// ===============================
+// Change Quantity
+// ===============================
+
+function changeQty(index, change) {
+
+    cart[index].qty += change;
+
+    if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    displayCart();
+
+}
+
+// ===============================
+// Remove Item
+// ===============================
+
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    displayCart();
+
+}
