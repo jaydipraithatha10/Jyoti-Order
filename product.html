@@ -1,37 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Jyoti Gruh Udhyog</title>
 
-    <link rel="stylesheet" href="product.css">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Products</title>
+
+<link rel="stylesheet" href="product.css">
+
 </head>
+
 <body>
 
-    <header class="header">
+<!-- Header -->
 
-        <button class="back-btn" onclick="history.back()">⬅</button>
+<header class="header">
 
-        <h2>Products</h2>
+<button class="back-btn" onclick="history.back()">
+←
+</button>
 
-        <div class="cart-icon" onclick="window.location.href='cart.html'">
-            🛒 <span id="cartCount">0</span>
-        </div>
+<h2 id="categoryTitle">Products</h2>
 
-    </header>
+</header>
 
-    <main>
+<!-- Banner -->
 
-        <section id="productGrid" class="product-grid">
+<section class="banner">
 
-            <!-- Products Load Here -->
+<img id="bannerImage" src="" alt="Banner">
 
-        </section>
+<div class="banner-content">
 
-    </main>
+<h1 id="bannerTitle"></h1>
 
-    <script src="Product.js"></script>
+<p id="bannerSubTitle"></p>
+
+</div>
+
+</section>
+
+<!-- Product List -->
+
+<section id="productGrid" class="product-grid">
+
+</section>
+
+<!-- Bottom Order Bar -->
+
+<div id="bottomBar" class="bottom-bar">
+
+<div>
+
+<b id="itemCount">0 Items</b>
+
+<br>
+
+₹<span id="grandTotal">0</span>
+
+</div>
+
+<button onclick="orderNow()">
+
+Order Now
+
+</button>
+
+</div>
+
+<script src="product.js"></script>
 
 </body>
+
 </html>
