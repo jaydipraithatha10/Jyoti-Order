@@ -47,3 +47,82 @@ function updateCartCount() {
     }
 
 }
+
+// =======================================
+// Part 2 - Load Products
+// =======================================
+
+async function loadProducts() {
+
+    const response = await fetch(sheetURL);
+    const csv = await response.text();
+
+    const rows = csv.trim().split("\n").slice(1);
+
+    productGrid.innerHTML = "";
+
+    rows.forEach(row => {
+
+        const cols = row.split(",");
+
+        const id = cols[0].trim();
+        const subId = cols[1].trim();
+        const name = cols[2].trim();
+        const weight = cols[3].trim();
+        const price = Number(cols[4].trim());
+        const status = cols[5].trim();
+
+        if (status !== "Active") return;
+
+        if (subCategoryId && subId != subCategoryId) return;
+
+        const cart = getCart();
+        const item = cart.find(p => p.id == id);
+
+        const qty = item ? item.qty : 0;
+
+        const card = document.createElement("div");
+        card.className = "product-card";
+
+        card.innerHTML = `
+            <h3>${name}</h3>
+
+            <p><b>Weight :</b> ${weight}</p>
+
+            <p><b>Price :</b> ₹${price}</p>
+
+            <div id="action${id}">
+                ${
+                    qty === 0
+                    ?
+                    `<button class="add-btn"
+                        onclick="addToCart('${id}','${subId}','${name}','${weight}','${price}')">
+                        Add to Cart
+                    </button>`
+                    :
+                    `
+                    <div class="qty-box">
+
+                        <button class="qty-btn"
+                        onclick="changeQty('${id}',-1)">
+                        -
+                        </button>
+
+                        <span class="qty">${qty}</span>
+
+                        <button class="qty-btn"
+                        onclick="changeQty('${id}',1)">
+                        +
+                        </button>
+
+                    </div>
+                    `
+                }
+            </div>
+        `;
+
+        productGrid.appendChild(card);
+
+    });
+
+}
