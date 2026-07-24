@@ -79,6 +79,14 @@ async function loadProducts() {
 // -----------------------------
 function addToCart(id, subId, name, weight, price) {
 
+    alert("Button Clicked");
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // બાકીનો કોડ...
+}
+function addToCart(id, subId, name, weight, price) {
+
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     let index = cart.findIndex(item => item.id === id);
