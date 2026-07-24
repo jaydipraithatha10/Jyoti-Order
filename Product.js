@@ -206,3 +206,28 @@ function refreshProductCard(id) {
     `;
 
 }
+// =======================================
+// Part 4 - Change Quantity
+// =======================================
+
+function changeQty(id, change) {
+
+    let cart = getCart();
+
+    const index = cart.findIndex(item => item.id == id);
+
+    if (index === -1) return;
+
+    cart[index].qty += change;
+
+    if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+    }
+
+    saveCart(cart);
+
+    updateCartCount();
+
+    loadProducts();
+
+}
