@@ -137,3 +137,47 @@ async function loadProducts() {
     }
 
 }
+// =======================================
+// Part 3 - Add To Cart & Refresh
+// =======================================
+
+function addToCart(id, subId, name, weight, price) {
+
+    let cart = getCart();
+
+    const index = cart.findIndex(item => item.id === id);
+
+    if (index !== -1) {
+
+        cart[index].qty++;
+
+    } else {
+
+        cart.push({
+            id: id,
+            subCategoryId: subId,
+            name: name,
+            weight: weight,
+            price: Number(price),
+            qty: 1
+        });
+
+    }
+
+    saveCart(cart);
+
+    updateCartCount();
+
+    loadProducts();
+
+}
+
+// =======================================
+// Refresh Product Card
+// =======================================
+
+function refreshProductCard(id) {
+
+    loadProducts();
+
+}
