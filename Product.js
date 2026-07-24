@@ -1,3 +1,4 @@
+alert("Product.js Loaded");
 // -----------------------------
 // Google Sheet CSV URL
 // -----------------------------
