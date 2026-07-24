@@ -1,22 +1,25 @@
-// ==========================================
+// =========================================
 // Product.js
 // Part 1
-// Jyoti Gruh Udhyog
-// ==========================================
+// =========================================
 
-// Products CSV
+// Google Sheet Products CSV
 const sheetURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=0&single=true&output=csv";
 
 // Selected Sub Category
 const subCategoryId = localStorage.getItem("subCategoryId");
 
-// Product Container
+// Elements
 const productGrid = document.getElementById("productGrid");
+const cartCount = document.getElementById("cartCount");
+const itemCount = document.getElementById("itemCount");
+const grandTotal = document.getElementById("grandTotal");
+const bottomBar = document.getElementById("bottomBar");
 
-// ===============================
+// ============================
 // Get Cart
-// ===============================
+// ============================
 
 function getCart() {
 
@@ -24,9 +27,9 @@ function getCart() {
 
 }
 
-// ===============================
+// ============================
 // Save Cart
-// ===============================
+// ============================
 
 function saveCart(cart) {
 
@@ -34,201 +37,45 @@ function saveCart(cart) {
 
 }
 
-// ===============================
-// Update Cart Count
-// ===============================
+// ============================
+// Update Bottom Bar
+// ============================
 
-function updateCartCount() {
+function updateSummary() {
 
     const cart = getCart();
 
+    let items = 0;
     let total = 0;
 
     cart.forEach(item => {
 
-        total += item.qty;
+        items += item.qty;
+        total += item.qty * item.price;
 
     });
 
-    const count = document.getElementById("cartCount");
+    if (cartCount)
+        cartCount.innerText = items;
 
-    if (count) {
+    if (itemCount)
+        itemCount.innerText = items + " Items";
 
-        count.innerText = total;
+    if (grandTotal)
+        grandTotal.innerText = total;
 
-    }
+    if (bottomBar) {
 
-}
+        if (items === 0) {
 
-// ===============================
-// Find Product Quantity
-// ===============================
+            bottomBar.style.display = "none";
 
-function getQty(id) {
+        } else {
 
-    const cart = getCart();
-
-    const item = cart.find(p => p.id == id);
-
-    return item ? item.qty : 0;
-
-}
-// ==========================================
-// Part 2
-// Load Products
-// ==========================================
-
-async function loadProducts() {
-
-    try {
-
-        const response = await fetch(sheetURL);
-        const csv = await response.text();
-
-        const rows = csv.trim().split("\n").slice(1);
-
-        productGrid.innerHTML = "";
-
-        rows.forEach(row => {
-
-            const col = row.split(",");
-
-            const id = col[0].trim();
-            const subId = col[1].trim();
-            const product = col[2].trim();
-            const weight = col[3].trim();
-            const price = Number(col[4].trim());
-            const status = col[5].trim().toLowerCase();
-
-            if (status !== "active") return;
-
-            if (subId != subCategoryId) return;
-
-            const qty = getQty(id);
-
-            const card = document.createElement("div");
-            card.className = "product-card";
-
-            card.innerHTML = `
-
-                <h3>${product}</h3>
-
-                <p class="weight">${weight}</p>
-
-                <h2>₹${price}</h2>
-
-                <div class="qty-box">
-
-                    <button class="qty-btn"
-                        onclick="changeQty('${id}','${subId}','${product}','${weight}',${price},-1)">
-                        −
-                    </button>
-
-                    <span class="qty">${qty}</span>
-
-                    <button class="qty-btn"
-                        onclick="changeQty('${id}','${subId}','${product}','${weight}',${price},1)">
-                        +
-                    </button>
-
-                </div>
-
-                <button class="order-btn"
-                    onclick="window.location.href='checkout.html'">
-
-                    🛍️ Order Now
-
-                </button>
-
-            `;
-
-            productGrid.appendChild(card);
-
-        });
-
-    } catch (err) {
-
-        console.log("Products Error :", err);
-
-    }
-
-}
-// ==========================================
-// Part 3
-// Change Quantity
-// ==========================================
-
-function changeQty(id, subId, product, weight, price, change) {
-
-    let cart = getCart();
-
-    const index = cart.findIndex(item => item.id == id);
-
-    // Product નથી અને + દબાવ્યું
-    if (index == -1 && change == 1) {
-
-        cart.push({
-            id: id,
-            subCategoryId: subId,
-            name: product,
-            weight: weight,
-            price: Number(price),
-            qty: 1
-        });
-
-    }
-
-    // Product પહેલેથી Cart માં છે
-    else if (index != -1) {
-
-        cart[index].qty += change;
-
-        // Qty 0 થાય તો Remove
-        if (cart[index].qty <= 0) {
-
-            cart.splice(index, 1);
+            bottomBar.style.display = "flex";
 
         }
 
     }
 
-    saveCart(cart);
-
-    updateCartCount();
-
-    loadProducts();
-
 }
-// ==========================================
-// Part 4
-// Order Now & Page Load
-// ==========================================
-
-// Order Now
-function orderNow() {
-
-    const cart = getCart();
-
-    if (cart.length === 0) {
-
-        alert("Please select at least one product.");
-
-        return;
-
-    }
-
-    window.location.href = "checkout.html";
-
-}
-
-// ===============================
-// Page Load
-// ===============================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    updateCartCount();
-
-    loadProducts();
-
-});
