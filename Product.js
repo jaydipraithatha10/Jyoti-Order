@@ -25,3 +25,59 @@ function updateCartCount(){
     document.getElementById("cartCount").innerText = total;
 
 }
+
+// ================================
+// Load Products
+// ================================
+
+async function loadProducts() {
+
+    const response = await fetch(sheetURL);
+    const csv = await response.text();
+
+    const rows = csv.trim().split("\n").slice(1);
+
+    const productGrid = document.getElementById("productGrid");
+    productGrid.innerHTML = "";
+
+    rows.forEach(row => {
+
+        const cols = row.split(",");
+
+        const id = cols[0].trim();
+        const subId = cols[1].trim();
+        const name = cols[2].trim();
+        const weight = cols[3].trim();
+        const price = cols[4].trim();
+        const status = cols[5].trim();
+
+        // માત્ર Active Products
+        if (status !== "Active") return;
+
+        // SubCategory Filter
+        if (subCategoryId && subId != subCategoryId) return;
+
+        const card = document.createElement("div");
+        card.className = "product-card";
+
+        card.innerHTML = `
+            <h3>${name}</h3>
+
+            <p><b>Weight :</b> ${weight}</p>
+
+            <p><b>Price :</b> ₹${price}</p>
+
+            <button class="add-btn">Add to Cart</button>
+        `;
+
+        const btn = card.querySelector(".add-btn");
+
+        btn.addEventListener("click", function () {
+            addToCart(id, subId, name, weight, price);
+        });
+
+        productGrid.appendChild(card);
+
+    });
+
+}
