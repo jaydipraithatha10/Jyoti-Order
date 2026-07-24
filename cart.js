@@ -1,127 +1,133 @@
+// Load Cart
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-displayCart();
+const cartItems = document.getElementById("cartItems");
+const grandTotal = document.getElementById("grandTotal");
 
+// Display Cart
 function displayCart() {
 
-    const container = document.getElementById("cartContainer");
-    const total = document.getElementById("totalPrice");
+    cartItems.innerHTML = "";
 
-    container.innerHTML = "";
+    let total = 0;
 
-    let grandTotal = 0;
+    if(cart.length === 0){
 
-    if (cart.length === 0) {
-        container.innerHTML = "<h3 style='text-align:center'>Cart is Empty</h3>";
-        total.innerText = "0";
+        cartItems.innerHTML = "<h3>Your Cart is Empty</h3>";
+        grandTotal.innerText = "0";
         return;
+
     }
 
-    cart.forEach((item, index) => {
+    cart.forEach((item,index)=>{
 
-        if (!item.qty) item.qty = 1;
+        const subTotal = Number(item.price) * Number(item.qty);
 
-        const amount = item.qty * Number(item.price);
+        total += subTotal;
 
-        grandTotal += amount;
+        cartItems.innerHTML += `
 
-        container.innerHTML += `
-        <div class="category-card">
-
-            <img src="${item.image || 'logo.png'}">
+        <div class="cart-card">
 
             <h3>${item.name}</h3>
 
-            <p>${item.weight}</p>
+            <p>Weight : ${item.weight}</p>
 
-            <h2>₹${item.price}</h2>
+            <p>Price : ₹${item.price}</p>
 
-            <div style="display:flex;justify-content:center;gap:10px;margin-top:10px;">
+            <div class="qty-box">
 
-                <button onclick="decreaseQty(${index})">-</button>
+                <button class="qty-btn" onclick="changeQty(${index},-1)">−</button>
 
-                <b>${item.qty}</b>
+                <strong>${item.qty}</strong>
 
-                <button onclick="increaseQty(${index})">+</button>
+                <button class="qty-btn" onclick="changeQty(${index},1)">+</button>
 
             </div>
 
-            <button
-            style="margin-top:10px;background:red;color:#fff;border:none;padding:8px 15px;border-radius:5px;"
-            onclick="removeItem(${index})">
-
-            Remove
-
-            </button>
+            <p><b>Subtotal : ₹${subTotal}</b></p>
 
         </div>
+
         `;
 
     });
 
-    total.innerText = grandTotal;
-
-    localStorage.setItem("cart", JSON.stringify(cart));
+    grandTotal.innerText = total;
 
 }
 
-function increaseQty(index){
+// Quantity Change
+function changeQty(index,value){
 
-    cart[index].qty++;
+    cart[index].qty += value;
 
-    displayCart();
+    if(cart[index].qty<=0){
 
-}
-
-function decreaseQty(index){
-
-    if(cart[index].qty>1){
-
-        cart[index].qty--;
+        cart.splice(index,1);
 
     }
 
-    displayCart();
-
-}
-
-function removeItem(index){
-
-    cart.splice(index,1);
+    localStorage.setItem("cart",JSON.stringify(cart));
 
     displayCart();
 
 }
 
-function sendWhatsApp(){
+// Clear Cart
+document.getElementById("clearCart").onclick=function(){
+
+    if(confirm("Clear Cart?")){
+
+        localStorage.removeItem("cart");
+
+        cart=[];
+
+        displayCart();
+
+    }
+
+};
+
+// WhatsApp Order
+document.getElementById("whatsappBtn").onclick=function(){
+
+    if(cart.length===0){
+
+        alert("Cart is Empty");
+
+        return;
+
+    }
 
     let message="*Jyoti Gruh Udhyog Order*%0A%0A";
 
     let total=0;
 
-    cart.forEach(item=>{
+    cart.forEach((item,i)=>{
 
-        const amount=item.qty*Number(item.price);
+        const subTotal=item.price*item.qty;
 
-        total+=amount;
+        total+=subTotal;
 
-        message +=
-`${item.name}
-${item.weight}
-Qty : ${item.qty}
-₹${item.price}
-Subtotal : ₹${amount}
-
-`;
-
-        message += "%0A";
+        message+=`${i+1}. ${item.name}%0A`;
+        message+=`Weight : ${item.weight}%0A`;
+        message+=`Qty : ${item.qty}%0A`;
+        message+=`Price : ₹${item.price}%0A`;
+        message+=`Subtotal : ₹${subTotal}%0A%0A`;
 
     });
 
-    message += "*Total : ₹"+total+"*";
+    message+=`*Total : ₹${total}*`;
 
-    window.open(
-    "https://wa.me/919712149344?text="+message,
-    "_blank");
+    window.open("https://wa.me/91YOURNUMBER?text="+message,"_blank");
 
-}
+    localStorage.removeItem("cart");
+
+    cart=[];
+
+    displayCart();
+
+};
+
+displayCart();
