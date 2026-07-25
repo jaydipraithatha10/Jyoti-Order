@@ -220,7 +220,25 @@ function saveCart(cart){
 
 }
 
+function updateCartCount(){
 
+    const cart = getCart();
+
+    const badge = document.getElementById("cartCount");
+
+    if(!badge) return;
+
+    let count = 0;
+
+    cart.forEach(item => {
+
+        count += item.qty;
+
+    });
+
+    badge.innerHTML = count;
+
+}
 function addToCart(id,name,weight,price){
 
     let cart = getCart();
