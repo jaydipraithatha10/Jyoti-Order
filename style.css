@@ -1,6 +1,9 @@
-/* ===========================
-   Reset
-=========================== */
+/* ======================================
+   Jyoti Gruh Udhyog
+   style.css - Part 1
+====================================== */
+
+/* Reset */
 
 *{
     margin:0;
@@ -9,12 +12,72 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
+:root{
+
+    --primary:#6B4226;
+    --secondary:#A67C52;
+    --accent:#D9B382;
+
+    --background:#F8F5F0;
+
+    --white:#FFFFFF;
+    --black:#222222;
+    --gray:#666666;
+
+    --radius:18px;
+
+    --shadow:0 6px 20px rgba(0,0,0,.08);
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
 body{
-    background:#f8f4ed;
-    color:#333;
-    min-height:100vh;
-    padding-top:85px;
+
+    background:var(--background);
+
+    color:var(--black);
+
+    padding-top:80px;
+
     padding-bottom:80px;
+
+}
+
+/* Links */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* Images */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+/* Buttons */
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    outline:none;
+
 }
 
 /* ===========================
@@ -22,103 +85,131 @@ body{
 =========================== */
 
 .header{
+
     position:fixed;
+
     top:0;
+
     left:0;
+
     width:100%;
-    height:85px;
-    background:#ffffff;
+
+    height:80px;
+
+    background:var(--white);
+
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
+
+    justify-content:space-between;
+
     padding:12px 18px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-    z-index:1000;
+
+    box-shadow:var(--shadow);
+
+    z-index:999;
+
 }
 
 .header-left{
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
 }
 
 .logo{
+
     width:55px;
+
     height:55px;
+
     border-radius:50%;
+
     object-fit:cover;
+
 }
 
-.shop-details h2{
+.shop-info h2{
+
     font-size:20px;
-    color:#5C3A21;
+
+    color:var(--primary);
+
 }
 
-.shop-details p{
+.shop-info p{
+
     font-size:13px;
-    color:#777;
+
+    color:var(--gray);
+
 }
 
 .header-right{
+
     display:flex;
+
+    align-items:center;
+
     gap:10px;
+
 }
 
-.icon-btn{
+.icon-btn,
+
+.cart-btn{
+
     width:42px;
+
     height:42px;
-    border:none;
+
     border-radius:50%;
-    background:#8B5A2B;
+
+    background:var(--primary);
+
     color:#fff;
-    font-size:18px;
-    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
     position:relative;
+
+    font-size:18px;
+
 }
 
 #cartCount{
+
     position:absolute;
-    top:-6px;
-    right:-6px;
-    width:20px;
-    height:20px;
-    border-radius:50%;
+
+    top:-5px;
+
+    right:-5px;
+
+    width:18px;
+
+    height:18px;
+
     background:red;
+
     color:#fff;
-    font-size:12px;
+
+    border-radius:50%;
+
+    font-size:11px;
+
     display:flex;
+
+    align-items:center;
+
     justify-content:center;
-    align-items:center;
-}
 
-/* ===========================
-   Bottom Navigation
-=========================== */
-
-.bottom-nav{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:65px;
-    background:#fff;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    box-shadow:0 -2px 10px rgba(0,0,0,.08);
-    z-index:1000;
-}
-
-.nav-item{
-    text-decoration:none;
-    color:#5C3A21;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    font-size:13px;
-}
-
-.nav-item span{
-    font-size:22px;
-    margin-bottom:4px;
 }
