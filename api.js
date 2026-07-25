@@ -454,4 +454,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     loadCart();
 
+    updateCartCount();
+
 });
