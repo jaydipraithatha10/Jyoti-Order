@@ -259,3 +259,184 @@ function addToCart(id,name,weight,price){
     alert("Added to Cart");
 
 }
+// =====================================
+// Cart Functions
+// =====================================
+
+function removeFromCart(id){
+
+    let cart=getCart();
+
+    cart=cart.filter(item=>item.id!=id);
+
+    saveCart(cart);
+
+    location.reload();
+
+}
+
+function changeQty(id,value){
+
+    let cart=getCart();
+
+    const item=cart.find(x=>x.id==id);
+
+    if(!item) return;
+
+    item.qty+=value;
+
+    if(item.qty<=0){
+
+        removeFromCart(id);
+
+        return;
+
+    }
+
+    saveCart(cart);
+
+    location.reload();
+
+}
+
+
+// =====================================
+// Load Cart
+// =====================================
+
+function loadCart(){
+
+    const cart=getCart();
+
+    const list=document.getElementById("cartList");
+
+    const total=document.getElementById("grandTotal");
+
+    if(!list) return;
+
+    list.innerHTML="";
+
+    let grandTotal=0;
+
+    cart.forEach(item=>{
+
+        const itemTotal=item.price*item.qty;
+
+        grandTotal+=itemTotal;
+
+        list.innerHTML+=`
+
+<div class="cart-item">
+
+<h3>${item.name}</h3>
+
+<p>${item.weight}</p>
+
+<p>₹${item.price} × ${item.qty} = ₹${itemTotal}</p>
+
+<div>
+
+<button onclick="changeQty('${item.id}',-1)">-</button>
+
+<button>${item.qty}</button>
+
+<button onclick="changeQty('${item.id}',1)">+</button>
+
+<button onclick="removeFromCart('${item.id}')">
+Remove
+</button>
+
+</div>
+
+</div>
+
+`;
+
+    });
+
+    if(total){
+
+        total.innerHTML="₹"+grandTotal;
+
+    }
+
+}
+
+
+// =====================================
+// WhatsApp Order
+// =====================================
+
+function placeOrder(){
+
+    const cart=getCart();
+
+    if(cart.length==0){
+
+        alert("Cart is Empty");
+
+        return;
+
+    }
+
+    let message="🛒 *Jyoti Gruh Udhyog*%0A%0A";
+
+    message+="*Order Details*%0A%0A";
+
+    let totalQty=0;
+
+    let grandTotal=0;
+
+    cart.forEach((item,index)=>{
+
+        const total=item.price*item.qty;
+
+        totalQty+=item.qty;
+
+        grandTotal+=total;
+
+        message+=
+`${index+1}. ${item.name} ${item.weight}%0A`;
+
+        message+=
+`₹${item.price} × ${item.qty} = ₹${total}%0A%0A`;
+
+    });
+
+    message+="--------------------%0A";
+
+    message+=`Total Qty : ${totalQty}%0A`;
+
+    message+=`Grand Total : ₹${grandTotal}%0A`;
+
+    message+="--------------------";
+
+    const phone="919712149344";
+
+    window.open(
+`https://wa.me/${phone}?text=${message}`,
+"_blank"
+);
+
+    localStorage.removeItem("cart");
+
+    window.location.href="index.html";
+
+}
+
+
+// =====================================
+// Auto Load
+// =====================================
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    loadCategories();
+
+    loadSubCategories();
+
+    loadProducts();
+
+    loadCart();
+
+});
