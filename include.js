@@ -27,7 +27,7 @@ async function loadFooter() {
 }
 
 // ===============================
-// Initialize
+// Initialize Layout
 // ===============================
 
 async function initLayout() {
@@ -36,6 +36,19 @@ async function initLayout() {
 
     await loadFooter();
 
+    // Header load થયા પછી Cart Count Update કરો
+    if (typeof updateCartCount === "function") {
+        updateCartCount();
+    }
+
 }
 
-document.addEventListener("DOMContentLoaded", initLayout);
+// ===============================
+// Start
+// ===============================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initLayout();
+
+});
