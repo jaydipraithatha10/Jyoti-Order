@@ -1,1 +1,60 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Products</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<main>
+
+<section class="search-box">
+
+<input
+type="text"
+id="searchProduct"
+placeholder="Search Products...">
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+Products
+</h2>
+
+<div id="productList" class="grid"></div>
+
+</section>
+
+</main>
+
+<div id="footer"></div>
+
+<script src="include.js"></script>
+<script src="api.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    loadProducts();
+
+});
+
+</script>
+
+</body>
+
+</html>
