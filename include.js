@@ -1,30 +1,41 @@
-
+// ===============================
 // Load Header
-fetch("header.html")
-.then(response => response.text())
-.then(data => {
+// ===============================
 
-    const header = document.getElementById("header");
+async function loadHeader() {
 
-    if(header){
+    const response = await fetch("header.html");
 
-        header.innerHTML = data;
+    const html = await response.text();
 
-    }
+    document.getElementById("header").innerHTML = html;
 
-});
+}
 
+// ===============================
 // Load Footer
-fetch("footer.html")
-.then(response => response.text())
-.then(data => {
+// ===============================
 
-    const footer = document.getElementById("footer");
+async function loadFooter() {
 
-    if(footer){
+    const response = await fetch("footer.html");
 
-        footer.innerHTML = data;
+    const html = await response.text();
 
-    }
+    document.getElementById("footer").innerHTML = html;
 
-});
+}
+
+// ===============================
+// Initialize
+// ===============================
+
+async function initLayout() {
+
+    await loadHeader();
+
+    await loadFooter();
+
+}
+
+document.addEventListener("DOMContentLoaded", initLayout);
