@@ -189,7 +189,12 @@ async function loadProducts(){
 <p>${weight}</p>
 
 <h4>₹${price}</h4>
-<button onclick="alert('Button Working')">
+<button onclick="addToCart(
+'${id}',
+'${product}',
+'${weight}',
+${price}
+)">
 🛒 Add To Cart
 </button>
 
