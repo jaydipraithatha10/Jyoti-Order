@@ -142,3 +142,120 @@ onclick="location.href='subcategory.html?id=${id}'">
     });
 
 }
+// =====================================
+// Load Products
+// =====================================
+
+async function loadProducts(){
+
+    const subCategoryId = getParam("id");
+
+    const csv = await fetchCSV(productURL);
+
+    const rows = csvToArray(csv);
+
+    const list = document.getElementById("productList");
+
+    if(!list) return;
+
+    list.innerHTML = "";
+
+    rows.slice(1).forEach(row=>{
+
+        const id = row[0];
+
+        const subId = row[1];
+
+        const product = row[2];
+
+        const weight = row[3];
+
+        const price = row[4];
+
+        const status = row[5];
+
+        if(status.trim().toLowerCase()!="active")
+            return;
+
+        if(subId!=subCategoryId)
+            return;
+
+        list.innerHTML += `
+
+<div class="product-card">
+
+<h3>${product}</h3>
+
+<p>${weight}</p>
+
+<h4>₹${price}</h4>
+
+<button onclick="addToCart(
+'${id}',
+'${product}',
+'${weight}',
+${price}
+)">
+Add To Cart
+</button>
+
+</div>
+
+`;
+
+    });
+
+}
+
+
+// =====================================
+// Cart
+// =====================================
+
+function getCart(){
+
+    return JSON.parse(localStorage.getItem("cart")) || [];
+
+}
+
+
+function saveCart(cart){
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+}
+
+
+function addToCart(id,name,weight,price){
+
+    let cart = getCart();
+
+    const item = cart.find(x=>x.id==id);
+
+    if(item){
+
+        item.qty++;
+
+    }else{
+
+        cart.push({
+
+            id:id,
+
+            name:name,
+
+            weight:weight,
+
+            price:price,
+
+            qty:1
+
+        });
+
+    }
+
+    saveCart(cart);
+
+    alert("Added to Cart");
+
+}
