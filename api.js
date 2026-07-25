@@ -1,6 +1,9 @@
-// ==============================
-// Google Sheet CSV URLs
-// ==============================
+// =====================================
+// Jyoti Gruh Udhyog API
+// Part 1
+// =====================================
+
+// ---------- Google Sheet URLs ----------
 
 const categoryURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=2013716827&single=true&output=csv";
@@ -11,106 +14,131 @@ const subCategoryURL =
 const productURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=0&single=true&output=csv";
 
-// ==============================
-// Read CSV
-// ==============================
 
-async function fetchCSV(url) {
+// ---------- Fetch CSV ----------
+
+async function fetchCSV(url){
+
     const response = await fetch(url);
+
     return await response.text();
+
 }
 
-function csvToArray(csv) {
-    return csv.trim().split("\n").map(row => row.split(","));
+
+// ---------- CSV To Array ----------
+
+function csvToArray(csv){
+
+    return csv
+    .trim()
+    .split("\n")
+    .map(row=>row.split(","));
+
 }
 
-// ==============================
-// URL Parameter
-// ==============================
 
-function getParam(name) {
-    return new URLSearchParams(window.location.search).get(name);
+// ---------- URL Parameter ----------
+
+function getParam(name){
+
+    return new URLSearchParams(location.search).get(name);
+
 }
 
-// ==============================
-// Load Categories
-// ==============================
 
-async function loadCategories() {
+// ---------- Load Categories ----------
 
-    const csv = await fetchCSV(categoryURL);
-    const rows = csvToArray(csv);
+async function loadCategories(){
 
-    const list = document.getElementById("categoryList");
+    const csv=await fetchCSV(categoryURL);
 
-    if (!list) return;
+    const rows=csvToArray(csv);
 
-    list.innerHTML = "";
+    const list=document.getElementById("categoryList");
 
-    rows.slice(1).forEach(row => {
+    if(!list) return;
 
-        const id = row[0];
-        const category = row[1];
-        const image = row[2];
-        const status = row[3];
+    list.innerHTML="";
 
-        if (status.trim().toLowerCase() !== "active") return;
+    rows.slice(1).forEach(row=>{
 
-        list.innerHTML += `
-        <div class="category-card"
-             onclick="location.href='category.html?id=${id}'">
+        const id=row[0];
 
-            <img src="${image}" alt="${category}">
-            <h3>${category}</h3>
+        const category=row[1];
 
-        </div>`;
+        const image=row[2];
+
+        const status=row[3];
+
+        if(status.trim().toLowerCase()!="active")
+            return;
+
+        list.innerHTML+=`
+
+<div class="category-card"
+onclick="location.href='category.html?id=${id}'">
+
+<img src="${image}" alt="${category}">
+
+<h3>${category}</h3>
+
+</div>
+
+`;
+
     });
+
 }
 
-// ==============================
-// Load SubCategories
-// ==============================
 
-async function loadSubCategories() {
+// ---------- Load Sub Categories ----------
 
-    const list = document.getElementById("subCategoryList");
+async function loadSubCategories(){
 
-    if (!list) return;
+    const categoryId=getParam("id");
 
-    const categoryId = getParam("id");
+    const csv=await fetchCSV(subCategoryURL);
 
-    const csv = await fetchCSV(subCategoryURL);
-    const rows = csvToArray(csv);
+    const rows=csvToArray(csv);
 
-    list.innerHTML = "";
+    const list=document.getElementById("subCategoryList");
 
-    rows.slice(1).forEach(row => {
+    if(!list) return;
 
-        const id = row[0];
-        const catId = row[1];
-        const subCategory = row[2];
-        const image = row[3];
-        const status = row[4];
+    list.innerHTML="";
 
-        if (status.trim().toLowerCase() !== "active") return;
-        if (catId != categoryId) return;
+    rows.slice(1).forEach(row=>{
 
-        list.innerHTML += `
-        <div class="category-card"
-             onclick="location.href='subcategory.html?id=${id}'">
+        const id=row[0];
 
-            <img src="${image}" alt="${subCategory}">
-            <h3>${subCategory}</h3>
+        const catId=row[1];
 
-        </div>`;
+        const sub=row[2];
+
+        const image=row[3];
+
+        const status=row[4];
+
+        if(status.trim().toLowerCase()!="active")
+            return;
+
+        if(catId!=categoryId)
+            return;
+
+        list.innerHTML+=`
+
+<div class="category-card"
+onclick="location.href='subcategory.html?id=${id}'">
+
+<img src="${image}" alt="${sub}">
+
+<h3>${sub}</h3>
+
+</div>
+
+`;
+
     });
+
 }
-
-// ==============================
-// Initialize
-// ==============================
-
-document.addEventListener("DOMContentLoaded", () => {
-    loadCategories();
-    loadSubCategories();
-});
