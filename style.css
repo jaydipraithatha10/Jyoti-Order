@@ -283,9 +283,12 @@ button{
    Banner
 =========================== */
 
-.banner{
 
-    width:100%;
+/* ===========================
+   Banner
+=========================== */
+
+.banner{
 
     padding:15px;
 
@@ -295,11 +298,16 @@ button{
 
     width:100%;
 
+    display:block;
+
     border-radius:20px;
+
+    object-fit:cover;
 
     box-shadow:var(--shadow);
 
 }
+
 
 /* ===========================
    Search Box
