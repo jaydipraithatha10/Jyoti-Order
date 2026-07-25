@@ -275,7 +275,7 @@ function addToCart(id,name,weight,price){
 
 updateCartCount();
 
-alert("Added to Cart");
+
 
 }
 // =====================================
