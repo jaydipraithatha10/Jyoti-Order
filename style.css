@@ -298,11 +298,13 @@ button{
 
     width:100%;
 
-    display:block;
+    height:180px;
+
+    object-fit:cover;
 
     border-radius:20px;
 
-    object-fit:cover;
+    display:block;
 
     box-shadow:var(--shadow);
 
