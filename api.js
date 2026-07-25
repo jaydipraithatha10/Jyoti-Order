@@ -226,18 +226,19 @@ function saveCart(cart){
 
 function updateCartCount(){
 
-    const cart = getCart();
-
     const badge = document.getElementById("cartCount");
 
-    if(!badge) return;
+    if(!badge){
+        setTimeout(updateCartCount,200);
+        return;
+    }
+
+    const cart = getCart();
 
     let count = 0;
 
-    cart.forEach(item => {
-
+    cart.forEach(item=>{
         count += item.qty;
-
     });
 
     badge.innerHTML = count;
@@ -456,6 +457,16 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     loadProducts();
 
+    loadCart();
+
+    updateCartCount();
+
+});
+document.addEventListener("DOMContentLoaded",()=>{
+
+    loadCategories();
+    loadSubCategories();
+    loadProducts();
     loadCart();
 
     updateCartCount();
