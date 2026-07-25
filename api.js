@@ -269,7 +269,9 @@ function addToCart(id,name,weight,price){
 
     saveCart(cart);
 
-    alert("Added to Cart");
+updateCartCount();
+
+alert("Added to Cart");
 
 }
 // =====================================
