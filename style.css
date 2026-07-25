@@ -758,3 +758,40 @@ button{
     }
 
 }
+.product-card button{
+
+    width:100%;
+
+    margin-top:12px;
+
+    padding:12px;
+
+    background:#6b3f1d;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.product-card button:hover{
+
+    background:#8b5a2b;
+
+}
+
+.product-card button:active{
+
+    transform:scale(.98);
+
+}
