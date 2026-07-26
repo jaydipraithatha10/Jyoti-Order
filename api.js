@@ -208,26 +208,7 @@ async function loadProducts(){
 
 }
 
-// =====================================
-// Update Cart Count
-// =====================================
 
-function updateOrderButton(){
-
-    const count = document.getElementById("orderCount");
-
-    if(!count) return;
-
-    const cart = getCart();
-
-    let total = 0;
-
-    cart.forEach(item=>{
-        total += item.qty;
-    });
-
-    count.innerHTML = total;
-}
 
     
 
