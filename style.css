@@ -794,27 +794,48 @@ button{
 
     transform:scale(.98);
 
-}
-.order-now-btn{
+}.order-now-btn{
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 90px;
+    bottom: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background: #6b3f1d;
+    color: #fff;
+
+    padding: 14px 24px;
+
+    border-radius: 50px;
+
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,.25);
+
     z-index: 9999;
 }
+
 .order-now-btn span{
+    background: #fff;
+    color: #6b3f1d;
 
-    background:#fff;
+    min-width: 30px;
+    height: 30px;
 
-    color:#6b3f1d;
+    border-radius: 50%;
 
-    padding:2px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    border-radius:20px;
-
-    margin-left:8px;
-
+    font-weight: bold;
 }
 main{
-    padding-bottom:140px;
+    padding-bottom:160px;
 }
