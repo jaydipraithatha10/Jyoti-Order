@@ -795,22 +795,22 @@ button{
     transform:scale(.98);
 
 }
-
 .order-now-btn{
     position: fixed;
-    bottom: 20px;
     right: 20px;
+    bottom: 90px;   /* પહેલાં 20px હતું */
     background: #7b4a22;
-    color: white;
+    color: #fff;
     padding: 14px 22px;
     border-radius: 50px;
-    text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 8px;
-    z-index: 99999;
-    box-shadow: 0 4px 12px rgba(0,0,0,.3);
+    gap: 10px;
+    text-decoration: none;
+    z-index: 9999;
+    box-shadow: 0 4px 10px rgba(0,0,0,.3);
 }
+
 .order-now-btn span{
 
     background:#fff;
