@@ -240,6 +240,25 @@ function updateCartCount(){
     cart.forEach(item=>{
         count += item.qty;
     });
+function updateOrderButton(){
+
+    const btn = document.getElementById("orderNowBtn");
+    const count = document.getElementById("orderCount");
+
+    if(!btn || !count) return;
+
+    const cart = getCart();
+
+    let total = 0;
+
+    cart.forEach(item=>{
+        total += item.qty;
+    });
+
+    count.innerHTML = total;
+
+    btn.style.display = total > 0 ? "block" : "none";
+}
 
     badge.innerHTML = count;
 
