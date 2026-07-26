@@ -213,33 +213,24 @@ async function loadProducts(){
 // Update Cart Count
 // =====================================
 
-function updateCartCount(){
+function updateOrderButton(){
 
-    const badge=document.getElementById("cartCount");
+    const count = document.getElementById("orderCount");
 
-    if(!badge){
+    if(!count) return;
 
-        setTimeout(updateCartCount,200);
+    const cart = getCart();
 
-        return;
-
-    }
-
-    const cart=getCart();
-
-    let total=0;
+    let total = 0;
 
     cart.forEach(item=>{
-
-        total+=item.qty;
-
+        total += item.qty;
     });
 
-    badge.innerHTML=total;
-
-    updateOrderButton();
-
+    count.innerHTML = total;
 }
+
+    
 
 
 // =====================================
