@@ -243,6 +243,22 @@ function updateCartCount(){
 
     badge.innerHTML = count;
 
+    // Order Now Button Update
+    const orderBtn = document.getElementById("orderNowBtn");
+    const orderCount = document.getElementById("orderCount");
+
+    if(orderBtn && orderCount){
+
+        orderCount.innerHTML = count;
+
+        if(count > 0){
+            orderBtn.style.display = "block";
+        }else{
+            orderBtn.style.display = "none";
+        }
+
+    }
+
 }
 
 function addToCart(id,name,weight,price){
