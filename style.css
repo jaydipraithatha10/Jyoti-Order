@@ -839,3 +839,16 @@ button{
 main{
     padding-bottom:160px;
 }
+.section{
+    padding:15px;
+    padding-bottom:220px;
+}
+.order-now-btn{
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:85px;
+    z-index:9999;
+padding:12px 20px;
+font-size:16px;
+}
