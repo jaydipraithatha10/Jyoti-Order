@@ -1,5 +1,5 @@
 // =====================================
-// Jyoti Gruh Udhyog API
+// Jyoti Gruh Udhyog API v2
 // Part 1
 // =====================================
 
@@ -15,7 +15,9 @@ const productURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vStfoYZJzDES0lAav3gzVi4hHMrr-g-vu6oHbAecwVN7-j5ZfyZCE4wy5qE8oaH0fSw14Y97pHMmUrU/pub?gid=0&single=true&output=csv";
 
 
-// ---------- Fetch CSV ----------
+// =====================================
+// Fetch CSV
+// =====================================
 
 async function fetchCSV(url){
 
@@ -26,19 +28,23 @@ async function fetchCSV(url){
 }
 
 
-// ---------- CSV To Array ----------
+// =====================================
+// CSV To Array
+// =====================================
 
 function csvToArray(csv){
 
     return csv
     .trim()
     .split("\n")
-    .map(row=>row.split(","));
+    .map(row => row.split(","));
 
 }
 
 
-// ---------- URL Parameter ----------
+// =====================================
+// URL Parameter
+// =====================================
 
 function getParam(name){
 
@@ -47,168 +53,8 @@ function getParam(name){
 }
 
 
-// ---------- Load Categories ----------
-
-async function loadCategories(){
-
-    const csv=await fetchCSV(categoryURL);
-
-    const rows=csvToArray(csv);
-
-    const list=document.getElementById("categoryList");
-
-    if(!list) return;
-
-    list.innerHTML="";
-
-    rows.slice(1).forEach(row=>{
-
-        const id=row[0];
-
-        const category=row[1];
-
-        const image=row[2];
-
-        const status=row[3];
-
-        if(status.trim().toLowerCase()!="active")
-            return;
-
-        list.innerHTML+=`
-
-<div class="category-card"
-onclick="location.href='category.html?id=${id}'">
-
-<img src="${image}" alt="${category}">
-
-<h3>${category}</h3>
-
-</div>
-
-`;
-
-    });
-
-}
-
-
-// ---------- Load Sub Categories ----------
-
-async function loadSubCategories(){
-
-    const categoryId=getParam("id");
-
-    const csv=await fetchCSV(subCategoryURL);
-
-    const rows=csvToArray(csv);
-
-    const list=document.getElementById("subCategoryList");
-
-    if(!list) return;
-
-    list.innerHTML="";
-
-    rows.slice(1).forEach(row=>{
-
-        const id=row[0];
-
-        const catId=row[1];
-
-        const sub=row[2];
-
-        const image=row[3];
-
-        const status=row[4];
-
-        if(status.trim().toLowerCase()!="active")
-            return;
-
-        if(catId!=categoryId)
-            return;
-
-        list.innerHTML+=`
-
-<div class="category-card"
-onclick="location.href='subcategory.html?id=${id}'">
-
-<img src="${image}" alt="${sub}">
-
-<h3>${sub}</h3>
-
-</div>
-
-`;
-
-    });
-
-}
 // =====================================
-// Load Products
-// =====================================
-
-async function loadProducts(){
-
-    const subCategoryId = getParam("id");
-
-    const csv = await fetchCSV(productURL);
-
-    const rows = csvToArray(csv);
-
-    const list = document.getElementById("productList");
-
-    if(!list) return;
-
-    list.innerHTML = "";
-
-    rows.slice(1).forEach(row=>{
-
-        const id = row[0];
-
-        const subId = row[1];
-
-        const product = row[2];
-
-        const weight = row[3];
-
-        const price = row[4];
-
-        const status = row[5];
-
-        if(status.trim().toLowerCase()!="active")
-            return;
-
-        if(subId!=subCategoryId)
-            return;
-
-        list.innerHTML += `
-
-<div class="product-card">
-
-<h3>${product}</h3>
-
-<p>${weight}</p>
-
-<h4>₹${price}</h4>
-<button onclick="addToCart(
-'${id}',
-'${product}',
-'${weight}',
-${price}
-)">
-🛒 Add To Cart
-</button>
-
-</div>
-
-`;
-
-    });
-
-}
-
-
-// =====================================
-// Cart
+// Cart Storage
 // =====================================
 
 function getCart(){
@@ -217,219 +63,42 @@ function getCart(){
 
 }
 
-
 function saveCart(cart){
 
-    localStorage.setItem("cart",JSON.stringify(cart));
-
-}
-
-function updateCartCount(){
-
-    const badge = document.getElementById("cartCount");
-
-    if(!badge){
-        setTimeout(updateCartCount,200);
-        return;
-    }
-
-    const cart = getCart();
-
-    let count = 0;
-
-    cart.forEach(item=>{
-        count += item.qty;
-    });
-function updateOrderButton(){
-
-    const btn = document.getElementById("orderNowBtn");
-    const count = document.getElementById("orderCount");
-
-    if(!btn || !count) return;
-
-    const cart = getCart();
-
-    let total = 0;
-
-    cart.forEach(item=>{
-        total += item.qty;
-    });
-
-    count.innerHTML = total;
-
-    btn.style.display = total > 0 ? "block" : "none";
-}
-
-    badge.innerHTML = count;
-
-    // Order Now Button Update
-    const orderBtn = document.getElementById("orderNowBtn");
-    const orderCount = document.getElementById("orderCount");
-
-    if(orderBtn && orderCount){
-
-        orderCount.innerHTML = count;
-
-        if(count > 0){
-            orderBtn.style.display = "block";
-        }else{
-            orderBtn.style.display = "none";
-        }
-
-    }
-
-}
-
-function addToCart(id,name,weight,price){
-function updateOrderButton(){
-
-    const btn=document.getElementById("orderNowBtn");
-    const count=document.getElementById("orderCount");
-
-    if(!btn || !count) return;
-
-    const cart=getCart();
-
-    let qty=0;
-
-    cart.forEach(item=>{
-        qty+=item.qty;
-    });
-
-    count.innerHTML=qty;
-
-    if(qty==0){
-
-        btn.style.display="none";
-
-    }else{
-
-        btn.style.display="block";
-
-    }
-
-}
-    let cart = getCart();
-
-    const item = cart.find(x=>x.id==id);
-
-    if(item){
-
-        item.qty++;
-
-    }else{
-
-        cart.push({
-
-            id:id,
-
-            name:name,
-
-            weight:weight,
-
-            price:price,
-
-            qty:1
-
-        });
-
-    }
-
-    saveCart(cart);
-
-updateCartCount();
-
-
-
-}
-// =====================================
-// Cart Functions
-// =====================================
-
-function removeFromCart(id){
-
-    let cart=getCart();
-
-    cart=cart.filter(item=>item.id!=id);
-
-    saveCart(cart);
-
-    location.reload();
-
-}
-
-function changeQty(id,value){
-
-    let cart=getCart();
-
-    const item=cart.find(x=>x.id==id);
-
-    if(!item) return;
-
-    item.qty+=value;
-
-    if(item.qty<=0){
-
-        removeFromCart(id);
-
-        return;
-
-    }
-
-    saveCart(cart);
-
-    location.reload();
+    localStorage.setItem("cart", JSON.stringify(cart));
 
 }
 
 
 // =====================================
-// Load Cart
+// Load Categories
 // =====================================
 
-function loadCart(){
+async function loadCategories(){
 
-    const cart=getCart();
-
-    const list=document.getElementById("cartList");
-
-    const total=document.getElementById("grandTotal");
+    const list=document.getElementById("categoryList");
 
     if(!list) return;
 
+    const csv=await fetchCSV(categoryURL);
+
+    const rows=csvToArray(csv);
+
     list.innerHTML="";
 
-    let grandTotal=0;
+    rows.slice(1).forEach(row=>{
 
-    cart.forEach(item=>{
+        if(row[3].trim().toLowerCase()!="active")
+            return;
 
-        const itemTotal=item.price*item.qty;
+        list.innerHTML += `
 
-        grandTotal+=itemTotal;
+<div class="category-card"
+onclick="location.href='category.html?id=${row[0]}'">
 
-        list.innerHTML+=`
+<img src="${row[2]}" alt="${row[1]}">
 
-<div class="cart-item">
-
-<h3>${item.name}</h3>
-
-<p>${item.weight}</p>
-
-<p>₹${item.price} × ${item.qty} = ₹${itemTotal}</p>
-
-<div>
-
-<button onclick="changeQty('${item.id}',-1)">-</button>
-
-<button>${item.qty}</button>
-
-<button onclick="changeQty('${item.id}',1)">+</button>
-
-<button onclick="removeFromCart('${item.id}')">
-Remove
-</button>
-
-</div>
+<h3>${row[1]}</h3>
 
 </div>
 
@@ -437,101 +106,48 @@ Remove
 
     });
 
-    if(total){
-
-        total.innerHTML="₹"+grandTotal;
-
-    }
-
 }
 
 
 // =====================================
-// WhatsApp Order
+// Load Sub Categories
 // =====================================
 
-function placeOrder(){
+async function loadSubCategories(){
 
-    const cart=getCart();
+    const categoryId=getParam("id");
 
-    if(cart.length==0){
+    const list=document.getElementById("subCategoryList");
 
-        alert("Cart is Empty");
+    if(!list) return;
 
-        return;
+    const csv=await fetchCSV(subCategoryURL);
 
-    }
+    const rows=csvToArray(csv);
 
-    let message="🛒 *Jyoti Gruh Udhyog*%0A%0A";
+    list.innerHTML="";
 
-    message+="*Order Details*%0A%0A";
+    rows.slice(1).forEach(row=>{
 
-    let totalQty=0;
+        if(row[4].trim().toLowerCase()!="active")
+            return;
 
-    let grandTotal=0;
+        if(row[1]!=categoryId)
+            return;
 
-    cart.forEach((item,index)=>{
+        list.innerHTML += `
 
-        const total=item.price*item.qty;
+<div class="category-card"
+onclick="location.href='subcategory.html?id=${row[0]}'">
 
-        totalQty+=item.qty;
+<img src="${row[3]}" alt="${row[2]}">
 
-        grandTotal+=total;
+<h3>${row[2]}</h3>
 
-        message+=
-`${index+1}. ${item.name} ${item.weight}%0A`;
+</div>
 
-        message+=
-`₹${item.price} × ${item.qty} = ₹${total}%0A%0A`;
+`;
 
     });
 
-    message+="--------------------%0A";
-
-    message+=`Total Qty : ${totalQty}%0A`;
-
-    message+=`Grand Total : ₹${grandTotal}%0A`;
-
-    message+="--------------------";
-
-    const phone="919712149344";
-
-    window.open(
-`https://wa.me/${phone}?text=${message}`,
-"_blank"
-);
-
-    localStorage.removeItem("cart");
-
-    window.location.href="index.html";
-
 }
-
-
-// =====================================
-// Auto Load
-// =====================================
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-    loadCategories();
-
-    loadSubCategories();
-
-    loadProducts();
-
-    loadCart();
-
-    updateCartCount();
-
-});
-document.addEventListener("DOMContentLoaded",()=>{
-
-    loadCategories();
-    loadSubCategories();
-    loadProducts();
-    loadCart();
-
-    updateCartCount();
-
-});
