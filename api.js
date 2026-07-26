@@ -244,8 +244,36 @@ function updateCartCount(){
     badge.innerHTML = count;
 
 }
-function addToCart(id,name,weight,price){
 
+function addToCart(id,name,weight,price){
+function updateOrderButton(){
+
+    const btn=document.getElementById("orderNowBtn");
+    const count=document.getElementById("orderCount");
+
+    if(!btn || !count) return;
+
+    const cart=getCart();
+
+    let qty=0;
+
+    cart.forEach(item=>{
+        qty+=item.qty;
+    });
+
+    count.innerHTML=qty;
+
+    if(qty==0){
+
+        btn.style.display="none";
+
+    }else{
+
+        btn.style.display="block";
+
+    }
+
+}
     let cart = getCart();
 
     const item = cart.find(x=>x.id==id);
