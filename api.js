@@ -151,3 +151,163 @@ onclick="location.href='subcategory.html?id=${row[0]}'">
     });
 
 }
+// =====================================
+// Load Products
+// =====================================
+
+async function loadProducts(){
+
+    const subCategoryId = getParam("id");
+
+    const list = document.getElementById("productList");
+
+    if(!list) return;
+
+    const csv = await fetchCSV(productURL);
+
+    const rows = csvToArray(csv);
+
+    list.innerHTML = "";
+
+    rows.slice(1).forEach(row=>{
+
+        const id = row[0];
+        const subId = row[1];
+        const product = row[2];
+        const weight = row[3];
+        const price = row[4];
+        const status = row[5];
+
+        if(status.trim().toLowerCase()!="active")
+            return;
+
+        if(subId!=subCategoryId)
+            return;
+
+        list.innerHTML += `
+
+<div class="product-card">
+
+<h3>${product}</h3>
+
+<p>${weight}</p>
+
+<h4>₹${price}</h4>
+
+<button onclick="addToCart('${id}','${product}','${weight}',${price})">
+
+🛒 Add To Cart
+
+</button>
+
+</div>
+
+`;
+
+    });
+
+}
+
+
+// =====================================
+// Update Cart Count
+// =====================================
+
+function updateCartCount(){
+
+    const badge=document.getElementById("cartCount");
+
+    if(!badge){
+
+        setTimeout(updateCartCount,200);
+
+        return;
+
+    }
+
+    const cart=getCart();
+
+    let total=0;
+
+    cart.forEach(item=>{
+
+        total+=item.qty;
+
+    });
+
+    badge.innerHTML=total;
+
+    updateOrderButton();
+
+}
+
+
+// =====================================
+// Floating Order Button
+// =====================================
+
+function updateOrderButton(){
+
+    const btn=document.getElementById("orderNowBtn");
+
+    const count=document.getElementById("orderCount");
+
+    if(!btn || !count)
+        return;
+
+    const cart=getCart();
+
+    let qty=0;
+
+    cart.forEach(item=>{
+
+        qty+=item.qty;
+
+    });
+
+    count.innerHTML=qty;
+
+    btn.style.display=qty>0?"flex":"none";
+
+}
+
+
+// =====================================
+// Add To Cart
+// =====================================
+
+function addToCart(id,name,weight,price){
+
+    let cart=getCart();
+
+    const item=cart.find(x=>x.id==id);
+
+    if(item){
+
+        item.qty++;
+
+    }else{
+
+        cart.push({
+
+            id:id,
+
+            name:name,
+
+            weight:weight,
+
+            price:price,
+
+            qty:1
+
+        });
+
+    }
+
+    saveCart(cart);
+
+    updateCartCount();
+
+    alert("Product Added Successfully");
+
+}
